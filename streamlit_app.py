@@ -202,7 +202,75 @@ st.markdown("""
         padding: 0 !important;  
     }  
 }  
+/* 移除所有默认背景和阴影 */  
+div.stNumberInput > div,  
+div.stRadio > div,  
+div[data-testid="stMarkdownContainer"],  
+div.stMarkdown,  
+div[data-testid="stVerticalBlock"] > div,  
+div.element-container,  
+div.row-widget,  
+div[class^="st-"],  
+div[class*=" st-"],  
+section[data-testid="stSidebar"],  
+div.block-container,  
+div[role="radiogroup"] {  
+    background: none !important;  
+    background-color: transparent !important;  
+    border: none !important;  
+    box-shadow: none !important;  
+}  
 
+/* 移除输入框容器的背景 */  
+.input-section {  
+    background: none !important;  
+    box-shadow: none !important;  
+    padding: 0.8rem 0 !important;  
+}  
+
+/* 保持输入框本身的样式 */  
+.stNumberInput > div > div > input {  
+    background: white !important;  
+    border: 1px solid #e2e8f0 !important;  
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1) !important;  
+    width: 100% !important;  
+    min-width: 300px !important;  
+    padding: 0.8rem !important;  
+    border-radius: 8px !important;  
+    font-size: 1.1rem !important;  
+}  
+
+/* 调整radio按钮组样式 */  
+.stRadio > div {  
+    background: transparent !important;  
+}  
+
+.stRadio > div > div > label {  
+    background: white !important;  
+    border: 1px solid #e2e8f0 !important;  
+    margin: 0.5rem 1rem 0.5rem 0 !important;  
+    padding: 0.5rem 1rem !important;  
+    border-radius: 6px !important;  
+}  
+
+/* 移除所有可能的边距和填充 */  
+.css-1544g2n, .css-1kyxreq, .css-ocqkz7 {  
+    margin: 0 !important;  
+    padding: 0 !important;  
+}  
+
+/* 确保页面容器没有多余背景 */  
+.block-container {  
+    padding: 2rem !important;  
+    max-width: 1200px !important;  
+    background: transparent !important;  
+}  
+
+/* 移除stVerticalBlock的背景 */  
+div[data-testid="stVerticalBlock"] {  
+    background: transparent !important;  
+    gap: 0 !important;  
+}  
 
 </style>  
 """, unsafe_allow_html=True)  
