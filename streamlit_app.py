@@ -260,6 +260,79 @@ div[data-testid="stVerticalBlock"] {
     margin-top: 0.5rem;  
     line-height: 1.4;  
 }
+/* 指标模块容器样式 */  
+.input-group {  
+    background: #f8fafc;  
+    border: 2px solid #4a90e2;  /* 蓝色边框 */  
+    border-radius: 20px;        /* 圆角边框 */  
+    padding: 1.5rem 2rem;  
+    margin: 1rem 0;  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
+}  
+
+/* 指标标题样式 */  
+.input-label {  
+    color: #2c3e50;  
+    font-size: 1.2rem;  
+    font-weight: 600;  
+    margin-bottom: 1rem;  
+    display: block;  
+}  
+
+/* Radio按钮组样式 */  
+.stRadio > div {  
+    padding: 0.5rem 0 !important;  
+}  
+
+/* Radio按钮选项样式 */  
+.stRadio > div > div > label {  
+    padding: 0.8rem 1.2rem !important;  
+    margin: 0.3rem 1rem 0.3rem 0 !important;  
+    border-radius: 15px !important;  
+    background: white !important;  
+    border: 1px solid #e2e8f0 !important;  
+    transition: all 0.2s ease !important;  
+}  
+
+/* Radio按钮选中状态 */  
+.stRadio > div > div > label[data-baseweb="radio"] > div:first-child {  
+    background-color: #4a90e2 !important;  
+    border-color: #4a90e2 !important;  
+}  
+
+/* 数字输入框样式 */  
+.stNumberInput > div > div > input {  
+    border-radius: 15px !important;  
+    border: 1px solid #e2e8f0 !important;  
+    padding: 0.8rem 1rem !important;  
+    background: white !important;  
+    font-size: 1rem !important;  
+}  
+
+/* 正常范围提示样式 */  
+.normal-range {  
+    color: #64748b;  
+    font-size: 0.9rem;  
+    margin-top: 0.5rem;  
+    padding: 0.5rem 0;  
+}  
+
+/* 移除Streamlit默认样式 */  
+div[data-testid="stVerticalBlock"] {  
+    gap: 0 !important;  
+}  
+
+/* 响应式调整 */  
+@media (max-width: 768px) {  
+    .input-group {  
+        padding: 1rem;  
+    }  
+    
+    .input-label {  
+        font-size: 1.1rem;  
+    }  
+}
+
 
 /* 响应式调整 */  
 @media (max-width: 768px) {  
