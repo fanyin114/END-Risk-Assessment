@@ -81,29 +81,41 @@ st.markdown("""
     box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;  
 }  
 
-/* Radio按钮组容器样式 */  
-.radio-group {  
-    background: #f8fafc;  
-    border: 1px solid #e2e8f0;  
-    border-radius: 12px;  
-    padding: 1.5rem;  
-    margin-bottom: 1.5rem;  
+/* 按钮容器样式 */  
+.stButton {  
+    display: flex !important;  
+    justify-content: center !important;  
+    margin: 2rem auto !important;  
 }  
 
-/* Radio按钮样式 */  
-.stRadio > div {  
-    padding: 0.5rem !important;  
+/* 按钮样式 */  
+.stButton > button {  
+    background: linear-gradient(145deg, #1a73e8, #1557b0) !important;  
+    color: white !important;  
+    padding: 0.8rem 2.5rem !important;  
+    border-radius: 25px !important;  
+    border: none !important;  
+    font-size: 1.1rem !important;  
+    font-weight: 600 !important;  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;  
+    transition: all 0.3s ease !important;  
+    min-width: 200px !important;  
+    max-width: 300px !important;  
+    margin: 0 auto !important;  
 }  
 
-.stRadio > div > div > label {  
-    background: white !important;  
-    border: 1px solid #e2e8f0 !important;  
-    margin: 0.5rem 1rem 0.5rem 0 !important;  
-    padding: 0.8rem 1.2rem !important;  
-    border-radius: 8px !important;  
-    cursor: pointer !important;  
-    transition: all 0.2s ease !important;  
+/* 按钮悬停效果 */  
+.stButton > button:hover {  
+    transform: translateY(-2px) !important;  
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15) !important;  
+    background: linear-gradient(145deg, #1557b0, #1a73e8) !important;  
 }  
+
+/* 按钮点击效果 */  
+.stButton > button:active {  
+    transform: translateY(0) !important;  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;  
+}
 
 /* 移除评估结果上方的白色框框 */  
 div[data-testid="stMarkdownContainer"] {  
