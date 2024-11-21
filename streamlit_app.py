@@ -119,8 +119,8 @@ st.markdown("""
     padding: 1rem 4rem !important;  
     border-radius: 30px !important;  
     border: none !important;  
-    font-size: 1.6rem !important;  
-    font-weight: 600 !important;  
+    font-size: 1.8rem !important;  
+    font-weight: 800 !important;  
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;  
     transition: all 0.3s ease !important;  
     min-width: 400px !important;  
