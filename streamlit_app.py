@@ -250,7 +250,7 @@ div[data-testid="stVerticalBlock"] {
 
 /* 调整列间距 */  
 .css-1y4p8pa {  
-    padding: 2 1rem !important;  
+    padding: 3 1rem !important;  
 }  
 
 /* 确保正常范围提示样式 */  
