@@ -4,6 +4,13 @@ import numpy as np
 import pandas as pd
 import joblib
 
+def check_environment():  
+    import sys  
+    st.sidebar.write("System Information:")  
+    st.sidebar.write(f"Python Version: {sys.version}")  
+    st.sidebar.write(f"Streamlit Version: {st.__version__}")  
+    st.sidebar.write(f"XGBoost Version: {xgb.__version__}")
+
 # 页面配置
 st.set_page_config(
     page_title="早期神经功能恶化风险评估系统",
