@@ -21,167 +21,213 @@ st.markdown("""
 <style>  
 /* 全局样式 */  
 body {  
-    background-color: #f8f9fa;  
+    background: #e6e9f0;  
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;  
 }  
 
 .container {  
-    max-width: 600px;  
+    max-width: 700px;  
     margin: 0 auto;  
-    padding: 2rem 1rem;  
+    padding: 2rem;  
+    background: linear-gradient(145deg, #f0f2f5, #ffffff);  
 }  
 
 /* 标题样式 */  
 .title {  
-    font-size: 1.5rem;  
-    font-weight: 600;  
+    font-size: 1.8rem;  
+    font-weight: 700;  
     text-align: center;  
-    color: #333;  
+    color: #2c3e50;  
     margin-bottom: 0.5rem;  
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);  
 }  
 
 .subtitle {  
-    font-size: 1rem;  
+    font-size: 1.1rem;  
     text-align: center;  
-    color: #666;  
-    margin-bottom: 2rem;  
+    color: #5a6c7d;  
+    margin-bottom: 2.5rem;  
 }  
 
 /* 表单项样式 */  
 .form-group {  
-    background-color: white;  
-    border-radius: 8px;  
-    padding: 1rem;  
-    margin-bottom: 1rem;  
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);  
+    background: linear-gradient(145deg, #ffffff, #f0f2f5);  
+    border-radius: 16px;  
+    padding: 1.5rem;  
+    margin-bottom: 1.2rem;  
+    box-shadow: 5px 5px 15px #d1d9e6,  
+                -5px -5px 15px #ffffff;  
+    border: 1px solid rgba(255,255,255,0.18);  
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  
+}  
+
+.form-group:hover {  
+    transform: translateY(-2px);  
+    box-shadow: 6px 6px 18px #d1d9e6,  
+                -6px -6px 18px #ffffff;  
 }  
 
 /* 表单标签 */  
 .form-label {  
     display: block;  
-    color: #333;  
-    font-size: 0.9rem;  
-    margin-bottom: 0.75rem;  
+    color: #2c3e50;  
+    font-size: 1rem;  
+    font-weight: 600;  
+    margin-bottom: 1rem;  
+    letter-spacing: 0.5px;  
 }  
 
 /* 单选按钮组 */  
 .radio-group {  
     display: flex;  
-    gap: 2rem;  
+    gap: 2.5rem;  
+    padding: 0.5rem;  
+    background: rgba(255,255,255,0.9);  
+    border-radius: 12px;  
+    box-shadow: inset 2px 2px 5px #d1d9e6,  
+                inset -2px -2px 5px #ffffff;  
 }  
 
 .radio-label {  
     display: inline-flex;  
     align-items: center;  
     cursor: pointer;  
+    padding: 0.5rem 1rem;  
+    border-radius: 8px;  
+    transition: background 0.3s ease;  
 }  
 
-.radio-input {  
-    margin-right: 0.5rem;  
-    cursor: pointer;  
+.radio-label:hover {  
+    background: rgba(26,115,232,0.1);  
+}  
+
+/* 数字输入框容器 */  
+.input-container {  
+    display: flex;  
+    align-items: center;  
+    max-width: 300px;  
+    margin: 0 auto;  
 }  
 
 /* 数字输入框 */  
 .number-input {  
-    width: 100%;  
-    padding: 0.5rem;  
-    border: 1px solid #ddd;  
-    border-radius: 4px;  
+    width: 70%;  
+    padding: 0.8rem 1rem;  
+    border: none;  
+    border-radius: 12px;  
     font-size: 1rem;  
+    color: #2c3e50;  
+    background: white;  
+    box-shadow: inset 2px 2px 5px #d1d9e6,  
+                inset -2px -2px 5px #ffffff;  
+    transition: all 0.3s ease;  
+}  
+
+.number-input:focus {  
+    outline: none;  
+    box-shadow: inset 3px 3px 7px #d1d9e6,  
+                inset -3px -3px 7px #ffffff;  
 }  
 
 /* 单位文本 */  
 .unit-text {  
-    color: #666;  
+    color: #5a6c7d;  
     font-size: 0.9rem;  
-    margin-left: 0.5rem;  
+    margin-left: 1rem;  
+    font-weight: 500;  
+    width: 80px;  
 }  
 
 /* 正常范围提示 */  
 .normal-range {  
-    color: #666;  
-    font-size: 0.8rem;  
-    margin-top: 0.5rem;  
+    color: #5a6c7d;  
+    font-size: 0.85rem;  
+    margin-top: 0.8rem;  
+    padding: 0.5rem 1rem;  
+    background: rgba(255,255,255,0.7);  
+    border-radius: 8px;  
+    border-left: 3px solid #1a73e8;  
 }  
 
 /* 提交按钮 */  
 .submit-button {  
     display: block;  
-    width: 100%;  
-    max-width: 400px;  
-    margin: 2rem auto;  
-    padding: 0.75rem;  
-    background-color: #1a73e8;  
+    width: 80%;  
+    max-width: 300px;  
+    margin: 2.5rem auto;  
+    padding: 1rem;  
+    background: linear-gradient(145deg, #1a73e8, #1557b0);  
     color: white;  
     border: none;  
-    border-radius: 24px;  
-    font-size: 1rem;  
-    font-weight: 500;  
+    border-radius: 30px;  
+    font-size: 1.1rem;  
+    font-weight: 600;  
     cursor: pointer;  
     text-align: center;  
-    transition: background-color 0.2s;  
+    transition: all 0.3s ease;  
+    box-shadow: 5px 5px 10px #d1d9e6,  
+                -5px -5px 10px #ffffff;  
 }  
 
 .submit-button:hover {  
-    background-color: #1557b0;  
+    transform: translateY(-2px);  
+    box-shadow: 6px 6px 12px #d1d9e6,  
+                -6px -6px 12px #ffffff;  
 }  
 
 /* 结果区域 */  
 .result-container {  
-    background-color: white;  
-    border-radius: 8px;  
-    padding: 1.5rem;  
-    margin-top: 2rem;  
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);  
+    background: linear-gradient(145deg, #ffffff, #f0f2f5);  
+    border-radius: 20px;  
+    padding: 2rem;  
+    margin-top: 2.5rem;  
+    box-shadow: 8px 8px 20px #d1d9e6,  
+                -8px -8px 20px #ffffff;  
 }  
 
 .result-title {  
-    font-size: 1.2rem;  
-    font-weight: 600;  
+    font-size: 1.4rem;  
+    font-weight: 700;  
     text-align: center;  
-    color: #333;  
-    margin-bottom: 1.5rem;  
+    color: #2c3e50;  
+    margin-bottom: 2rem;  
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);  
 }  
 
 .result-item {  
     display: flex;  
     justify-content: space-between;  
     align-items: center;  
-    margin-bottom: 1rem;  
-}  
-
-.result-label {  
-    color: #333;  
+    margin-bottom: 1.2rem;  
+    padding: 1rem;  
+    background: rgba(255,255,255,0.8);  
+    border-radius: 12px;  
+    box-shadow: inset 2px 2px 5px #d1d9e6,  
+                inset -2px -2px 5px #ffffff;  
 }  
 
 .probability-value {  
     color: #1a73e8;  
-    font-weight: 600;  
+    font-weight: 700;  
+    font-size: 1.2rem;  
 }  
 
 .risk-level {  
     color: #dc3545;  
-    font-weight: 600;  
+    font-weight: 700;  
+    font-size: 1.2rem;  
 }  
 
 .risk-description {  
-    background-color: #f8f9fa;  
-    padding: 1rem;  
-    border-radius: 4px;  
-    margin-top: 1rem;  
-    color: #666;  
-    font-size: 0.9rem;  
-}  
-
-/* 输入框样式优化 */  
-input[type="number"] {  
-    -moz-appearance: textfield;  
-}  
-
-input[type="number"]::-webkit-outer-spin-button,  
-input[type="number"]::-webkit-inner-spin-button {  
-    -webkit-appearance: none;  
-    margin: 0;  
+    background: rgba(255,255,255,0.8);  
+    padding: 1.2rem;  
+    border-radius: 12px;  
+    margin-top: 1.5rem;  
+    color: #2c3e50;  
+    font-size: 1rem;  
+    line-height: 1.6;  
+    box-shadow: inset 2px 2px 5px #d1d9e6,  
+                inset -2px -2px 5px #ffffff;  
 }  
 
 /* 响应式调整 */  
@@ -191,11 +237,15 @@ input[type="number"]::-webkit-inner-spin-button {
     }  
     
     .form-group {  
-        padding: 0.75rem;  
+        padding: 1rem;  
     }  
     
-    .radio-group {  
-        gap: 1rem;  
+    .input-container {  
+        max-width: 100%;  
+    }  
+    
+    .submit-button {  
+        width: 90%;  
     }  
 }  
 </style>  
