@@ -1,21 +1,57 @@
-# 早期神经功能恶化风险评估系统  
+# 早期神经功能恶化风险评估系统
 
-## 项目简介  
-这是一个基于机器学习的早期神经功能恶化风险评估系统，通过分析多个临床指标，为医生提供患者早期神经功能恶化风险的预测评估。  
+Early Neurological Deterioration Risk Assessment System
 
-## 功能特点  
-- 支持多个临床指标输入（NIHSS、收缩压、中性粒细胞计数等）  
-- 实时风险评估计算  
-- 直观的用户界面  
-- 详细的风险等级展示  
+## 简介
+本系统用于评估急性缺血性脑卒中患者发生早期神经功能恶化的风险。
 
-## 安装说明  
+## 功能特点
+- 支持多个关键指标输入
+- 实时风险评估
+- 双语界面（中文/英文）
+- 直观的结果展示
 
-### 环境要求  
-- Python 3.8 或更高版本  
-- pip 包管理器  
+## 评估指标
+- NIHSS评分
+- 收缩压 (SBP)
+- 中性粒细胞计数 (NEUT)
+- 红细胞分布宽度 (RDW)
+- 大动脉粥样硬化型 (TOAST-LAA)
+- 颅内动脉狭窄 (IAS)
 
-### 安装步骤  
-1. 克隆项目到本地：  
-```bash  
-git clone [仓库URL]
+## 使用方法
+1. 访问系统网址
+2. 输入患者相关指标
+3. 点击"计算风险评分"按钮
+4. 查看评估结果
+
+## 技术栈
+- Python
+- Streamlit
+- XGBoost
+- Pandas
+- Scikit-learn
+
+## 安装和运行
+```bash
+# 克隆仓库
+git clone https://github.com/您的用户名/END-Risk-Assessment.git
+
+# 进入项目目录
+cd END-Risk-Assessment
+
+# 安装依赖
+pip install -r requirements.txt
+
+# 运行应用
+streamlit run streamlit_app.py
+```
+
+## 在线访问
+[点击访问在线系统](#) (部署后添加链接)
+
+## 作者
+[您的名字/机构名称]
+
+## 许可证
+[选择合适的许可证，如 MIT License]
