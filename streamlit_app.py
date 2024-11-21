@@ -105,50 +105,56 @@ st.markdown("""
     transition: all 0.2s ease !important;  
 }  
 
-/* 结果区域整体样式 */  
-.result-section {  
-    background: linear-gradient(145deg, #ffffff, #f8fafc);  
-    border: 1px solid #e2e8f0;  
-    border-radius: 16px;  
-    padding: 2.5rem;  
-    margin-top: 2rem;  
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);  
+/* 移除评估结果上方的白色框框 */  
+div[data-testid="stMarkdownContainer"] {  
+    background: transparent !important;  
+    box-shadow: none !important;  
+    border: none !important;  
 }  
 
-/* 结果标题样式 */  
+/* 确保结果标题正确显示 */  
 .result-title {  
     font-size: 1.8rem;  
     font-weight: 700;  
     color: #1a365d;  
     text-align: center;  
-    margin-bottom: 2.5rem;  
+    margin: 2rem 0;  
     padding-bottom: 1rem;  
     border-bottom: 2px solid #e2e8f0;  
+    background: transparent !important;  
+    box-shadow: none !important;  
 }  
 
-/* 概率显示容器 */  
+/* 移除所有可能的默认背景和阴影 */  
+div.stMarkdown,  
+div.element-container,  
+div[data-testid="stVerticalBlock"] > div {  
+    background: transparent !important;  
+    box-shadow: none !important;  
+    border: none !important;  
+}  
+
+/* 确保概率显示容器样式正确 */  
 .probability-container {  
     background: white;  
     border-radius: 12px;  
     padding: 1.5rem;  
-    margin-bottom: 1.5rem;  
+    margin: 1.5rem 0;  
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
 }  
 
-/* 概率标签样式 */  
-.probability-label {  
-    font-size: 1.2rem;  
-    color: #4a5568;  
-    margin-bottom: 0.5rem;  
-}  
-
-/* 概率数值样式 */  
+/* 概率值样式 */  
 .probability-value {  
+    color: #e53e3e;  
     font-size: 2.5rem;  
     font-weight: 700;  
-    color: #e53e3e;  
     text-align: center;  
-    margin: 1rem 0;  
+    padding: 0.5rem 1rem;  
+    background: #fff5f5;  
+    border-radius: 8px;  
+    border: 2px solid #fc8181;  
+    display: inline-block;  
+    margin: 0.5rem 0;  
 }  
 
 /* 风险等级容器 */  
