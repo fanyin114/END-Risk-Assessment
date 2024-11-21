@@ -20,68 +20,51 @@ st.set_page_config(
 # 自定义CSS样式  
 st.markdown("""  
 <style>  
-/* 移除Streamlit默认的白色背景 */  
-.stApp {  
-    background: none;  
+    /* 全局样式 */  
+* {  
+    margin: 0;  
+    padding: 0;  
+    box-sizing: border-box;  
 }  
 
-.main {  
-    background: #f8f9fa;  
-}  
-
-/* 全局容器样式 */  
+/* 页面容器样式 */  
 .block-container {  
-    padding: 2rem;  
-    max-width: 800px;  
-    margin: 0 auto;  
+    padding: 1rem !important;  
+    max-width: 1200px !important;  
 }  
 
 /* 标题样式 */  
 .title {  
-    font-size: 1.8rem;  
+    color: #2c3e50;  
+    font-size: 2rem;  
     font-weight: 700;  
     text-align: center;  
-    color: #2c3e50;  
     margin-bottom: 0.5rem;  
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);  
 }  
 
 .subtitle {  
-    font-size: 1.1rem;  
-    text-align: center;  
     color: #5a6c7d;  
-    margin-bottom: 2.5rem;  
-}  
-
-/* 网格布局容器样式 */  
-.grid-container {  
-    display: grid;  
-    grid-template-columns: repeat(2, 1fr);  
-    gap: 1.5rem;  
-    margin: 1rem 0;  
+    font-size: 1.2rem;  
+    text-align: center;  
+    margin-bottom: 2rem;  
 }  
 
 /* 输入区域样式 */  
 .input-section {  
     margin-bottom: 1.5rem;  
-    padding: 1.5rem;  
+    padding: 1.2rem;  
     border-radius: 12px;  
     background: linear-gradient(145deg, #ffffff, #f0f2f5);  
-    box-shadow: 5px 5px 10px #d1d9e6,  
-                -5px -5px 10px #ffffff;  
-    height: 100%;  
+    box-shadow: 3px 3px 6px #d1d9e6,  
+                -3px -3px 6px #ffffff;  
 }  
 
-/* 列样式 */  
-.css-1y4p8pa {    /* Streamlit的列class */  
-    padding: 0 10px !important;  
-} 
-
+/* 输入标签样式 */  
 .input-label {  
     color: #2c3e50;  
-    font-size: 1.1rem;  
+    font-size: 1rem;  
     font-weight: 600;  
-    margin-bottom: 1rem;  
+    margin-bottom: 0.8rem;  
 }  
 
 /* 输入框样式 */  
@@ -191,28 +174,9 @@ div[data-testid="stVerticalBlock"] {
 }  
 
 .element-container {  
-    background: none !important;  
+    margin: 0 !important;  
+    padding: 0 !important;  
 }  
-
-/* 调整列间距 */  
-.css-1y4p8pa {  
-    padding: 0 1rem !important;  
-}  
-
-/* 确保输入区域高度一致 */  
-.input-section {  
-    min-height: 150px;  
-    display: flex;  
-    flex-direction: column;  
-}  
-
-/* 调整输入框容器宽度 */  
-.stNumberInput {  
-    width: 100% !important;  
-    max-width: none !important;  
-}
-
-
 
 /* 响应式布局 */  
 @media (max-width: 768px) {  
@@ -220,7 +184,7 @@ div[data-testid="stVerticalBlock"] {
         width: 100% !important;  
         padding: 0 !important;  
     }  
-}    
+}  
 
 /* 移除其他可能的背景和边距 */  
 .stMarkdown {  
@@ -272,6 +236,38 @@ div[data-testid="stVerticalBlock"] {
 ::-webkit-scrollbar-thumb:hover {  
     background: #555;  
 }  
+
+/* 调整列间距和对齐 */  
+.css-1y4p8pa {  
+    padding: 0.5rem !important;  
+}  
+
+.css-12w0qpk {  
+    background: none !important;  
+    border: none !important;  
+}  
+
+/* 确保内容居中对齐 */  
+.css-1r6slb0 {  
+    width: 100% !important;  
+    max-width: 1200px !important;  
+    margin: 0 auto !important;  
+}  
+
+/* 移除默认边框 */  
+.css-1dp5vir {  
+    border: none !important;  
+}  
+
+/* 优化输入框间距 */  
+.input-container {  
+    margin-bottom: 1rem;  
+}  
+
+/* 优化标签显示 */  
+.input-label-container {  
+    margin-bottom: 0.5rem;  
+}
 </style>  
 """, unsafe_allow_html=True)  
 
