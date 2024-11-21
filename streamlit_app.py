@@ -27,11 +27,12 @@ st.markdown("""
     box-sizing: border-box;  
 }  
 
-/* 页面容器样式 */  
-.block-container {  
-    padding: 1rem !important;  
-    max-width: 1200px !important;  
-}  
+/* 输入框容器样式 */  
+.stNumberInput {  
+    width: 100% !important;  
+    max-width: none !important;  
+    margin: 0 !important;  
+}
 
 /* 标题样式 */  
 .title {  
@@ -69,11 +70,14 @@ st.markdown("""
 
 /* 输入框样式 */  
 .stNumberInput > div > div > input {  
-    width: 100%;  
-    padding: 0.8rem;  
-    border: none;  
-    border-radius: 8px;  
-    background: white;  
+    width: 100% !important;  
+    min-width: 300px !important;  
+    padding: 0.8rem !important;  
+    border: 1px solid #e2e8f0 !important;  
+    border-radius: 8px !important;  
+    background: white !important;  
+    font-size: 1.1rem !important;  
+    margin-left: 0 !important;  
     box-shadow: inset 2px 2px 5px #d1d9e6,  
                 inset -2px -2px 5px #ffffff;  
 }  
@@ -164,19 +168,32 @@ st.markdown("""
     line-height: 1.6;  
 }  
 
-/* 移除Streamlit默认样式 */  
-.css-1d391kg, .css-12oz5g7, .css-1n76uvr, .css-1fv8s86 {  
-    background: none !important;  
-}  
-
-div[data-testid="stVerticalBlock"] {  
-    background: none !important;  
-}  
-
-.element-container {  
+/* 移除Streamlit默认对齐 */  
+.css-1kyxreq {  
     margin: 0 !important;  
     padding: 0 !important;  
 }  
+
+.css-ocqkz7 {  
+    justify-content: flex-start !important;  
+}  
+/* 调整输入标签样式 */  
+.input-label {  
+    color: #2c3e50;  
+    font-size: 1.1rem;  
+    font-weight: 600;  
+    margin-bottom: 0.8rem;  
+    text-align: left !important;  
+}  
+/* 调整输入标签样式 */  
+.input-label {  
+    color: #2c3e50;  
+    font-size: 1.1rem;  
+    font-weight: 600;  
+    margin-bottom: 0.8rem;  
+    text-align: left !important;  
+}  
+
 
 /* 响应式布局 */  
 @media (max-width: 768px) {  
