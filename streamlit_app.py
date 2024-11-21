@@ -47,7 +47,7 @@ st.markdown("""
 
 .subtitle {  
     color: #5a6c7d;  
-    font-size: 1.2rem;  
+    font-size: 1.4rem;  
     text-align: center;  
     margin-bottom: 3rem;  
     line-height: 1.6;  
@@ -60,7 +60,7 @@ st.markdown("""
     border: 2px solid #4a90e2;  
     border-radius: 20px;  
     padding: 2rem;  
-    margin: 2rem 0;  
+    margin: 1.6 rem 0;  
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
     width: 100%;  
     display: block;  
@@ -119,7 +119,7 @@ st.markdown("""
     padding: 1rem 4rem !important;  
     border-radius: 30px !important;  
     border: none !important;  
-    font-size: 1.2rem !important;  
+    font-size: 1.6rem !important;  
     font-weight: 600 !important;  
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;  
     transition: all 0.3s ease !important;  
@@ -185,7 +185,7 @@ st.markdown("""
 }  
 
 .risk-level-label {  
-    font-size: 1.2rem;  
+    font-size: 1.4rem;  
     color: #4a5568;  
     margin-bottom: 0.5rem;  
 }  
@@ -212,7 +212,7 @@ st.markdown("""
 }  
 
 .risk-description {  
-    font-size: 1.8rem;  
+    font-size: 1.6rem;  
     color: #2d3748;  
     line-height: 1.8;  
     text-align: left;  
@@ -224,7 +224,7 @@ st.markdown("""
 /* 辅助样式 */  
 .normal-range {  
     color: #64748b;  
-    font-size: 0.9rem;  
+    font-size: 1.2rem;  
     margin-top: 0.5rem;  
     padding: 0.5rem 0;  
 }  
@@ -246,17 +246,17 @@ div[data-testid="stVerticalBlock"] {
 /* 响应式调整 */  
 @media (max-width: 768px) {  
     .input-group {  
-        padding: 1rem;  
+        padding: 1.4rem;  
     }  
     
     .input-label {  
-        font-size: 1.1rem;  
+        font-size: 1.4rem;  
     }  
     
     .stButton > button {  
         min-width: 300px !important;  
         padding: 1rem 2rem !important;  
-        font-size: 1.1rem !important;  
+        font-size: 1.4rem !important;  
     }  
 }
 </style>  
