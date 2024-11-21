@@ -20,222 +20,200 @@ st.set_page_config(
 st.markdown("""  
 <style>  
 /* 全局样式 */  
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');  
-
-* {  
-    font-family: 'Inter', sans-serif;  
+body {  
+    background-color: rgb(243, 244, 246);  
+    min-height: 100vh;  
 }  
 
-.main > div {  
-    padding: 0 !important;  
-}  
-
-/* 页面容器 */  
-.block-container {  
+.container {  
     max-width: 1000px;  
-    padding: 2rem;  
     margin: 0 auto;  
-    background: linear-gradient(to bottom, #f8f9fa, #ffffff);  
+    padding: 2rem 1rem;  
 }  
 
-/* 标题样式 */  
-.title {  
-    color: #1a237e;  
-    text-align: center;  
-    font-size: 2.5rem;  
+/* 标题区域 */  
+.header {  
+    background-color: white;  
+    border-top-left-radius: 0.75rem;  
+    border-top-right-radius: 0.75rem;  
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
+    padding: 2rem;  
+}  
+
+.main-title {  
+    font-size: 1.875rem;  
     font-weight: 700;  
-    margin-bottom: 0.5rem;  
-    padding: 1rem;  
-    background: linear-gradient(120deg, #1a237e, #3949ab);  
-    -webkit-background-clip: text;  
-    -webkit-text-fill-color: transparent;  
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);  
+    text-align: center;  
+    color: rgb(17, 24, 39);  
+    margin-bottom: 1rem;  
 }  
 
 .subtitle {  
-    color: #424242;  
+    font-size: 1.25rem;  
     text-align: center;  
-    font-size: 1.2rem;  
-    margin-bottom: 2rem;  
-    font-weight: 400;  
-    opacity: 0.8;  
+    color: rgb(75, 85, 99);  
+    margin-bottom: 0.5rem;  
 }  
 
-/* 输入区域样式 */  
-.input-section {  
-    background: linear-gradient(145deg, #ffffff, #f0f2f5);  
-    padding: 1.5rem 2rem;  
-    border-radius: 16px;  
-    margin: 1.2rem 0;  
-    box-shadow: 5px 5px 15px #d1d9e6,  
-                -5px -5px 15px #ffffff;  
-    border: 1px solid rgba(255, 255, 255, 0.18);  
-    transition: all 0.3s ease;  
+/* 表单区域 */  
+.form-container {  
+    background-color: white;  
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
+    padding: 2rem;  
 }  
 
-.input-section:hover {  
-    transform: translateY(-2px);  
-    box-shadow: 6px 6px 18px #d1d9e6,  
-                -6px -6px 18px #ffffff;  
+.form-group {  
+    background-color: rgb(249, 250, 251);  
+    padding: 1rem;  
+    border-radius: 0.5rem;  
+    border: 1px solid rgb(229, 231, 235);  
+    margin-bottom: 1.5rem;  
+    transition: border-color 0.2s;  
 }  
 
-/* 输入标签样式 */  
-.input-label {  
-    color: #2c3e50;  
-    font-size: 1.1rem;  
-    font-weight: 600;  
-    margin-bottom: 0.8rem;  
+.form-group:hover {  
+    border-color: rgb(191, 219, 254);  
+}  
+
+/* 表单标签 */  
+.form-label {  
+    display: block;  
+    color: rgb(17, 24, 39);  
+    font-weight: 500;  
+    margin-bottom: 0.5rem;  
+}  
+
+/* 单选按钮组 */  
+.radio-group {  
+    display: flex;  
+    gap: 1rem;  
+}  
+
+.radio-label {  
+    display: inline-flex;  
+    align-items: center;  
+}  
+
+.radio-input {  
+    color: rgb(37, 99, 235);  
+}  
+
+.radio-text {  
+    margin-left: 0.5rem;  
+}  
+
+/* 数字输入框 */  
+.number-input-container {  
     display: flex;  
     align-items: center;  
-    letter-spacing: 0.5px;  
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);  
 }  
 
-/* Radio按钮组样式 */  
-.stRadio > div {  
-    background: none !important;  
-    padding: 0.5rem 0 !important;  
-}  
-
-.stRadio > div > div {  
-    background: rgba(255, 255, 255, 0.8);  
-    padding: 0.8rem;  
-    border-radius: 12px;  
-    transition: all 0.2s ease;  
-    box-shadow: 3px 3px 8px #d1d9e6,  
-                -3px -3px 8px #ffffff;  
-}  
-
-.stRadio > div > div:hover {  
-    background: rgba(255, 255, 255, 0.9);  
-    box-shadow: 4px 4px 10px #d1d9e6,  
-                -4px -4px 10px #ffffff;  
-}  
-
-
-/* 数字输入框样式 */  
-.stNumberInput > div > div > input {  
-    font-size: 1.1rem;  
-    padding: 0.75rem !important;  
-    border: 2px solid rgba(226, 232, 240, 0.6) !important;  
-    border-radius: 12px !important;  
-    transition: all 0.2s ease;  
-    background: rgba(255, 255, 255, 0.8) !important;  
-    box-shadow: inset 2px 2px 5px #d1d9e6,  
-                inset -2px -2px 5px #ffffff;  
-}  
-
-.stNumberInput > div > div > input:focus {  
-    border-color: #3949ab !important;  
-    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);  
-    background: #ffffff !important;  
-}  
-
-
-/* 正常范围提示样式 */  
-.normal-range {  
-    color: #718096;  
-    font-size: 0.9rem;  
-    margin-top: 0.8rem;  
-    padding: 0.6rem 1rem;  
-    background: rgba(255, 255, 255, 0.7);  
-    border-radius: 8px;  
-    border-left: 3px solid #4299e1;  
-    box-shadow: 2px 2px 5px rgba(209, 217, 230, 0.5);  
-}  
-/* 整体容器背景 */  
-.block-container {  
-    max-width: 1000px;  
-    padding: 2rem;  
-    margin: 0 auto;  
-    background: #f0f2f5;  
-}  
-
-/* 按钮样式 */  
-.stButton > button {  
-    background: linear-gradient(135deg, #1a237e, #3949ab);  
-    color: white;  
-    padding: 0.75rem 2rem;  
-    border-radius: 12px;  
-    border: none;  
+.number-input {  
+    display: block;  
     width: 100%;  
-    margin: 1.5rem 0;  
-    font-size: 1.2rem;  
+    border-radius: 0.375rem;  
+    border: 1px solid rgb(209, 213, 219);  
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
+}  
+
+.number-input:focus {  
+    border-color: rgb(59, 130, 246);  
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);  
+}  
+
+.unit-text {  
+    margin-left: 0.5rem;  
+    color: rgb(107, 114, 128);  
+    width: 5rem;  
+}  
+
+/* 范围提示文本 */  
+.range-text {  
+    margin-top: 0.25rem;  
+    font-size: 0.875rem;  
+    color: rgb(107, 114, 128);  
+}  
+
+/* 提交按钮 */  
+.submit-button {  
+    padding: 0.75rem 2rem;  
+    background-color: rgb(37, 99, 235);  
+    color: white;  
+    font-size: 1.125rem;  
     font-weight: 600;  
-    letter-spacing: 0.5px;  
-    transition: all 0.3s ease;  
-    box-shadow: 0 4px 6px rgba(26, 35, 126, 0.2);  
+    border-radius: 0.5rem;  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+    transition: all 0.2s;  
 }  
 
-.stButton > button:hover {  
-    transform: translateY(-2px);  
-    box-shadow: 0 6px 12px rgba(26, 35, 126, 0.3);  
-    background: linear-gradient(135deg, #283593, #3f51b5);  
+.submit-button:hover {  
+    background-color: rgb(29, 78, 216);  
 }  
 
-/* 结果区域样式 */  
-.result-section {  
-    background: linear-gradient(135deg, #ffffff, #f8f9fa);  
+.submit-button:focus {  
+    outline: none;  
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 4px rgb(59, 130, 246);  
+}  
+
+/* 结果显示区域 */  
+.result-container {  
+    background-color: white;  
+    border-bottom-left-radius: 0.75rem;  
+    border-bottom-right-radius: 0.75rem;  
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
     padding: 2rem;  
-    border-radius: 16px;  
-    margin-top: 2rem;  
-    text-align: center;  
-    box-shadow: 0 6px 12px rgba(0,0,0,0.08);  
-    border: 1px solid rgba(226, 232, 240, 0.8);  
+    border-top: 2px solid rgb(219, 234, 254);  
 }  
 
 .result-title {  
-    color: #1a237e;  
     font-size: 1.5rem;  
     font-weight: 700;  
+    text-align: center;  
+    color: rgb(17, 24, 39);  
     margin-bottom: 1.5rem;  
-    background: linear-gradient(120deg, #1a237e, #3949ab);  
-    -webkit-background-clip: text;  
-    -webkit-text-fill-color: transparent;  
 }  
 
-.high-risk {  
-    color: #e53e3e;  
-    font-weight: 700;  
-    font-size: 1.3rem;  
-    padding: 0.5rem 1rem;  
-    background: rgba(229, 62, 62, 0.1);  
-    border-radius: 8px;  
-    display: inline-block;  
+.result-item {  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+    margin-bottom: 1rem;  
 }  
 
-.low-risk {  
-    color: #38a169;  
+.result-label {  
+    font-size: 1.125rem;  
+}  
+
+.result-value {  
+    font-size: 1.5rem;  
     font-weight: 700;  
-    font-size: 1.3rem;  
-    padding: 0.5rem 1rem;  
-    background: rgba(56, 161, 105, 0.1);  
-    border-radius: 8px;  
-    display: inline-block;  
 }  
 
 .risk-description {  
-    margin-top: 1.5rem;  
-    font-size: 1.1rem;  
-    line-height: 1.6;  
-    color: #4a5568;  
+    margin-top: 1rem;  
     padding: 1rem;  
-    border-radius: 8px;  
+    background-color: rgb(249, 250, 251);  
+    border-radius: 0.5rem;  
+    color: rgb(55, 65, 81);  
 }  
 
-/* 响应式设计调整 */  
+/* 响应式设计 */  
 @media (max-width: 768px) {  
-    .input-section {  
-        padding: 1.2rem;  
-        margin: 1rem 0;  
+    .container {  
+        padding: 1rem;  
     }  
     
-    .normal-range {  
-        padding: 0.5rem 0.8rem;  
+    .form-group {  
+        padding: 0.75rem;  
+    }  
+    
+    .submit-button {  
+        padding: 0.5rem 1.5rem;  
+        font-size: 1rem;  
     }  
 }  
 </style>  
-""", unsafe_allow_html=True) 
+""", unsafe_allow_html=True)
     
 # 设置日志  
 logging.basicConfig(level=logging.DEBUG)  
