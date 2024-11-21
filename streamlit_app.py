@@ -16,19 +16,67 @@ st.set_page_config(
     initial_sidebar_state="collapsed"  
 )  
 
+# 自定义CSS样式  
+st.markdown("""  
+<style>  
+/* 全局样式 */  
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');  
+
+* {  
+    font-family: 'Inter', sans-serif;  
+}  
+
+.main > div {  
+    padding: 0 !important;  
+}  
+
+/* 页面容器 */  
+.block-container {  
+    max-width: 1000px;  
+    padding: 2rem;  
+    margin: 0 auto;  
+    background: linear-gradient(to bottom, #f8f9fa, #ffffff);  
+}  
+
+/* 标题样式 */  
+.title {  
+    color: #1a237e;  
+    text-align: center;  
+    font-size: 2.5rem;  
+    font-weight: 700;  
+    margin-bottom: 0.5rem;  
+    padding: 1rem;  
+    background: linear-gradient(120deg, #1a237e, #3949ab);  
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;  
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);  
+}  
+
+.subtitle {  
+    color: #424242;  
+    text-align: center;  
+    font-size: 1.2rem;  
+    margin-bottom: 2rem;  
+    font-weight: 400;  
+    opacity: 0.8;  
+}  
+
 /* 输入区域样式 */  
 .input-section {  
     padding: 1.5rem 2rem;  
-    border-radius: 16px;  
     margin: 0.8rem 0;  
     transition: all 0.3s ease;  
-    /* 移除了background和box-shadow属性 */  
-    /* 移除了border属性 */  
 }  
 
-.input-section:hover {  
-    transform: translateY(-2px);  
-    /* 移除了box-shadow属性 */  
+/* 输入标签样式 */  
+.input-label {  
+    color: #2c3e50;  
+    font-size: 1.1rem;  
+    font-weight: 600;  
+    margin-bottom: 0.5rem;  
+    display: flex;  
+    align-items: center;  
+    letter-spacing: 0.5px;  
 }  
 
 /* Radio按钮组样式 */  
@@ -38,24 +86,28 @@ st.set_page_config(
 }  
 
 .stRadio > div > div {  
-    background: none;  # 修改这里,移除背景色  
     padding: 0.5rem;  
     border-radius: 8px;  
     transition: all 0.2s ease;  
 }  
 
 .stRadio > div > div:hover {  
-    background: rgba(237, 242, 247, 0.5);  # 修改这里,使用半透明效果  
+    background: rgba(237, 242, 247, 0.5);  
 }  
 
 /* 数字输入框样式 */  
 .stNumberInput > div > div > input {  
     font-size: 1.1rem;  
     padding: 0.75rem !important;  
-    border: 1px solid #e2e8f0 !important;  # 减小边框宽度  
+    border: 1px solid #e2e8f0 !important;  
     border-radius: 8px !important;  
     transition: all 0.2s ease;  
-    background: transparent !important;  # 添加透明背景  
+    background: transparent !important;  
+}  
+
+.stNumberInput > div > div > input:focus {  
+    border-color: #3949ab !important;  
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);  
 }  
 
 /* 正常范围提示样式 */  
@@ -64,10 +116,103 @@ st.set_page_config(
     font-size: 0.9rem;  
     margin-top: 0.4rem;  
     padding: 0.4rem 0.8rem;  
-    background: none;  # 移除背景色  
     border-radius: 6px;  
     border-left: 3px solid #4299e1;  
-}
+}  
+
+/* 按钮样式 */  
+.stButton > button {  
+    background: linear-gradient(135deg, #1a237e, #3949ab);  
+    color: white;  
+    padding: 0.75rem 2rem;  
+    border-radius: 12px;  
+    border: none;  
+    width: 100%;  
+    margin: 1.5rem 0;  
+    font-size: 1.2rem;  
+    font-weight: 600;  
+    letter-spacing: 0.5px;  
+    transition: all 0.3s ease;  
+    box-shadow: 0 4px 6px rgba(26, 35, 126, 0.2);  
+}  
+
+.stButton > button:hover {  
+    transform: translateY(-2px);  
+    box-shadow: 0 6px 12px rgba(26, 35, 126, 0.3);  
+    background: linear-gradient(135deg, #283593, #3f51b5);  
+}  
+
+/* 结果区域样式 */  
+.result-section {  
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);  
+    padding: 2rem;  
+    border-radius: 16px;  
+    margin-top: 2rem;  
+    text-align: center;  
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);  
+    border: 1px solid rgba(226, 232, 240, 0.8);  
+}  
+
+.result-title {  
+    color: #1a237e;  
+    font-size: 1.5rem;  
+    font-weight: 700;  
+    margin-bottom: 1.5rem;  
+    background: linear-gradient(120deg, #1a237e, #3949ab);  
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;  
+}  
+
+.high-risk {  
+    color: #e53e3e;  
+    font-weight: 700;  
+    font-size: 1.3rem;  
+    padding: 0.5rem 1rem;  
+    background: rgba(229, 62, 62, 0.1);  
+    border-radius: 8px;  
+    display: inline-block;  
+}  
+
+.low-risk {  
+    color: #38a169;  
+    font-weight: 700;  
+    font-size: 1.3rem;  
+    padding: 0.5rem 1rem;  
+    background: rgba(56, 161, 105, 0.1);  
+    border-radius: 8px;  
+    display: inline-block;  
+}  
+
+.risk-description {  
+    margin-top: 1.5rem;  
+    font-size: 1.1rem;  
+    line-height: 1.6;  
+    color: #4a5568;  
+    padding: 1rem;  
+    border-radius: 8px;  
+}  
+
+/* 响应式设计 */  
+@media (max-width: 768px) {  
+    .block-container {  
+        padding: 1rem;  
+    }  
+    
+    .title {  
+        font-size: 2rem;  
+    }  
+    
+    .input-section {  
+        padding: 1rem;  
+    }  
+    
+    .stButton > button {  
+        padding: 0.6rem 1.5rem;  
+        font-size: 1.1rem;  
+    }  
+}  
+</style>  
+""", unsafe_allow_html=True)
     
 # 设置日志  
 logging.basicConfig(level=logging.DEBUG)  
