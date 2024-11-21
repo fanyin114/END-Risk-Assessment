@@ -49,85 +49,55 @@ body {
     margin-bottom: 2.5rem;  
 }  
 
-/* 表单项样式 */  
-.form-group {  
+/* 修改输入区域样式 */  
+.input-section {  
     background: linear-gradient(145deg, #ffffff, #f0f2f5);  
     border-radius: 16px;  
     padding: 1.5rem;  
     margin-bottom: 1.2rem;  
     box-shadow: 5px 5px 15px #d1d9e6,  
                 -5px -5px 15px #ffffff;  
-    border: 1px solid rgba(255,255,255,0.18);  
-    transition: transform 0.3s ease, box-shadow 0.3s ease;  
 }  
 
-.form-group:hover {  
-    transform: translateY(-2px);  
-    box-shadow: 6px 6px 18px #d1d9e6,  
-                -6px -6px 18px #ffffff;  
-}  
-
-/* 表单标签 */  
-.form-label {  
-    display: block;  
+.input-label {  
     color: #2c3e50;  
-    font-size: 1rem;  
+    font-size: 1.1rem;  
     font-weight: 600;  
     margin-bottom: 1rem;  
-    letter-spacing: 0.5px;  
-}  
-
-/* 单选按钮组 */  
-.radio-group {  
-    display: flex;  
-    gap: 2.5rem;  
-    padding: 0.5rem;  
-    background: rgba(255,255,255,0.9);  
+    padding: 0.8rem 1.2rem;  
+    background: linear-gradient(145deg, #f0f2f5, #ffffff);  
     border-radius: 12px;  
-    box-shadow: inset 2px 2px 5px #d1d9e6,  
-                inset -2px -2px 5px #ffffff;  
+    box-shadow: 3px 3px 8px #d1d9e6,  
+                -3px -3px 8px #ffffff;  
 }  
 
-.radio-label {  
-    display: inline-flex;  
-    align-items: center;  
-    cursor: pointer;  
-    padding: 0.5rem 1rem;  
-    border-radius: 8px;  
-    transition: background 0.3s ease;  
-}  
 
-.radio-label:hover {  
-    background: rgba(26,115,232,0.1);  
-}  
-
-/* 数字输入框容器 */  
+/* 修改数字输入框容器 */  
 .input-container {  
     display: flex;  
     align-items: center;  
-    max-width: 300px;  
-    margin: 0 auto;  
-}  
-
-/* 数字输入框 */  
-.number-input {  
-    width: 70%;  
-    padding: 0.8rem 1rem;  
-    border: none;  
+    gap: 1rem;  
+    padding: 1rem;  
+    background: linear-gradient(145deg, #ffffff, #f0f2f5);  
     border-radius: 12px;  
-    font-size: 1rem;  
-    color: #2c3e50;  
-    background: white;  
     box-shadow: inset 2px 2px 5px #d1d9e6,  
                 inset -2px -2px 5px #ffffff;  
-    transition: all 0.3s ease;  
+    max-width: 300px;  
 }  
 
-.number-input:focus {  
-    outline: none;  
-    box-shadow: inset 3px 3px 7px #d1d9e6,  
-                inset -3px -3px 7px #ffffff;  
+/* 修改数字输入框 */  
+.stNumberInput {  
+    width: 150px !important;  
 }  
+
+.stNumberInput > div > div > input {  
+    background: white !important;  
+    border-radius: 10px !important;  
+    padding: 0.8rem 1rem !important;  
+    box-shadow: inset 2px 2px 5px #d1d9e6,  
+                inset -2px -2px 5px #ffffff !important;  
+}  
+
 
 /* 单位文本 */  
 .unit-text {  
@@ -136,6 +106,38 @@ body {
     margin-left: 1rem;  
     font-weight: 500;  
     width: 80px;  
+}  
+/* 修改正常范围提示 */  
+.normal-range {  
+    margin-top: 1rem;  
+    padding: 0.8rem 1.2rem;  
+    background: linear-gradient(145deg, #f0f2f5, #ffffff);  
+    border-radius: 10px;  
+    box-shadow: 2px 2px 6px #d1d9e6,  
+                -2px -2px 6px #ffffff;  
+    color: #5a6c7d;  
+    font-size: 0.85rem;  
+    display: flex;  
+    align-items: center;  
+    gap: 0.5rem;  
+}  
+
+/* 修改单选按钮组样式 */  
+.stRadio > div {  
+    background: linear-gradient(145deg, #ffffff, #f0f2f5);  
+    padding: 1rem;  
+    border-radius: 12px;  
+    box-shadow: inset 2px 2px 5px #d1d9e6,  
+                inset -2px -2px 5px #ffffff;  
+}  
+
+.stRadio > div > div > label {  
+    background: linear-gradient(145deg, #f0f2f5, #ffffff);  
+    padding: 0.8rem 1.2rem;  
+    border-radius: 10px;  
+    box-shadow: 2px 2px 6px #d1d9e6,  
+                -2px -2px 6px #ffffff;  
+    margin: 0.5rem;  
 }  
 
 /* 正常范围提示 */  
@@ -232,11 +234,7 @@ body {
 
 /* 响应式调整 */  
 @media (max-width: 480px) {  
-    .container {  
-        padding: 1rem;  
-    }  
-    
-    .form-group {  
+    .input-section {  
         padding: 1rem;  
     }  
     
@@ -244,12 +242,12 @@ body {
         max-width: 100%;  
     }  
     
-    .submit-button {  
-        width: 90%;  
+    .stNumberInput {  
+        width: 100% !important;  
     }  
 }  
 </style>  
-""", unsafe_allow_html=True)
+""", unsafe_allow_html=True)  
     
 # 设置日志  
 logging.basicConfig(level=logging.DEBUG)  
