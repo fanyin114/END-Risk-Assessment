@@ -194,6 +194,26 @@ div[data-testid="stVerticalBlock"] {
     background: none !important;  
 }  
 
+/* 调整列间距 */  
+.css-1y4p8pa {  
+    padding: 0 1rem !important;  
+}  
+
+/* 确保输入区域高度一致 */  
+.input-section {  
+    min-height: 150px;  
+    display: flex;  
+    flex-direction: column;  
+}  
+
+/* 调整输入框容器宽度 */  
+.stNumberInput {  
+    width: 100% !important;  
+    max-width: none !important;  
+}
+
+
+
 /* 响应式布局 */  
 @media (max-width: 768px) {  
     .css-1y4p8pa {  
@@ -280,32 +300,6 @@ col1, col2 = st.columns(2)
 
 # 左列内容  
 with col1:  
-    # TOAST-LAA  
-    st.markdown("<div class='input-section'>", unsafe_allow_html=True)  
-    st.markdown("<div class='input-label'>大动脉粥样硬化型 / TOAST-LAA</div>", unsafe_allow_html=True)  
-    toast_laa = st.radio(  
-        "",  
-        ["是 / Yes", "否 / No"],  
-        index=1,  
-        key="toast_laa",  
-        label_visibility="collapsed"  
-    )  
-    st.markdown("</div>", unsafe_allow_html=True)  
-
-    # IAS  
-    st.markdown("<div class='input-section'>", unsafe_allow_html=True)  
-    st.markdown("<div class='input-label'>颅内动脉狭窄≥50% / Intracranial Arterial Stenosis≥50%</div>", unsafe_allow_html=True)  
-    ias = st.radio(  
-        "",  
-        ["是 / Yes", "否 / No"],  
-        index=1,  
-        key="ias",  
-        label_visibility="collapsed"  
-    )  
-    st.markdown("</div>", unsafe_allow_html=True)  
-
-# 右列内容  
-with col2:  
     # NIHSS  
     st.markdown("<div class='input-section'>", unsafe_allow_html=True)  
     st.markdown("<div class='input-label'>NIHSS评分 / NIHSS Score</div>", unsafe_allow_html=True)  
@@ -352,7 +346,8 @@ with col2:
     st.markdown("<p class='normal-range'>范围 / Normal Range: 2.0-30.0 ×10^9/L</p>", unsafe_allow_html=True)  
     st.markdown("</div>", unsafe_allow_html=True)  
 
-  
+# 右列内容  
+with col2:  
     # RDW  
     st.markdown("<div class='input-section'>", unsafe_allow_html=True)  
     st.markdown("<div class='input-label'>红细胞分布宽度 / Red Cell Distribution Width</div>", unsafe_allow_html=True)  
@@ -369,20 +364,35 @@ with col2:
     st.markdown("<p class='normal-range'>范围 / Normal Range: 10-60 fL</p>", unsafe_allow_html=True)  
     st.markdown("</div>", unsafe_allow_html=True)  
 
-    
+    # TOAST-LAA  
+    st.markdown("<div class='input-section'>", unsafe_allow_html=True)  
+    st.markdown("<div class='input-label'>大动脉粥样硬化型 / TOAST-LAA</div>", unsafe_allow_html=True)  
+    toast_laa = st.radio(  
+        "",  
+        ["是 / Yes", "否 / No"],  
+        index=1,  
+        key="toast_laa",  
+        label_visibility="collapsed"  
+    )  
+    st.markdown("</div>", unsafe_allow_html=True)  
+
+    # IAS  
+    st.markdown("<div class='input-section'>", unsafe_allow_html=True)  
+    st.markdown("<div class='input-label'>颅内动脉狭窄≥50% / Intracranial Arterial Stenosis≥50%</div>", unsafe_allow_html=True)  
+    ias = st.radio(  
+        "",  
+        ["是 / Yes", "否 / No"],  
+        index=1,  
+        key="ias",  
+        label_visibility="collapsed"  
+    )  
+    st.markdown("</div>", unsafe_allow_html=True)
     
 # 计算按钮  
 # 计算按钮（在列布局之外）  
+# 计算按钮  
 if st.button("计算风险评分 / Calculate Risk Score", key="calculate_button"):  
     try:  
-        # ... 计算逻辑保持不变 ...  
-        
-        # 显示结果  
-        st.markdown("<div class='result-section'>", unsafe_allow_html=True)  
-        # ... 结果显示代码保持不变 ...  
-        st.markdown("</div>", unsafe_allow_html=True)  
-    except Exception as e:  
-        st.error(f"计算过程出错 / Calculation Error: {str(e)}") 
         # 处理输入数据  
         toast_laa_value = 1 if toast_laa == "是 / Yes" else 0  
         ias_value = 1 if ias == "是 / Yes" else 0  
@@ -420,6 +430,7 @@ if st.button("计算风险评分 / Calculate Risk Score", key="calculate_button"
                     Low Risk of Early Neurological Deterioration  
                     </p>  
                 """, unsafe_allow_html=True)  
+            st.markdown("</div>", unsafe_allow_html=True)  
 
     except Exception as e:  
         st.error(f"计算过程出错 / Calculation Error: {str(e)}")
