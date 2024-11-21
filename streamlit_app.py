@@ -197,7 +197,7 @@ div[data-testid="stVerticalBlock"] > div {
     color: #e53e3e;  
     font-size: 1.8rem;  
     font-weight: 700;  
-    text-align: center;  
+    text-align: left;  
     margin: 1rem 0;  
     padding: 0.5rem 1rem;  
     background: #fff5f5;  
@@ -210,7 +210,7 @@ div[data-testid="stVerticalBlock"] > div {
     color: #38a169;  
     font-size: 1.8rem;  
     font-weight: 700;  
-    text-align: center;  
+    text-align: left;  
     margin: 1rem 0;  
     padding: 0.5rem 1rem;  
     background: #f0fff4;  
@@ -229,10 +229,10 @@ div[data-testid="stVerticalBlock"] > div {
 
 /* 风险描述文本 */  
 .risk-description {  
-    font-size: 1.2rem;  
+    font-size: 1.8rem;  
     color: #2d3748;  
     line-height: 1.8;  
-    text-align: center;  
+    text-align: left;  
     padding: 1rem;  
     background: #f7fafc;  
     border-radius: 8px;  
