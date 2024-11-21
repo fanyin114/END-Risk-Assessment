@@ -1,57 +1,99 @@
-# 早期神经功能恶化风险评估系统
+# END Risk Assessment System
 
-Early Neurological Deterioration Risk Assessment System
+Early Neurological Deterioration Risk Assessment System for Acute Ischemic Stroke
 
-## 简介
-本系统用于评估急性缺血性脑卒中患者发生早期神经功能恶化的风险。
+## Overview
+This system is designed to assess the risk of early neurological deterioration (END) in patients with acute ischemic stroke. It utilizes machine learning algorithms to provide real-time risk evaluation based on key clinical indicators.
 
-## 功能特点
-- 支持多个关键指标输入
-- 实时风险评估
-- 双语界面（中文/英文）
-- 直观的结果展示
+## Features
+- Real-time risk assessment
+- Multiple clinical indicator support
+- User-friendly interface
+- Instant results visualization
+- Evidence-based prediction model
 
-## 评估指标
-- NIHSS评分
-- 收缩压 (SBP)
-- 中性粒细胞计数 (NEUT)
-- 红细胞分布宽度 (RDW)
-- 大动脉粥样硬化型 (TOAST-LAA)
-- 颅内动脉狭窄 (IAS)
+## Clinical Indicators
+The system evaluates the following key parameters:
+- NIHSS Score (National Institutes of Health Stroke Scale)
+- Systolic Blood Pressure (SBP)
+- Neutrophil Count (NEUT)
+- Red Cell Distribution Width (RDW)
+- TOAST Classification (Large-Artery Atherosclerosis)
+- Intracranial Arterial Stenosis (IAS)
 
-## 使用方法
-1. 访问系统网址
-2. 输入患者相关指标
-3. 点击"计算风险评分"按钮
-4. 查看评估结果
+## How to Use
+1. Access the system through the provided URL
+2. Input patient clinical indicators
+3. Click "Calculate Risk Score"
+4. Review the assessment results and risk prediction
 
-## 技术栈
-- Python
-- Streamlit
-- XGBoost
-- Pandas
-- Scikit-learn
+## Technical Stack
+- Python 3.x
+- Streamlit (Web Framework)
+- XGBoost (Machine Learning Model)
+- Pandas (Data Processing)
+- Scikit-learn (Model Support)
+- Joblib (Model Loading)
 
-## 安装和运行
+## Installation
 ```bash
-# 克隆仓库
-git clone https://github.com/您的用户名/END-Risk-Assessment.git
+# Clone the repository
+git clone https://github.com/[your-username]/END-Risk-Assessment.git
 
-# 进入项目目录
+# Navigate to project directory
 cd END-Risk-Assessment
 
-# 安装依赖
+# Install required packages
 pip install -r requirements.txt
 
-# 运行应用
+# Run the application
 streamlit run streamlit_app.py
 ```
 
-## 在线访问
-[点击访问在线系统](#) (部署后添加链接)
+## Online Access
+[Access the live system](#) (Link to be added after deployment)
 
-## 作者
-[您的名字/机构名称]
+## Model Information
+- Algorithm: XGBoost
+- Training Data: Clinical data from stroke patients
+- Validation: Cross-validated on independent dataset
+- Key Features: Six clinical indicators
+- Model File: `XGBOOST_model1113.pkl`
 
-## 许可证
-[选择合适的许可证，如 MIT License]
+## Development
+This system was developed using:
+- Python 3.x
+- Streamlit for web interface
+- XGBoost for machine learning
+- Scientific computing libraries (NumPy, Pandas)
+
+## Security and Privacy
+- No patient data is stored
+- All calculations are performed in real-time
+- Compliant with medical data privacy requirements
+
+## Contributing
+Contributions to improve the system are welcome. Please follow these steps:
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## Authors
+[Your Name/Institution Name]
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+- [Your Institution/Hospital Name]
+- Contributors and medical professionals who provided expertise
+- Research team members
+
+## Contact
+For questions or support, please contact:
+[Your Contact Information]
+
+---
+© 2024 END Risk Assessment System. All Rights Reserved.
