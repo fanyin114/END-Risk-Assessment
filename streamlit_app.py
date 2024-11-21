@@ -256,7 +256,7 @@ with st.container():
     toast_laa = st.radio(  
         "",  
         ["是 / Yes", "否 / No"],  
-         
+        value=None, 
         key="toast_laa",  
         label_visibility="collapsed"  
     )  
@@ -267,7 +267,7 @@ with st.container():
     ias = st.radio(  
         "",  
         ["是 / Yes", "否 / No"],  
-         
+        value=None,  
         key="ias",  
         label_visibility="collapsed"  
     )  
@@ -279,7 +279,7 @@ with st.container():
         "",  
         min_value=0.0,  
         max_value=42.0,  
-         
+        value=None, 
         step=1.0,  
         key="nihss",  
         label_visibility="collapsed"  
@@ -293,7 +293,7 @@ with st.container():
         "",  
         min_value=60.0,  
         max_value=300.0,  
-         
+        value=None,  
         step=1.0,  
         key="sbp",  
         label_visibility="collapsed"  
@@ -307,7 +307,7 @@ with st.container():
         "",  
         min_value=2.0,  
         max_value=30.0,  
-         
+        value=None, 
         step=0.1,  
         format="%.1f",  
         key="neut",  
@@ -322,7 +322,7 @@ with st.container():
         "",  
         min_value=10.0,  
         max_value=60.0,  
-         
+        value=None,  
         step=0.1,  
         format="%.1f",  
         key="rdw",  
