@@ -149,17 +149,17 @@ st.markdown("""
 
 /* 移除多余间距和背景 */  
 div[data-testid="stVerticalBlock"] {  
-    gap: 0 !important;  
+    gap: 2 !important;  
 }  
 
 .css-1544g2n, .css-1kyxreq {  
-    margin: 0 !important;  
-    padding: 0 !important;  
+    margin: 2 !important;  
+    padding: 2 !important;  
 }  
 
 /* 调整列间距 */  
 .css-1y4p8pa {  
-    padding: 0 1rem !important;  
+    padding: 2 1rem !important;  
 }  
 
 /* 确保正常范围提示样式 */  
