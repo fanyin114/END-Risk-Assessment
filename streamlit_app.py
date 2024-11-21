@@ -119,7 +119,7 @@ st.markdown("""
     padding: 1rem 4rem !important;  
     border-radius: 30px !important;  
     border: none !important;  
-    font-size: 1.8rem !important;  
+    font-size: 2rem !important;  
     font-weight: 800 !important;  
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;  
     transition: all 0.3s ease !important;  
@@ -127,7 +127,7 @@ st.markdown("""
     max-width: 600px !important;  
     margin: 0 auto !important;  
     white-space: nowrap !important;  
-    height: 3.5rem !important;  
+    height: 4rem !important;  
     line-height: 1.5 !important;  
     display: flex !important;  
     align-items: center !important;  
@@ -298,7 +298,7 @@ div[data-testid="stVerticalBlock"] {
     .stButton > button {  
         min-width: 300px !important;  
         padding: 1rem 2rem !important;  
-        font-size: 1.4rem !important;  
+        font-size: 1.8rem !important;  
     }  
 }
 </style>  
