@@ -86,7 +86,7 @@ st.markdown("""
     display: flex !important;  
     justify-content: center !important;  
     margin: 2.5rem auto !important;  
-    width: 100% !important;  
+    width: 0% !important;  
 }  
 
 /* 按钮样式 */  
@@ -195,7 +195,7 @@ div[data-testid="stVerticalBlock"] > div {
 /* 高风险样式 */  
 .high-risk {  
     color: #e53e3e;  
-    font-size: 1.8rem;  
+    font-size: 1.6rem;  
     font-weight: 700;  
     text-align: left;  
     margin: 1rem 0;  
@@ -208,7 +208,7 @@ div[data-testid="stVerticalBlock"] > div {
 /* 低风险样式 */  
 .low-risk {  
     color: #38a169;  
-    font-size: 1.8rem;  
+    font-size: 1.6rem;  
     font-weight: 700;  
     text-align: left;  
     margin: 1rem 0;  
