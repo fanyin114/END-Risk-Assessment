@@ -19,17 +19,20 @@ st.set_page_config(
 # 自定义CSS样式  
 st.markdown("""  
 <style>  
-/* 全局样式 */  
-body {  
-    background: #e6e9f0;  
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;  
+/* 移除Streamlit默认的白色背景 */  
+.stApp {  
+    background: none;  
 }  
 
-.container {  
-    max-width: 700px;  
-    margin: 0 auto;  
+.main {  
+    background: #f8f9fa;  
+}  
+
+/* 全局容器样式 */  
+.block-container {  
     padding: 2rem;  
-    background: linear-gradient(145deg, #f0f2f5, #ffffff);  
+    max-width: 800px;  
+    margin: 0 auto;  
 }  
 
 /* 标题样式 */  
@@ -49,14 +52,14 @@ body {
     margin-bottom: 2.5rem;  
 }  
 
-/* 修改输入区域样式 */  
+/* 输入区域样式 */  
 .input-section {  
+    margin-bottom: 1.5rem;  
+    padding: 1rem;  
+    border-radius: 12px;  
     background: linear-gradient(145deg, #ffffff, #f0f2f5);  
-    border-radius: 16px;  
-    padding: 1.5rem;  
-    margin-bottom: 1.2rem;  
-    box-shadow: 5px 5px 15px #d1d9e6,  
-                -5px -5px 15px #ffffff;  
+    box-shadow: 5px 5px 10px #d1d9e6,  
+                -5px -5px 10px #ffffff;  
 }  
 
 .input-label {  
@@ -64,127 +67,76 @@ body {
     font-size: 1.1rem;  
     font-weight: 600;  
     margin-bottom: 1rem;  
-    padding: 0.8rem 1.2rem;  
-    background: linear-gradient(145deg, #f0f2f5, #ffffff);  
-    border-radius: 12px;  
-    box-shadow: 3px 3px 8px #d1d9e6,  
-                -3px -3px 8px #ffffff;  
 }  
 
-
-/* 修改数字输入框容器 */  
-.input-container {  
-    display: flex;  
-    align-items: center;  
-    gap: 1rem;  
-    padding: 1rem;  
-    background: linear-gradient(145deg, #ffffff, #f0f2f5);  
-    border-radius: 12px;  
-    box-shadow: inset 2px 2px 5px #d1d9e6,  
-                inset -2px -2px 5px #ffffff;  
-    max-width: 300px;  
-}  
-
-/* 修改数字输入框 */  
-.stNumberInput {  
-    width: 150px !important;  
-}  
-
+/* 输入框样式 */  
 .stNumberInput > div > div > input {  
-    background: white !important;  
-    border-radius: 10px !important;  
-    padding: 0.8rem 1rem !important;  
-    box-shadow: inset 2px 2px 5px #d1d9e6,  
-                inset -2px -2px 5px #ffffff !important;  
-}  
-
-
-/* 单位文本 */  
-.unit-text {  
-    color: #5a6c7d;  
-    font-size: 0.9rem;  
-    margin-left: 1rem;  
-    font-weight: 500;  
-    width: 80px;  
-}  
-/* 修改正常范围提示 */  
-.normal-range {  
-    margin-top: 1rem;  
-    padding: 0.8rem 1.2rem;  
-    background: linear-gradient(145deg, #f0f2f5, #ffffff);  
-    border-radius: 10px;  
-    box-shadow: 2px 2px 6px #d1d9e6,  
-                -2px -2px 6px #ffffff;  
-    color: #5a6c7d;  
-    font-size: 0.85rem;  
-    display: flex;  
-    align-items: center;  
-    gap: 0.5rem;  
-}  
-
-/* 修改单选按钮组样式 */  
-.stRadio > div {  
-    background: linear-gradient(145deg, #ffffff, #f0f2f5);  
-    padding: 1rem;  
-    border-radius: 12px;  
+    width: 100%;  
+    padding: 0.8rem;  
+    border: none;  
+    border-radius: 8px;  
+    background: white;  
     box-shadow: inset 2px 2px 5px #d1d9e6,  
                 inset -2px -2px 5px #ffffff;  
+}  
+
+/* Radio按钮组样式 */  
+.stRadio > div {  
+    padding: 0.5rem;  
 }  
 
 .stRadio > div > div > label {  
-    background: linear-gradient(145deg, #f0f2f5, #ffffff);  
-    padding: 0.8rem 1.2rem;  
-    border-radius: 10px;  
-    box-shadow: 2px 2px 6px #d1d9e6,  
-                -2px -2px 6px #ffffff;  
-    margin: 0.5rem;  
+    padding: 0.5rem 1rem;  
+    margin: 0.3rem;  
+    border-radius: 8px;  
+    background: white;  
+    box-shadow: 2px 2px 5px #d1d9e6,  
+                -2px -2px 5px #ffffff;  
 }  
 
-/* 正常范围提示 */  
+/* 正常范围提示样式 */  
 .normal-range {  
+    margin-top: 0.8rem;  
+    padding: 0.8rem;  
     color: #5a6c7d;  
     font-size: 0.85rem;  
-    margin-top: 0.8rem;  
-    padding: 0.5rem 1rem;  
     background: rgba(255,255,255,0.7);  
     border-radius: 8px;  
     border-left: 3px solid #1a73e8;  
 }  
 
-/* 提交按钮 */  
-.submit-button {  
-    display: block;  
+/* 计算按钮样式 */  
+.stButton > button {  
     width: 80%;  
     max-width: 300px;  
-    margin: 2.5rem auto;  
-    padding: 1rem;  
+    margin: 2rem auto;  
+    padding: 0.8rem;  
+    display: block;  
     background: linear-gradient(145deg, #1a73e8, #1557b0);  
     color: white;  
     border: none;  
-    border-radius: 30px;  
+    border-radius: 25px;  
     font-size: 1.1rem;  
     font-weight: 600;  
-    cursor: pointer;  
-    text-align: center;  
+    box-shadow: 3px 3px 8px #d1d9e6,  
+                -3px -3px 8px #ffffff;  
     transition: all 0.3s ease;  
-    box-shadow: 5px 5px 10px #d1d9e6,  
-                -5px -5px 10px #ffffff;  
 }  
 
-.submit-button:hover {  
+.stButton > button:hover {  
     transform: translateY(-2px);  
-    box-shadow: 6px 6px 12px #d1d9e6,  
-                -6px -6px 12px #ffffff;  
+    box-shadow: 4px 4px 10px #d1d9e6,  
+                -4px -4px 10px #ffffff;  
 }  
 
-/* 结果区域 */  
-.result-container {  
+/* 结果区域样式 */  
+.result-section {  
+    margin-top: 2rem;  
+    padding: 1.5rem;  
+    border-radius: 15px;  
     background: linear-gradient(145deg, #ffffff, #f0f2f5);  
-    border-radius: 20px;  
-    padding: 2rem;  
-    margin-top: 2.5rem;  
-    box-shadow: 8px 8px 20px #d1d9e6,  
-                -8px -8px 20px #ffffff;  
+    box-shadow: 8px 8px 16px #d1d9e6,  
+                -8px -8px 16px #ffffff;  
 }  
 
 .result-title {  
@@ -192,62 +144,112 @@ body {
     font-weight: 700;  
     text-align: center;  
     color: #2c3e50;  
-    margin-bottom: 2rem;  
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);  
+    margin-bottom: 1.5rem;  
 }  
 
-.result-item {  
-    display: flex;  
-    justify-content: space-between;  
-    align-items: center;  
-    margin-bottom: 1.2rem;  
-    padding: 1rem;  
-    background: rgba(255,255,255,0.8);  
-    border-radius: 12px;  
-    box-shadow: inset 2px 2px 5px #d1d9e6,  
-                inset -2px -2px 5px #ffffff;  
-}  
-
-.probability-value {  
-    color: #1a73e8;  
-    font-weight: 700;  
-    font-size: 1.2rem;  
-}  
-
-.risk-level {  
+.high-risk {  
     color: #dc3545;  
     font-weight: 700;  
-    font-size: 1.2rem;  
+}  
+
+.low-risk {  
+    color: #28a745;  
+    font-weight: 700;  
 }  
 
 .risk-description {  
+    margin-top: 1rem;  
+    padding: 1rem;  
     background: rgba(255,255,255,0.8);  
-    padding: 1.2rem;  
-    border-radius: 12px;  
-    margin-top: 1.5rem;  
+    border-radius: 8px;  
     color: #2c3e50;  
-    font-size: 1rem;  
     line-height: 1.6;  
-    box-shadow: inset 2px 2px 5px #d1d9e6,  
-                inset -2px -2px 5px #ffffff;  
+}  
+
+/* 移除Streamlit默认样式 */  
+.css-1d391kg, .css-12oz5g7, .css-1n76uvr, .css-1fv8s86 {  
+    background: none !important;  
+}  
+
+div[data-testid="stVerticalBlock"] {  
+    background: none !important;  
+}  
+
+.element-container {  
+    background: none !important;  
 }  
 
 /* 响应式调整 */  
 @media (max-width: 480px) {  
-    .input-section {  
+    .block-container {  
         padding: 1rem;  
     }  
     
-    .input-container {  
-        max-width: 100%;  
+    .input-section {  
+        padding: 0.8rem;  
     }  
     
-    .stNumberInput {  
-        width: 100% !important;  
+    .stButton > button {  
+        width: 90%;  
+    }  
+    
+    .result-section {  
+        padding: 1rem;  
     }  
 }  
+
+/* 移除其他可能的背景和边距 */  
+.stMarkdown {  
+    background: none !important;  
+    margin: 0 !important;  
+    padding: 0 !important;  
+}  
+
+.row-widget {  
+    background: none !important;  
+}  
+
+.css-ocqkz7 {  
+    gap: 0 !important;  
+}  
+
+.css-1544g2n {  
+    padding: 0 !important;  
+    margin: 0 !important;  
+}  
+
+.css-1kyxreq {  
+    margin-top: 0 !important;  
+}  
+
+/* 确保输入框对齐 */  
+.stNumberInput {  
+    width: 100% !important;  
+    max-width: 300px !important;  
+    margin: 0 auto !important;  
+}  
+
+/* 美化滚动条 */  
+::-webkit-scrollbar {  
+    width: 8px;  
+    height: 8px;  
+}  
+
+::-webkit-scrollbar-track {  
+    background: #f1f1f1;  
+    border-radius: 4px;  
+}  
+
+::-webkit-scrollbar-thumb {  
+    background: #888;  
+    border-radius: 4px;  
+}  
+
+::-webkit-scrollbar-thumb:hover {  
+    background: #555;  
+}  
 </style>  
-""", unsafe_allow_html=True)  
+""", unsafe_allow_html=True)
     
 # 设置日志  
 logging.basicConfig(level=logging.DEBUG)  
