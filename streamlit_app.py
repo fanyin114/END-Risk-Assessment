@@ -85,29 +85,36 @@ st.markdown("""
 .stButton {  
     display: flex !important;  
     justify-content: center !important;  
-    margin: 2rem auto !important;  
+    margin: 2.5rem auto !important;  
+    width: 100% !important;  
 }  
 
 /* 按钮样式 */  
 .stButton > button {  
     background: linear-gradient(145deg, #1a73e8, #1557b0) !important;  
     color: white !important;  
-    padding: 0.8rem 2.5rem !important;  
-    border-radius: 25px !important;  
+    padding: 1rem 4rem !important;  /* 增加水平内边距 */  
+    border-radius: 30px !important; /* 增加圆角 */  
     border: none !important;  
-    font-size: 1.1rem !important;  
+    font-size: 1.2rem !important;   /* 略微增加字体大小 */  
     font-weight: 600 !important;  
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;  
     transition: all 0.3s ease !important;  
-    min-width: 200px !important;  
-    max-width: 300px !important;  
+    min-width: 400px !important;    /* 增加最小宽度 */  
+    max-width: 600px !important;    /* 增加最大宽度 */  
     margin: 0 auto !important;  
+    white-space: nowrap !important; /* 确保文字在一行显示 */  
+    height: 3.5rem !important;      /* 设置固定高度 */  
+    line-height: 1.5 !important;    /* 调整行高 */  
+    display: flex !important;  
+    align-items: center !important;  
+    justify-content: center !important;  
 }  
 
 /* 按钮悬停效果 */  
 .stButton > button:hover {  
     transform: translateY(-2px) !important;  
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15) !important;  
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;  
     background: linear-gradient(145deg, #1557b0, #1a73e8) !important;  
 }  
 
@@ -115,7 +122,7 @@ st.markdown("""
 .stButton > button:active {  
     transform: translateY(0) !important;  
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;  
-}
+}  
 
 /* 移除评估结果上方的白色框框 */  
 div[data-testid="stMarkdownContainer"] {  
@@ -253,6 +260,17 @@ div[data-testid="stVerticalBlock"] {
     margin-top: 0.5rem;  
     line-height: 1.4;  
 }
+
+/* 响应式调整 */  
+@media (max-width: 768px) {  
+    .stButton > button {  
+        min-width: 300px !important;  
+        padding: 1rem 2rem !important;  
+        font-size: 1.1rem !important;  
+    }  
+}  
+ 
+
 </style>  
 """, unsafe_allow_html=True)  
 
