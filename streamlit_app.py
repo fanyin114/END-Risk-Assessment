@@ -243,6 +243,48 @@ div[data-testid="stVerticalBlock"] {
     gap: 2rem !important;  
 }  
 
+/* 输入区域样式 */  
+.input-group {  
+    background: #f8fafc;  
+    border: 2px solid #4a90e2;  
+    border-radius: 20px;  
+    padding: 1.5rem;  /* 从2rem减小到1.5rem */  
+    margin: 1rem 0;   /* 从1.6rem减小到1rem */  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
+    width: 100%;  
+    display: block;  
+}  
+
+/* 输入标签间距调整 */  
+.input-label {  
+    color: #2c3e50;  
+    font-size: 1.2rem;  
+    font-weight: 600;  
+    margin-bottom: 0.8rem;  /* 从1rem减小到0.8rem */  
+    display: block;  
+}  
+
+/* 垂直间距调整 */  
+div[data-testid="stVerticalBlock"] {  
+    gap: 1rem !important;  /* 从2rem减小到1rem */  
+}  
+
+/* 结果显示区域间距调整 */  
+.result-grid {  
+    display: grid;  
+    grid-template-columns: 1fr;  
+    gap: 1.5rem;  /* 从2rem减小到1.5rem */  
+    margin: 1.5rem 0;  /* 从2rem减小到1.5rem */  
+}  
+
+.probability-container, .risk-level-container, .risk-description-container {  
+    background: white;  
+    border-radius: 12px;  
+    padding: 1.5rem;  /* 从2rem减小到1.5rem */  
+    margin: 1.5rem 0;  /* 从2rem减小到1.5rem */  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
+}  
+
 /* 响应式调整 */  
 @media (max-width: 768px) {  
     .input-group {  
