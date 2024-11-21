@@ -54,11 +54,10 @@ st.markdown("""
 .input-section {  
     margin-bottom: 1.5rem;  
     padding: 1.2rem;  
+    background: #f8fafc !important;  
     border-radius: 12px;  
-    background: linear-gradient(145deg, #ffffff, #f0f2f5);  
-    box-shadow: 3px 3px 6px #d1d9e6,  
-                -3px -3px 6px #ffffff;  
-}  
+    border: 1px solid #e2e8f0;  
+}
 
 /* 输入标签样式 */  
 .input-label {  
@@ -73,27 +72,31 @@ st.markdown("""
     width: 100% !important;  
     min-width: 300px !important;  
     padding: 0.8rem !important;  
+    background: white !important;  
     border: 1px solid #e2e8f0 !important;  
     border-radius: 8px !important;  
-    background: white !important;  
     font-size: 1.1rem !important;  
-    margin-left: 0 !important;  
-    box-shadow: inset 2px 2px 5px #d1d9e6,  
-                inset -2px -2px 5px #ffffff;  
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;  
 }  
 
 /* Radio按钮组样式 */  
 .stRadio > div {  
-    padding: 0.5rem;  
+    padding: 0.5rem !important;  
+    background: transparent !important;  
 }  
 
 .stRadio > div > div > label {  
-    padding: 0.5rem 1rem;  
-    margin: 0.3rem;  
-    border-radius: 8px;  
-    background: white;  
-    box-shadow: 2px 2px 5px #d1d9e6,  
-                -2px -2px 5px #ffffff;  
+    background: white !important;  
+    border: 1px solid #e2e8f0 !important;  
+    margin: 0.5rem 1rem 0.5rem 0 !important;  
+    padding: 0.8rem 1.2rem !important;  
+    border-radius: 8px !important;  
+    cursor: pointer !important;  
+    transition: all 0.2s ease !important;  
+}  
+
+.stRadio > div > div > label:hover {  
+    background: #f0f4f8 !important;  
 }  
 
 /* 正常范围提示样式 */  
@@ -177,15 +180,8 @@ st.markdown("""
 .css-ocqkz7 {  
     justify-content: flex-start !important;  
 }  
-/* 调整输入标签样式 */  
-.input-label {  
-    color: #2c3e50;  
-    font-size: 1.1rem;  
-    font-weight: 600;  
-    margin-bottom: 0.8rem;  
-    text-align: left !important;  
-}  
-/* 调整输入标签样式 */  
+
+/* 输入标签样式 */  
 .input-label {  
     color: #2c3e50;  
     font-size: 1.1rem;  
@@ -194,6 +190,46 @@ st.markdown("""
     text-align: left !important;  
 }  
 
+/* 正常范围提示样式 */  
+.normal-range {  
+    color: #64748b;  
+    font-size: 0.9rem;  
+    margin-top: 0.5rem;  
+    padding: 0.5rem 0;  
+}  
+
+/* 移除不必要的边距和填充 */  
+.css-1544g2n, .css-1kyxreq {  
+    margin: 0 !important;  
+    padding: 0 !important;  
+}  
+
+/* 确保页面容器样式正确 */  
+.block-container {  
+    padding: 2rem !important;  
+    max-width: 1200px !important;  
+}  
+
+/* 调整数字输入框的增减按钮 */  
+.stNumberInput > div > div > button {  
+    background: #f8fafc !important;  
+    border: 1px solid #e2e8f0 !important;  
+    padding: 0.5rem !important;  
+}  
+
+.stNumberInput > div > div > button:hover {  
+    background: #f0f4f8 !important;  
+}  
+
+/* 确保输入控件可以正常交互 */  
+.stNumberInput, .stRadio {  
+    pointer-events: auto !important;  
+}  
+
+/* 调整列间距 */  
+.css-1y4p8pa {  
+    padding: 0 1rem !important;  
+}  
 
 /* 响应式布局 */  
 @media (max-width: 768px) {  
@@ -201,62 +237,6 @@ st.markdown("""
         width: 100% !important;  
         padding: 0 !important;  
     }  
-}  
-/* 移除所有默认背景和阴影 */  
-div.stNumberInput > div,  
-div.stRadio > div,  
-div[data-testid="stMarkdownContainer"],  
-div.stMarkdown,  
-div[data-testid="stVerticalBlock"] > div,  
-div.element-container,  
-div.row-widget,  
-div[class^="st-"],  
-div[class*=" st-"],  
-section[data-testid="stSidebar"],  
-div.block-container,  
-div[role="radiogroup"] {  
-    background: none !important;  
-    background-color: transparent !important;  
-    border: none !important;  
-    box-shadow: none !important;  
-}  
-
-/* 移除输入框容器的背景 */  
-.input-section {  
-    background: none !important;  
-    box-shadow: none !important;  
-    padding: 0.8rem 0 !important;  
-}  
-
-/* 保持输入框本身的样式 */  
-.stNumberInput > div > div > input {  
-    background: white !important;  
-    border: 1px solid #e2e8f0 !important;  
-    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1) !important;  
-    width: 100% !important;  
-    min-width: 300px !important;  
-    padding: 0.8rem !important;  
-    border-radius: 8px !important;  
-    font-size: 1.1rem !important;  
-}  
-
-/* 调整radio按钮组样式 */  
-.stRadio > div {  
-    background: transparent !important;  
-}  
-
-.stRadio > div > div > label {  
-    background: white !important;  
-    border: 1px solid #e2e8f0 !important;  
-    margin: 0.5rem 1rem 0.5rem 0 !important;  
-    padding: 0.5rem 1rem !important;  
-    border-radius: 6px !important;  
-}  
-
-/* 移除所有可能的边距和填充 */  
-.css-1544g2n, .css-1kyxreq, .css-ocqkz7 {  
-    margin: 0 !important;  
-    padding: 0 !important;  
 }  
 
 /* 确保页面容器没有多余背景 */  
