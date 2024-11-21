@@ -11,14 +11,25 @@ st.set_page_config(
 )
 
 # 加载模型
-@st.cache_resource
-def load_model():
-    return joblib.load('models/XGBOOST_model1113.pkl')
+@st.cache_resource  
+def load_model():  
+    try:  
+        model = joblib.load('models/XGBOOST_model1113.pkl')  
+        return model  
+    except Exception as e:  
+        st.error(f"Error loading model: {str(e)}")  
+        return None  
 
-try:
-    model = load_model()
-except Exception as e:
-    st.error(f"模型加载失败: {str(e)}")
+def predict(model, input_data):  
+    if model is None:  
+        st.error("Model not loaded. Please check the model file.")  
+        return None  
+    try:  
+        prediction = model.predict(input_data)  
+        return prediction  
+    except Exception as e:  
+        st.error(f"Error making prediction: {str(e)}")  
+        return None
 
 # 模型特征定义
 MODEL_FEATURES = ['NIHSS', 'SBP', 'NEUT', 'RDW', 'TOAST-LAA_1', 'IAS_1']
