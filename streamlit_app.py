@@ -63,9 +63,20 @@ st.markdown("""
 
 /* 输入区域样式 */  
 .input-section {  
+    background: linear-gradient(145deg, #ffffff, #f0f2f5);  
     padding: 1.5rem 2rem;  
-    margin: 0.8rem 0;  
+    border-radius: 16px;  
+    margin: 1.2rem 0;  
+    box-shadow: 5px 5px 15px #d1d9e6,  
+                -5px -5px 15px #ffffff;  
+    border: 1px solid rgba(255, 255, 255, 0.18);  
     transition: all 0.3s ease;  
+}  
+
+.input-section:hover {  
+    transform: translateY(-2px);  
+    box-shadow: 6px 6px 18px #d1d9e6,  
+                -6px -6px 18px #ffffff;  
 }  
 
 /* 输入标签样式 */  
@@ -73,10 +84,11 @@ st.markdown("""
     color: #2c3e50;  
     font-size: 1.1rem;  
     font-weight: 600;  
-    margin-bottom: 0.5rem;  
+    margin-bottom: 0.8rem;  
     display: flex;  
     align-items: center;  
     letter-spacing: 0.5px;  
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);  
 }  
 
 /* Radio按钮组样式 */  
@@ -86,38 +98,57 @@ st.markdown("""
 }  
 
 .stRadio > div > div {  
-    padding: 0.5rem;  
-    border-radius: 8px;  
+    background: rgba(255, 255, 255, 0.8);  
+    padding: 0.8rem;  
+    border-radius: 12px;  
     transition: all 0.2s ease;  
+    box-shadow: 3px 3px 8px #d1d9e6,  
+                -3px -3px 8px #ffffff;  
 }  
 
 .stRadio > div > div:hover {  
-    background: rgba(237, 242, 247, 0.5);  
+    background: rgba(255, 255, 255, 0.9);  
+    box-shadow: 4px 4px 10px #d1d9e6,  
+                -4px -4px 10px #ffffff;  
 }  
+
 
 /* 数字输入框样式 */  
 .stNumberInput > div > div > input {  
     font-size: 1.1rem;  
     padding: 0.75rem !important;  
-    border: 1px solid #e2e8f0 !important;  
-    border-radius: 8px !important;  
+    border: 2px solid rgba(226, 232, 240, 0.6) !important;  
+    border-radius: 12px !important;  
     transition: all 0.2s ease;  
-    background: transparent !important;  
+    background: rgba(255, 255, 255, 0.8) !important;  
+    box-shadow: inset 2px 2px 5px #d1d9e6,  
+                inset -2px -2px 5px #ffffff;  
 }  
 
 .stNumberInput > div > div > input:focus {  
     border-color: #3949ab !important;  
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);  
+    background: #ffffff !important;  
 }  
+
 
 /* 正常范围提示样式 */  
 .normal-range {  
     color: #718096;  
     font-size: 0.9rem;  
-    margin-top: 0.4rem;  
-    padding: 0.4rem 0.8rem;  
-    border-radius: 6px;  
+    margin-top: 0.8rem;  
+    padding: 0.6rem 1rem;  
+    background: rgba(255, 255, 255, 0.7);  
+    border-radius: 8px;  
     border-left: 3px solid #4299e1;  
+    box-shadow: 2px 2px 5px rgba(209, 217, 230, 0.5);  
+}  
+/* 整体容器背景 */  
+.block-container {  
+    max-width: 1000px;  
+    padding: 2rem;  
+    margin: 0 auto;  
+    background: #f0f2f5;  
 }  
 
 /* 按钮样式 */  
@@ -192,27 +223,19 @@ st.markdown("""
     border-radius: 8px;  
 }  
 
-/* 响应式设计 */  
+/* 响应式设计调整 */  
 @media (max-width: 768px) {  
-    .block-container {  
-        padding: 1rem;  
-    }  
-    
-    .title {  
-        font-size: 2rem;  
-    }  
-    
     .input-section {  
-        padding: 1rem;  
+        padding: 1.2rem;  
+        margin: 1rem 0;  
     }  
     
-    .stButton > button {  
-        padding: 0.6rem 1.5rem;  
-        font-size: 1.1rem;  
+    .normal-range {  
+        padding: 0.5rem 0.8rem;  
     }  
 }  
 </style>  
-""", unsafe_allow_html=True)
+""", unsafe_allow_html=True) 
     
 # 设置日志  
 logging.basicConfig(level=logging.DEBUG)  
