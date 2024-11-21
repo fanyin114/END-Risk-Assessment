@@ -27,12 +27,11 @@ st.markdown("""
     box-sizing: border-box;  
 }  
 
-/* 输入框容器样式 */  
-.stNumberInput {  
-    width: 100% !important;  
-    max-width: none !important;  
-    margin: 0 !important;  
-}
+/* 页面容器样式 */  
+.block-container {  
+    padding: 2rem 3rem !important;  
+    max-width: 1200px !important;  
+}  
 
 /* 标题样式 */  
 .title {  
@@ -41,6 +40,7 @@ st.markdown("""
     font-weight: 700;  
     text-align: center;  
     margin-bottom: 0.5rem;  
+    line-height: 1.4;  
 }  
 
 .subtitle {  
@@ -48,23 +48,25 @@ st.markdown("""
     font-size: 1.2rem;  
     text-align: center;  
     margin-bottom: 2rem;  
+    line-height: 1.4;  
 }  
 
-/* 输入区域样式 */  
-.input-section {  
-    margin-bottom: 1.5rem;  
-    padding: 1.2rem;  
-    background: #f8fafc !important;  
-    border-radius: 12px;  
+/* 输入区域统一样式 */  
+.input-group {  
+    background: #f8fafc;  
     border: 1px solid #e2e8f0;  
-}
+    border-radius: 12px;  
+    padding: 1.5rem;  
+    margin-bottom: 1.5rem;  
+}  
 
 /* 输入标签样式 */  
 .input-label {  
     color: #2c3e50;  
-    font-size: 1rem;  
+    font-size: 1.1rem;  
     font-weight: 600;  
-    margin-bottom: 0.8rem;  
+    margin-bottom: 1rem;  
+    line-height: 1.4;  
 }  
 
 /* 输入框样式 */  
@@ -79,10 +81,18 @@ st.markdown("""
     box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;  
 }  
 
-/* Radio按钮组样式 */  
+/* Radio按钮组容器样式 */  
+.radio-group {  
+    background: #f8fafc;  
+    border: 1px solid #e2e8f0;  
+    border-radius: 12px;  
+    padding: 1.5rem;  
+    margin-bottom: 1.5rem;  
+}  
+
+/* Radio按钮样式 */  
 .stRadio > div {  
     padding: 0.5rem !important;  
-    background: transparent !important;  
 }  
 
 .stRadio > div > div > label {  
@@ -95,135 +105,56 @@ st.markdown("""
     transition: all 0.2s ease !important;  
 }  
 
-.stRadio > div > div > label:hover {  
-    background: #f0f4f8 !important;  
-}  
-
-/* 正常范围提示样式 */  
-.normal-range {  
-    margin-top: 0.8rem;  
-    padding: 0.8rem;  
-    color: #5a6c7d;  
-    font-size: 0.85rem;  
-    background: rgba(255,255,255,0.7);  
-    border-radius: 8px;  
-    border-left: 3px solid #1a73e8;  
-}  
-
-/* 计算按钮样式 */  
-.stButton > button {  
-    width: 80%;  
-    max-width: 300px;  
-    margin: 2rem auto;  
-    padding: 0.8rem;  
-    display: block;  
-    background: linear-gradient(145deg, #1a73e8, #1557b0);  
-    color: white;  
-    border: none;  
-    border-radius: 25px;  
-    font-size: 1.1rem;  
-    font-weight: 600;  
-    box-shadow: 3px 3px 8px #d1d9e6,  
-                -3px -3px 8px #ffffff;  
-    transition: all 0.3s ease;  
-}  
-
-.stButton > button:hover {  
-    transform: translateY(-2px);  
-    box-shadow: 4px 4px 10px #d1d9e6,  
-                -4px -4px 10px #ffffff;  
-}  
-
 /* 结果区域样式 */  
 .result-section {  
+    background: #f8fafc;  
+    border: 1px solid #e2e8f0;  
+    border-radius: 12px;  
+    padding: 2rem;  
     margin-top: 2rem;  
-    padding: 1.5rem;  
-    border-radius: 15px;  
-    background: linear-gradient(145deg, #ffffff, #f0f2f5);  
-    box-shadow: 8px 8px 16px #d1d9e6,  
-                -8px -8px 16px #ffffff;  
 }  
 
 .result-title {  
     font-size: 1.4rem;  
     font-weight: 700;  
-    text-align: center;  
     color: #2c3e50;  
     margin-bottom: 1.5rem;  
+    text-align: center;  
+}  
+
+.risk-percentage {  
+    font-size: 2.5rem;  
+    font-weight: 700;  
+    text-align: center;  
+    margin: 1.5rem 0;  
 }  
 
 .high-risk {  
     color: #dc3545;  
-    font-weight: 700;  
 }  
 
 .low-risk {  
     color: #28a745;  
-    font-weight: 700;  
 }  
 
 .risk-description {  
-    margin-top: 1rem;  
-    padding: 1rem;  
-    background: rgba(255,255,255,0.8);  
+    background: white;  
     border-radius: 8px;  
-    color: #2c3e50;  
+    padding: 1.5rem;  
+    margin-top: 1.5rem;  
     line-height: 1.6;  
-}  
-
-/* 移除Streamlit默认对齐 */  
-.css-1kyxreq {  
-    margin: 0 !important;  
-    padding: 0 !important;  
-}  
-
-.css-ocqkz7 {  
-    justify-content: flex-start !important;  
-}  
-
-/* 输入标签样式 */  
-.input-label {  
-    color: #2c3e50;  
+    text-align: center;  
     font-size: 1.1rem;  
-    font-weight: 600;  
-    margin-bottom: 0.8rem;  
-    text-align: left !important;  
 }  
 
-/* 正常范围提示样式 */  
-.normal-range {  
-    color: #64748b;  
-    font-size: 0.9rem;  
-    margin-top: 0.5rem;  
-    padding: 0.5rem 0;  
+/* 移除多余间距和背景 */  
+div[data-testid="stVerticalBlock"] {  
+    gap: 0 !important;  
 }  
 
-/* 移除不必要的边距和填充 */  
 .css-1544g2n, .css-1kyxreq {  
     margin: 0 !important;  
     padding: 0 !important;  
-}  
-
-/* 确保页面容器样式正确 */  
-.block-container {  
-    padding: 2rem !important;  
-    max-width: 1200px !important;  
-}  
-
-/* 调整数字输入框的增减按钮 */  
-.stNumberInput > div > div > button {  
-    background: #f8fafc !important;  
-    border: 1px solid #e2e8f0 !important;  
-    padding: 0.5rem !important;  
-}  
-
-.stNumberInput > div > div > button:hover {  
-    background: #f0f4f8 !important;  
-}  
-
-/* 确保输入控件可以正常交互 */  
-.stNumberInput, .stRadio {  
-    pointer-events: auto !important;  
 }  
 
 /* 调整列间距 */  
@@ -231,27 +162,13 @@ st.markdown("""
     padding: 0 1rem !important;  
 }  
 
-/* 响应式布局 */  
-@media (max-width: 768px) {  
-    .css-1y4p8pa {  
-        width: 100% !important;  
-        padding: 0 !important;  
-    }  
-}  
-
-/* 确保页面容器没有多余背景 */  
-.block-container {  
-    padding: 2rem !important;  
-    max-width: 1200px !important;  
-    background: transparent !important;  
-}  
-
-/* 移除stVerticalBlock的背景 */  
-div[data-testid="stVerticalBlock"] {  
-    background: transparent !important;  
-    gap: 0 !important;  
-}  
-
+/* 确保正常范围提示样式 */  
+.normal-range {  
+    color: #64748b;  
+    font-size: 0.9rem;  
+    margin-top: 0.5rem;  
+    line-height: 1.4;  
+}
 </style>  
 """, unsafe_allow_html=True)  
 
