@@ -21,155 +21,125 @@ st.markdown("""
 <style>  
 /* 全局样式 */  
 body {  
-    background-color: rgb(243, 244, 246);  
-    min-height: 100vh;  
+    background-color: #f8f9fa;  
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;  
 }  
 
 .container {  
-    max-width: 1000px;  
+    max-width: 600px;  
     margin: 0 auto;  
     padding: 2rem 1rem;  
 }  
 
-/* 标题区域 */  
-.header {  
-    background-color: white;  
-    border-top-left-radius: 0.75rem;  
-    border-top-right-radius: 0.75rem;  
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
-    padding: 2rem;  
-}  
-
-.main-title {  
-    font-size: 1.875rem;  
-    font-weight: 700;  
+/* 标题样式 */  
+.title {  
+    font-size: 1.5rem;  
+    font-weight: 600;  
     text-align: center;  
-    color: rgb(17, 24, 39);  
-    margin-bottom: 1rem;  
-}  
-
-.subtitle {  
-    font-size: 1.25rem;  
-    text-align: center;  
-    color: rgb(75, 85, 99);  
+    color: #333;  
     margin-bottom: 0.5rem;  
 }  
 
-/* 表单区域 */  
-.form-container {  
-    background-color: white;  
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
-    padding: 2rem;  
+.subtitle {  
+    font-size: 1rem;  
+    text-align: center;  
+    color: #666;  
+    margin-bottom: 2rem;  
 }  
 
+/* 表单项样式 */  
 .form-group {  
-    background-color: rgb(249, 250, 251);  
+    background-color: white;  
+    border-radius: 8px;  
     padding: 1rem;  
-    border-radius: 0.5rem;  
-    border: 1px solid rgb(229, 231, 235);  
-    margin-bottom: 1.5rem;  
-    transition: border-color 0.2s;  
-}  
-
-.form-group:hover {  
-    border-color: rgb(191, 219, 254);  
+    margin-bottom: 1rem;  
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);  
 }  
 
 /* 表单标签 */  
 .form-label {  
     display: block;  
-    color: rgb(17, 24, 39);  
-    font-weight: 500;  
-    margin-bottom: 0.5rem;  
+    color: #333;  
+    font-size: 0.9rem;  
+    margin-bottom: 0.75rem;  
 }  
 
 /* 单选按钮组 */  
 .radio-group {  
     display: flex;  
-    gap: 1rem;  
+    gap: 2rem;  
 }  
 
 .radio-label {  
     display: inline-flex;  
     align-items: center;  
+    cursor: pointer;  
 }  
 
 .radio-input {  
-    color: rgb(37, 99, 235);  
-}  
-
-.radio-text {  
-    margin-left: 0.5rem;  
+    margin-right: 0.5rem;  
+    cursor: pointer;  
 }  
 
 /* 数字输入框 */  
-.number-input-container {  
-    display: flex;  
-    align-items: center;  
-}  
-
 .number-input {  
-    display: block;  
     width: 100%;  
-    border-radius: 0.375rem;  
-    border: 1px solid rgb(209, 213, 219);  
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
+    padding: 0.5rem;  
+    border: 1px solid #ddd;  
+    border-radius: 4px;  
+    font-size: 1rem;  
 }  
 
-.number-input:focus {  
-    border-color: rgb(59, 130, 246);  
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);  
-}  
-
+/* 单位文本 */  
 .unit-text {  
+    color: #666;  
+    font-size: 0.9rem;  
     margin-left: 0.5rem;  
-    color: rgb(107, 114, 128);  
-    width: 5rem;  
 }  
 
-/* 范围提示文本 */  
-.range-text {  
-    margin-top: 0.25rem;  
-    font-size: 0.875rem;  
-    color: rgb(107, 114, 128);  
+/* 正常范围提示 */  
+.normal-range {  
+    color: #666;  
+    font-size: 0.8rem;  
+    margin-top: 0.5rem;  
 }  
 
 /* 提交按钮 */  
 .submit-button {  
-    padding: 0.75rem 2rem;  
-    background-color: rgb(37, 99, 235);  
+    display: block;  
+    width: 100%;  
+    max-width: 400px;  
+    margin: 2rem auto;  
+    padding: 0.75rem;  
+    background-color: #1a73e8;  
     color: white;  
-    font-size: 1.125rem;  
-    font-weight: 600;  
-    border-radius: 0.5rem;  
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
-    transition: all 0.2s;  
+    border: none;  
+    border-radius: 24px;  
+    font-size: 1rem;  
+    font-weight: 500;  
+    cursor: pointer;  
+    text-align: center;  
+    transition: background-color 0.2s;  
 }  
 
 .submit-button:hover {  
-    background-color: rgb(29, 78, 216);  
+    background-color: #1557b0;  
 }  
 
-.submit-button:focus {  
-    outline: none;  
-    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 4px rgb(59, 130, 246);  
-}  
-
-/* 结果显示区域 */  
+/* 结果区域 */  
 .result-container {  
     background-color: white;  
-    border-bottom-left-radius: 0.75rem;  
-    border-bottom-right-radius: 0.75rem;  
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
-    padding: 2rem;  
-    border-top: 2px solid rgb(219, 234, 254);  
+    border-radius: 8px;  
+    padding: 1.5rem;  
+    margin-top: 2rem;  
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);  
 }  
 
 .result-title {  
-    font-size: 1.5rem;  
-    font-weight: 700;  
+    font-size: 1.2rem;  
+    font-weight: 600;  
     text-align: center;  
-    color: rgb(17, 24, 39);  
+    color: #333;  
     margin-bottom: 1.5rem;  
 }  
 
@@ -181,24 +151,41 @@ body {
 }  
 
 .result-label {  
-    font-size: 1.125rem;  
+    color: #333;  
 }  
 
-.result-value {  
-    font-size: 1.5rem;  
-    font-weight: 700;  
+.probability-value {  
+    color: #1a73e8;  
+    font-weight: 600;  
+}  
+
+.risk-level {  
+    color: #dc3545;  
+    font-weight: 600;  
 }  
 
 .risk-description {  
-    margin-top: 1rem;  
+    background-color: #f8f9fa;  
     padding: 1rem;  
-    background-color: rgb(249, 250, 251);  
-    border-radius: 0.5rem;  
-    color: rgb(55, 65, 81);  
+    border-radius: 4px;  
+    margin-top: 1rem;  
+    color: #666;  
+    font-size: 0.9rem;  
 }  
 
-/* 响应式设计 */  
-@media (max-width: 768px) {  
+/* 输入框样式优化 */  
+input[type="number"] {  
+    -moz-appearance: textfield;  
+}  
+
+input[type="number"]::-webkit-outer-spin-button,  
+input[type="number"]::-webkit-inner-spin-button {  
+    -webkit-appearance: none;  
+    margin: 0;  
+}  
+
+/* 响应式调整 */  
+@media (max-width: 480px) {  
     .container {  
         padding: 1rem;  
     }  
@@ -207,9 +194,8 @@ body {
         padding: 0.75rem;  
     }  
     
-    .submit-button {  
-        padding: 0.5rem 1.5rem;  
-        font-size: 1rem;  
+    .radio-group {  
+        gap: 1rem;  
     }  
 }  
 </style>  
