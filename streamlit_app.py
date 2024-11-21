@@ -105,46 +105,112 @@ st.markdown("""
     transition: all 0.2s ease !important;  
 }  
 
-/* 结果区域样式 */  
+/* 结果区域整体样式 */  
 .result-section {  
-    background: #f8fafc;  
+    background: linear-gradient(145deg, #ffffff, #f8fafc);  
     border: 1px solid #e2e8f0;  
-    border-radius: 12px;  
-    padding: 2rem;  
+    border-radius: 16px;  
+    padding: 2.5rem;  
     margin-top: 2rem;  
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);  
 }  
 
+/* 结果标题样式 */  
 .result-title {  
-    font-size: 1.4rem;  
+    font-size: 1.8rem;  
     font-weight: 700;  
-    color: #2c3e50;  
-    margin-bottom: 1.5rem;  
+    color: #1a365d;  
     text-align: center;  
+    margin-bottom: 2.5rem;  
+    padding-bottom: 1rem;  
+    border-bottom: 2px solid #e2e8f0;  
 }  
 
-.risk-percentage {  
+/* 概率显示容器 */  
+.probability-container {  
+    background: white;  
+    border-radius: 12px;  
+    padding: 1.5rem;  
+    margin-bottom: 1.5rem;  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
+}  
+
+/* 概率标签样式 */  
+.probability-label {  
+    font-size: 1.2rem;  
+    color: #4a5568;  
+    margin-bottom: 0.5rem;  
+}  
+
+/* 概率数值样式 */  
+.probability-value {  
     font-size: 2.5rem;  
     font-weight: 700;  
+    color: #e53e3e;  
     text-align: center;  
-    margin: 1.5rem 0;  
+    margin: 1rem 0;  
 }  
 
-.high-risk {  
-    color: #dc3545;  
-}  
-
-.low-risk {  
-    color: #28a745;  
-}  
-
-.risk-description {  
+/* 风险等级容器 */  
+.risk-level-container {  
     background: white;  
+    border-radius: 12px;  
+    padding: 1.5rem;  
+    margin-bottom: 1.5rem;  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
+}  
+
+/* 风险等级标签 */  
+.risk-level-label {  
+    font-size: 1.2rem;  
+    color: #4a5568;  
+    margin-bottom: 0.5rem;  
+}  
+
+/* 高风险样式 */  
+.high-risk {  
+    color: #e53e3e;  
+    font-size: 1.8rem;  
+    font-weight: 700;  
+    text-align: center;  
+    margin: 1rem 0;  
+    padding: 0.5rem 1rem;  
+    background: #fff5f5;  
     border-radius: 8px;  
+    border: 2px solid #fc8181;  
+}  
+
+/* 低风险样式 */  
+.low-risk {  
+    color: #38a169;  
+    font-size: 1.8rem;  
+    font-weight: 700;  
+    text-align: center;  
+    margin: 1rem 0;  
+    padding: 0.5rem 1rem;  
+    background: #f0fff4;  
+    border-radius: 8px;  
+    border: 2px solid #9ae6b4;  
+}  
+
+/* 风险描述容器 */  
+.risk-description-container {  
+    background: white;  
+    border-radius: 12px;  
     padding: 1.5rem;  
     margin-top: 1.5rem;  
-    line-height: 1.6;  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
+}  
+
+/* 风险描述文本 */  
+.risk-description {  
+    font-size: 1.2rem;  
+    color: #2d3748;  
+    line-height: 1.8;  
     text-align: center;  
-    font-size: 1.1rem;  
+    padding: 1rem;  
+    background: #f7fafc;  
+    border-radius: 8px;  
 }  
 
 /* 移除多余间距和背景 */  
