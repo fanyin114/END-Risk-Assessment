@@ -33,22 +33,25 @@ st.markdown("""
     max-width: 1200px !important;  
 }  
 
-/* 标题样式 */  
+/* 标题样式调整 */  
 .title {  
     color: #2c3e50;  
     font-size: 2rem;  
     font-weight: 700;  
     text-align: center;  
-    margin-bottom: 0.5rem;  
-    line-height: 1.4;  
+    margin: 2rem 0 1rem 0;  
+    line-height: 1.6;  
+    padding: 0 1rem;  
+    word-wrap: break-word;  
 }  
 
 .subtitle {  
     color: #5a6c7d;  
     font-size: 1.2rem;  
     text-align: center;  
-    margin-bottom: 2rem;  
-    line-height: 1.4;  
+    margin-bottom: 3rem;  
+    line-height: 1.6;  
+    padding: 0 1rem;  
 }  
 
 /* 输入区域统一样式 */  
@@ -130,7 +133,52 @@ div[data-testid="stMarkdownContainer"] {
     box-shadow: none !important;  
     border: none !important;  
 }  
+/* 结果显示区域调整 */  
+.probability-container {  
+    background: white;  
+    border-radius: 12px;  
+    padding: 2rem;  
+    margin: 2rem 0;  /* 增加间距 */  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
+}  
 
+.risk-level-container {  
+    background: white;  
+    border-radius: 12px;  
+    padding: 2rem;  
+    margin: 2rem 0;  /* 增加间距 */  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
+}  
+
+/* 发生概率和风险等级的布局调整 */  
+.result-grid {  
+    display: grid;  
+    grid-template-columns: 1fr;  
+    gap: 2rem;  
+    margin: 2rem 0;  
+}  
+
+/* 移除默认间距 */  
+div[data-testid="stVerticalBlock"] {  
+    gap: 2rem !important;  /* 增加垂直间距 */  
+}  
+
+/* 确保背景色正确显示 */  
+.css-1544g2n {  
+    background-color: transparent !important;  
+}  
+
+/* 调整页面容器padding */  
+.block-container {  
+    padding: 3rem !important;  
+    max-width: 1200px !important;  
+}  
+
+/* 确保输入控件正确显示 */  
+.stNumberInput, .stRadio {  
+    width: 100% !important;  
+    margin: 1rem 0 !important;  
+}  
 /* 确保结果标题正确显示 */  
 .result-title {  
     font-size: 1.8rem;  
@@ -260,14 +308,16 @@ div[data-testid="stVerticalBlock"] {
     margin-top: 0.5rem;  
     line-height: 1.4;  
 }
-/* 指标模块容器样式 */  
+/* 指标模块容器样式调整 */  
 .input-group {  
     background: #f8fafc;  
-    border: 2px solid #4a90e2;  /* 蓝色边框 */  
-    border-radius: 20px;        /* 圆角边框 */  
-    padding: 1.5rem 2rem;  
-    margin: 1rem 0;  
+    border: 2px solid #4a90e2;  
+    border-radius: 20px;  
+    padding: 2rem;  
+    margin: 2rem 0;  /* 增加上下间距 */  
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
+    width: 100%;  
+    display: block;  
 }  
 
 /* 指标标题样式 */  
