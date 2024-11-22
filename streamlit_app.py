@@ -36,19 +36,19 @@ st.markdown("""
 
 /* 修改标题样式，确保完整显示并添加立体效果 */  
 .title {  
-    color: #0f172a;  
+    width: 100%; /* 确保宽度占满 */  
+    text-align: center;  
+    margin: 1rem auto 0.5rem; /* 减小底部间距 */  
+    padding: 0.6rem 1rem;  
     font-size: 1.6rem;  
     font-weight: 700;  
-    text-align: center;  
-    margin: 1.5rem 0 0.8rem 0;  
-    line-height: 1.4;  
-    padding: 0.8rem;  
     background: linear-gradient(120deg, #1e40af, #3b82f6);  
     -webkit-background-clip: text;  
     -webkit-text-fill-color: transparent;  
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);  
     position: relative;  
     z-index: 1;  
+    display: block; /* 确保块级显示 */  
 }  
 
 .title::before {  
@@ -233,6 +233,83 @@ st.markdown("""
     border-radius: 4px;  
 }  
 
+/* 输入组间距优化 */  
+.input-group {  
+    margin: 0.4rem 0; /* 减小上下间距 */  
+    padding: 0.8rem; /* 稍微减小内边距 */  
+}  
+
+/* 指标名称立体效果 */  
+.input-label {  
+    color: #1e293b;  
+    font-size: 0.95rem;  
+    font-weight: 600;  
+    margin-bottom: 0.4rem;  
+    padding: 0.4rem 0.6rem;  
+    background: linear-gradient(145deg, #f8fafc, #f1f5f9);  
+    border-radius: 4px;  
+    position: relative;  
+    display: inline-block;  
+    box-shadow:   
+        2px 2px 4px rgba(0, 0, 0, 0.05),  
+        -1px -1px 3px rgba(255, 255, 255, 0.8),  
+        inset 1px 1px 2px rgba(255, 255, 255, 0.9),  
+        inset -1px -1px 2px rgba(0, 0, 0, 0.05);  
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);  
+    border: 1px solid rgba(255, 255, 255, 0.3);  
+    transition: all 0.2s ease;  
+}  
+
+.input-label::before {  
+    content: '';  
+    position: absolute;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    bottom: 0;  
+    background: linear-gradient(120deg,   
+        rgba(255,255,255,0.2),   
+        rgba(255,255,255,0.05));  
+    border-radius: 4px;  
+    z-index: -1;  
+}  
+
+/* 悬停效果 */  
+.input-label:hover {  
+    transform: translateY(-1px);  
+    box-shadow:   
+        3px 3px 6px rgba(0, 0, 0, 0.08),  
+        -1px -1px 3px rgba(255, 255, 255, 0.9),  
+        inset 1px 1px 2px rgba(255, 255, 255, 0.9),  
+        inset -1px -1px 2px rgba(0, 0, 0, 0.05);  
+}  
+
+/* 输入框与标签间距优化 */  
+.stNumberInput {  
+    margin-top: 0.3rem; /* 减小与标签的间距 */  
+}  
+
+/* 确保英文文本对齐 */  
+[data-testid="stMarkdownContainer"] {  
+    text-align: center !important;  
+    width: 100% !important;  
+}  
+
+/* 优化标题容器 */  
+.block-container > div:first-child {  
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    flex-direction: column;  
+    width: 100%;  
+}  
+
+/* 调整输入组之间的间距 */  
+div[data-testid="stVerticalBlock"] {  
+    gap: 0.4rem !important; /* 减小组件之间的间距 */  
+}  
+
+
 /* 辅助样式 */  
 .normal-range {  
     color: #64748b;  
@@ -391,6 +468,7 @@ div[data-testid="stVerticalBlock"] {
 .stButton > button:hover::before {  
     left: 100%;  
 }  
+ 
 
 /* 响应式调整 */  
 @media (max-width: 768px) {  
@@ -399,11 +477,13 @@ div[data-testid="stVerticalBlock"] {
     }  
     
     .input-group {  
-        padding: 0.8rem;  
+        margin: 0.3rem 0; 
+        padding: 0.6rem;          
     }  
     
     .input-label {  
-        font-size: 0.9rem;  
+        font-size: 0.9rem; 
+        padding: 0.3rem 0.5rem;
     }  
     
     .stButton > button {  
