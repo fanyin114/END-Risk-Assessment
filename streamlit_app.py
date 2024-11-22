@@ -34,28 +34,35 @@ st.markdown("""
     background: #f8fafc;  
 }  
 
-/* 标题样式 */  
+/* 修改标题样式，确保完整显示并添加立体效果 */  
 .title {  
     color: #0f172a;  
     font-size: 1.6rem;  
     font-weight: 700;  
     text-align: center;  
-    margin: 1rem 0 0.5rem 0;  
-    line-height: 1.3;  
-    padding: 0 0.5rem;  
+    margin: 1.5rem 0 0.8rem 0;  
+    line-height: 1.4;  
+    padding: 0.8rem;  
     background: linear-gradient(120deg, #1e40af, #3b82f6);  
     -webkit-background-clip: text;  
     -webkit-text-fill-color: transparent;  
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);  
+    position: relative;  
+    z-index: 1;  
 }  
 
-.subtitle {  
-    color: #475569;  
-    font-size: 1.1rem;  
-    text-align: center;  
-    margin-bottom: 1.5rem;  
-    line-height: 1.3;  
-    padding: 0 0.5rem;  
+.title::before {  
+    content: '';  
+    position: absolute;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    bottom: 0;  
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.05));  
+    z-index: -1;  
+    border-radius: 8px;  
 }  
+  
 
 /* 输入区域样式 */  
 .input-group {  
@@ -246,6 +253,143 @@ div[data-testid="stVerticalBlock"] > div {
 
 div[data-testid="stVerticalBlock"] {  
     gap: 0.8rem !important;  
+}  
+
+/* 为指标添加立体效果 */  
+.input-group {  
+    background: linear-gradient(145deg, #ffffff, #f1f5f9);  
+    border: 1px solid #e2e8f0;  
+    border-radius: 8px;  
+    padding: 1rem;  
+    margin: 0.6rem 0;  
+    box-shadow:   
+        0 2px 4px rgba(0, 0, 0, 0.05),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
+    transition: all 0.2s ease;  
+    position: relative;  
+    overflow: hidden;  
+}  
+
+.input-group::before {  
+    content: '';  
+    position: absolute;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    height: 4px;  
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);  
+    opacity: 0;  
+    transition: opacity 0.2s ease;  
+}  
+
+.input-group:hover::before {  
+    opacity: 1;  
+}  
+
+.input-group:hover {  
+    border-color: #3b82f6;  
+    box-shadow:   
+        0 4px 6px rgba(59, 130, 246, 0.1),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
+    transform: translateY(-1px);  
+}  
+
+/* 输入控件立体效果 */  
+.stNumberInput > div > div > input {  
+    background: linear-gradient(to bottom, #ffffff, #f8fafc) !important;  
+    box-shadow:   
+        inset 0 2px 4px rgba(0, 0, 0, 0.05),  
+        0 1px 2px rgba(255, 255, 255, 0.9) !important;  
+}  
+
+/* 结果显示立体效果 */  
+.probability-container,   
+.risk-level-container,   
+.risk-description-container {  
+    background: linear-gradient(145deg, #ffffff, #f8fafc);  
+    border-radius: 8px;  
+    padding: 1rem;  
+    margin: 0.8rem 0;  
+    box-shadow:   
+        0 2px 4px rgba(0, 0, 0, 0.05),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
+    position: relative;  
+    overflow: hidden;  
+}  
+
+.probability-value {  
+    background: linear-gradient(145deg, #fee2e2, #fef2f2);  
+    box-shadow:   
+        0 2px 4px rgba(220, 38, 38, 0.1),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
+}  
+
+/* 风险等级立体效果 */  
+.high-risk, .low-risk {  
+    position: relative;  
+    box-shadow:   
+        0 2px 4px rgba(0, 0, 0, 0.05),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
+}  
+
+.high-risk::before,  
+.low-risk::before {  
+    content: '';  
+    position: absolute;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    height: 2px;  
+    background: linear-gradient(90deg,   
+        var(--highlight-color, #dc2626),   
+        var(--highlight-color-light, #ef4444));  
+    opacity: 0.8;  
+}  
+
+.high-risk {  
+    --highlight-color: #dc2626;  
+    --highlight-color-light: #ef4444;  
+}  
+
+.low-risk {  
+    --highlight-color: #16a34a;  
+    --highlight-color-light: #22c55e;  
+}  
+
+/* 计算按钮立体效果 */  
+.stButton > button {  
+    background: linear-gradient(145deg, #3b82f6, #1e40af) !important;  
+    box-shadow:   
+        0 2px 4px rgba(59, 130, 246, 0.2),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.1) !important;  
+    border: none !important;  
+    position: relative;  
+    overflow: hidden;  
+}  
+
+.stButton > button::before {  
+    content: '';  
+    position: absolute;  
+    top: 0;  
+    left: -100%;  
+    width: 100%;  
+    height: 100%;  
+    background: linear-gradient(  
+        120deg,  
+        transparent,  
+        rgba(255, 255, 255, 0.2),  
+        transparent  
+    );  
+    transition: 0.5s;  
+}  
+
+.stButton > button:hover::before {  
+    left: 100%;  
 }  
 
 /* 响应式调整 */  
