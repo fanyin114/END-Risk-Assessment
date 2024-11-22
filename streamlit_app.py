@@ -51,20 +51,21 @@ st.markdown("""
     display: block;  
 }  
 
-/* 默认所有markdown内容左对齐，但排除英文标题 */  
-[data-testid="stMarkdownContainer"] p:not(:contains("Early Neurological Deterioration Risk Assessment System")) {  
+/* 默认所有markdown内容左对齐 */  
+[data-testid="stMarkdownContainer"] p {  
     text-align: left !important;  
     width: 100% !important;  
 }  
 
-/* 专门为英文标题设置居中样式 */  
-[data-testid="stMarkdownContainer"] p:contains("Early Neurological Deterioration Risk Assessment System") {  
+/* 专门为英文标题设置居中样式 - 使用更强的选择器 */  
+[data-testid="stMarkdownContainer"] p:first-of-type {  
     text-align: center !important;  
     width: 100% !important;  
     font-size: 1.2rem !important;  
     font-weight: 600 !important;  
     margin: 1rem auto !important;  
     color: #1e40af !important;  
+    display: block !important;  
 }
 
 
