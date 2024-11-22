@@ -469,6 +469,111 @@ div[data-testid="stVerticalBlock"] {
     left: 100%;  
 }  
  
+/* 指标名称立体效果优化 */  
+.input-label {  
+    text-align: left;  
+    width: auto; /* 改为自适应宽度 */  
+    padding: 0.4rem 0.8rem;  
+    margin-bottom: 0.4rem;  
+    display: inline-block;  
+    background: linear-gradient(145deg, #f0f7ff, #e6f0fd); /* 添加浅蓝色背景 */  
+    border-radius: 6px;  
+    box-shadow:   
+        2px 2px 4px rgba(0, 0, 0, 0.05),  
+        -1px -1px 3px rgba(255, 255, 255, 0.8),  
+        inset 1px 1px 2px rgba(255, 255, 255, 0.9),  
+        inset -1px -1px 2px rgba(0, 0, 0, 0.05);  
+    border: 1px solid rgba(59, 130, 246, 0.1);  
+    color: #1e40af;  
+}  
+
+/* 为不同指标添加不同的背景色 */  
+.input-label[data-indicator="toast"] {  
+    background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
+    border-color: rgba(59, 130, 246, 0.15);  
+}  
+
+.input-label[data-indicator="artery"] {  
+    background: linear-gradient(145deg, #f0fdf4, #dcfce7);  
+    border-color: rgba(22, 163, 74, 0.15);  
+}  
+
+.input-label[data-indicator="nihss"] {  
+    background: linear-gradient(145deg, #fef3f2, #fee2e2);  
+    border-color: rgba(220, 38, 38, 0.15);  
+}  
+
+.input-label[data-indicator="neutrophil"] {  
+    background: linear-gradient(145deg, #f5f3ff, #ede9fe);  
+    border-color: rgba(124, 58, 237, 0.15);  
+}  
+
+.input-label[data-indicator="pressure"] {  
+    background: linear-gradient(145deg, #fff7ed, #ffedd5);  
+    border-color: rgba(234, 88, 12, 0.15);  
+}  
+
+.input-label[data-indicator="rbc"] {  
+    background: linear-gradient(145deg, #fdf2f8, #fce7f3);  
+    border-color: rgba(219, 39, 119, 0.15);  
+}  
+
+/* 结果显示区域居中优化 */  
+.result-title {  
+    text-align: center;  
+    width: 100%;  
+    margin: 1.5rem auto 1rem;  
+}  
+
+.probability-container,   
+.risk-level-container {  
+    text-align: center;  
+    max-width: 600px;  
+    margin: 1rem auto;  
+}  
+
+/* 风险提示模块居中优化 */  
+.high-risk, .low-risk {  
+    text-align: center;  
+    max-width: 600px;  
+    margin: 1rem auto;  
+    padding: 0.8rem 1.2rem;  
+    font-size: 1.1rem;  
+    background: linear-gradient(145deg, #fee2e2, #fef2f2);  
+    border-radius: 8px;  
+    box-shadow:   
+        0 4px 6px rgba(220, 38, 38, 0.1),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
+}  
+
+.low-risk {  
+    background: linear-gradient(145deg, #dcfce7, #f0fdf4);  
+    box-shadow:   
+        0 4px 6px rgba(22, 163, 74, 0.1),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
+}  
+
+/* 输入组样式优化 */  
+.input-group {  
+    text-align: left;  
+    margin: 0.4rem 0;  
+}  
+
+/* 响应式调整 */  
+@media (max-width: 768px) {  
+    .input-label {  
+        font-size: 0.85rem;  
+        padding: 0.3rem 0.6rem;  
+    }  
+    
+    .high-risk, .low-risk {  
+        font-size: 1rem;  
+        padding: 0.6rem 1rem;  
+    }  
+}  
+
 
 /* 响应式调整 */  
 @media (max-width: 768px) {  
