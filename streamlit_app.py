@@ -20,6 +20,53 @@ st.set_page_config(
 # 自定义CSS样式  
 st.markdown("""
 <style>
+/* 英文标题居中 */
+.subtitle {
+    text-align: center !important;
+    width: 100% !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    margin: 1rem auto !important;
+    color: #1e40af !important;
+}
+
+/* 评估结果标题居中 */
+.result-title {
+    text-align: center !important;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 1.2rem auto;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid #e2e8f0;
+    max-width: 600px;
+}
+
+/* 发生概率和风险等级居中 */
+.result-section p {
+    text-align: center !important;
+    margin: 1rem auto !important;
+    font-size: 1.1rem !important;
+}
+
+/* 风险描述文本居中 */
+.risk-description {
+    text-align: center !important;
+    margin: 1rem auto !important;
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+}
+
+/* 范围说明靠左 */
+.normal-range {
+    text-align: left !important;
+    font-size: 0.85rem !important;
+    color: #64748b !important;
+    margin: 0.2rem 0 0.5rem 0 !important;
+    padding-left: 0.5rem !important;
+}
+
+/* 按钮样式 */
 .stButton > button {
     background: linear-gradient(145deg, #3b82f6, #1e40af) !important;
     color: white !important;
@@ -32,96 +79,48 @@ st.markdown("""
     height: 2.8rem !important;
     box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;
     transition: all 0.2s ease !important;
+    display: block !important;
+    margin: 1.5rem auto !important;
 }
 
-.result-title {
-    text-align: center;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #0f172a;
-    margin: 1.2rem auto;
-    padding-bottom: 0.6rem;
-    border-bottom: 2px solid #e2e8f0;
-    max-width: 600px;
-}
-
-.probability-container,
-.risk-level-container {
-    text-align: center;
-    max-width: 600px;
-    margin: 1rem auto;
-    padding: 1rem;
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
-    border-radius: 8px;
-    box-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.05),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.02),
-        inset 0 2px 4px rgba(255, 255, 255, 0.8);
+/* 高风险和低风险样式 */
+.high-risk,
+.low-risk {
+    text-align: center !important;
+    display: inline-block !important;
+    padding: 0.3rem 1rem !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
 }
 
 .high-risk {
-    text-align: center;
-    max-width: 600px;
-    margin: 1rem auto;
-    padding: 0.8rem 1.2rem;
-    color: #dc2626;
-    background: linear-gradient(145deg, #fee2e2, #fef2f2);
-    border: 1px solid #fecaca;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    box-shadow: 
-        0 2px 4px rgba(220, 38, 38, 0.1),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.02),
-        inset 0 2px 4px rgba(255, 255, 255, 0.8);
+    color: #dc2626 !important;
+    background: #fee2e2 !important;
 }
 
 .low-risk {
-    text-align: center;
-    max-width: 600px;
-    margin: 1rem auto;
-    padding: 0.8rem 1.2rem;
-    color: #166534;
-    background: linear-gradient(145deg, #dcfce7, #f0fdf4);
-    border: 1px solid #bbf7d0;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    box-shadow: 
-        0 2px 4px rgba(22, 163, 74, 0.1),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.02),
-        inset 0 2px 4px rgba(255, 255, 255, 0.8);
+    color: #166534 !important;
+    background: #dcfce7 !important;
 }
 
+/* 响应式样式 */
 @media (max-width: 768px) {
-    .block-container {
-        padding: 1rem !important;
+    .subtitle {
+        font-size: 1rem !important;
     }
     
-    .input-group {
-        margin: 0.3rem 0;
-        padding: 0.6rem;
+    .result-title {
+        font-size: 1.2rem !important;
     }
     
-    .input-label {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
+    .normal-range {
+        font-size: 0.8rem !important;
     }
     
     .stButton > button {
         min-width: 220px !important;
         padding: 0.6rem 1.2rem !important;
         font-size: 1rem !important;
-    }
-    
-    .title {
-        font-size: 1.4rem;
-    }
-    
-    .high-risk,
-    .low-risk {
-        font-size: 1rem;
-        padding: 0.6rem 1rem;
     }
 }
 </style>
@@ -274,6 +273,8 @@ if st.button("计算风险评分 / Calculate Risk Score", key="calculate_button"
             st.markdown(f"<p>发生概率 / Probability: <span class='{'high-risk' if risk_percentage >= 29 else 'low-risk'}'>{risk_percentage:.2f}%</span></p>", unsafe_allow_html=True)  
             st.markdown(f"<p>风险等级 / Risk Level: <span class='{'high-risk' if risk_percentage >= 29 else 'low-risk'}'>{risk_level}</span></p>", unsafe_allow_html=True)  
             
+            # 风险描述  
+             
             if risk_percentage >= 29:  
                 st.markdown("""  
                     <p class='risk-description'>  
