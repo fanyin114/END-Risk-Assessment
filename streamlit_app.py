@@ -51,6 +51,16 @@ st.markdown("""
     display: block;  
 }  
 
+/* 移除其他可能影响标题居中的样式 */  
+[data-testid="stMarkdownContainer"] {  
+    text-align: left !important;  
+}  
+
+/* 确保title class的样式优先级更高 */  
+[data-testid="stMarkdownContainer"] .title {  
+    text-align: center !important;  
+}
+
 /* 默认所有markdown内容左对齐，但排除英文标题 */  
 [data-testid="stMarkdownContainer"] p:not(:contains("Early Neurological Deterioration Risk Assessment System")) {  
     text-align: left !important;  
