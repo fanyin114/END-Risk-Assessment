@@ -1,3 +1,22 @@
+import streamlit as st  
+import xgboost as xgb  
+import numpy as np  
+import pandas as pd  
+import joblib  
+import logging  
+import random  
+
+# 设置随机种子  
+np.random.seed(0)  
+random.seed(0)  
+
+# 设置页面配置  
+st.set_page_config(  
+    page_title="END Risk Assessment System",  
+    layout="wide",  
+    initial_sidebar_state="collapsed"  
+)  
+
 # 自定义CSS样式  
 st.markdown("""  
 <style>  
@@ -7,13 +26,6 @@ st.markdown("""
     padding: 0;  
     box-sizing: border-box;  
 }  
-/* 默认所有markdown内容左对齐，但排除英文标题 */  
-[data-testid="stMarkdownContainer"] p:contains("Early Neurological Deterioration Risk Assessment System") {  
-    text-align: center !important;  
-    width: 100% !important;  
-}  
-
-
 
 /* 2. 页面容器样式 */  
 .block-container {  
@@ -22,53 +34,31 @@ st.markdown("""
     background: #f8fafc;  
 }  
 
-/* 3. 标题样式 - 增加选择器优先级 */  
-.title,   
-[data-testid="stMarkdownContainer"] .title {  
-    width: 100% !important;  
-    text-align: center !important;  
-    margin: 1rem auto 0.5rem !important;  
-    padding: 0.6rem 1rem !important;  
-    font-size: 1.6rem !important;  
-    font-weight: 700 !important;  
+/* 3. 标题样式 */  
+.title {  
+    width: 100%;  
+    text-align: center;  
+    margin: 1rem auto 0.5rem;  
+    padding: 0.6rem 1rem;  
+    font-size: 1.6rem;  
+    font-weight: 700;  
     background: linear-gradient(120deg, #1e40af, #3b82f6);  
     -webkit-background-clip: text;  
     -webkit-text-fill-color: transparent;  
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);  
     position: relative;  
     z-index: 1;  
-    display: block !important;  
+    display: block;  
 }  
 
-/* 英文标题特定样式 - 提高优先级 */  
-.title.english-title,  
-[data-testid="stMarkdownContainer"] .title.english-title {  
-    font-size: 1.2rem !important;  
-    margin-top: 0 !important;  
-    text-align: center !important;  
-}  
-
-/* 移除可能影响标题对齐的样式 */  
-[data-testid="stMarkdownContainer"] > div {  
-    text-align: left !important;  
-}
-
- 
-
-/* 专门为英文标题设置居中样式 */  
-[data-testid="stMarkdownContainer"] p:contains("Early Neurological Deterioration Risk Assessment System") {  
+/* 英文标题居中 */  
+[data-testid="stMarkdownContainer"] {  
     text-align: center !important;  
     width: 100% !important;  
-    font-size: 1.2rem !important;  
-    font-weight: 600 !important;  
-    margin: 1rem auto !important;  
-    color: #1e40af !important;  
-}
+}  
 
 /* 4. 输入区域样式 */  
-.input-group,  
-[data-testid="stMarkdownContainer"] .input-group {  
-    text-align: left !important;  
+.input-group {  
     background: linear-gradient(145deg, #ffffff, #f1f5f9);  
     border: 1px solid #e2e8f0;  
     border-radius: 8px;  
@@ -280,10 +270,10 @@ st.markdown("""
         font-size: 1rem;  
         padding: 0.6rem 1rem;  
     }  
-}   
+}
 
 </style>
-""", unsafe_allow_html=True)
+""", unsafe_allow_html=True)  
 
 # 设置日志  
 logging.basicConfig(level=logging.DEBUG)  
@@ -432,8 +422,6 @@ if st.button("计算风险评分 / Calculate Risk Score", key="calculate_button"
             st.markdown(f"<p>发生概率 / Probability: <span class='{'high-risk' if risk_percentage >= 29 else 'low-risk'}'>{risk_percentage:.2f}%</span></p>", unsafe_allow_html=True)  
             st.markdown(f"<p>风险等级 / Risk Level: <span class='{'high-risk' if risk_percentage >= 29 else 'low-risk'}'>{risk_level}</span></p>", unsafe_allow_html=True)  
             
-            # 风险描述  
-             
             if risk_percentage >= 29:  
                 st.markdown("""  
                     <p class='risk-description'>  
