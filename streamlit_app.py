@@ -51,11 +51,23 @@ st.markdown("""
     display: block;  
 }  
 
-/* 英文标题居中 */  
+ 
+
+/* 默认所有markdown内容左对齐 */  
 [data-testid="stMarkdownContainer"] {  
     text-align: left !important;  
     width: 100% !important;  
 }  
+
+/* 专门为英文标题设置居中样式 */  
+.english-title {  
+    text-align: center !important;  
+    width: 100% !important;  
+    font-size: 1.2rem !important;  
+    font-weight: 600 !important;  
+    margin: 1rem auto !important;  
+    color: #1e40af !important;  
+} 
 
 /* 4. 输入区域样式 */  
 .input-group {  
