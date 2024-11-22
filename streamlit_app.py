@@ -1,128 +1,287 @@
-import streamlit as st  
-import xgboost as xgb  
-import numpy as np  
-import pandas as pd  
-import joblib  
-import logging  
-import random  
-
-# 设置随机种子  
-np.random.seed(0)  
-random.seed(0)  
-
-# 设置页面配置  
-st.set_page_config(  
-    page_title="END Risk Assessment System",  
-    layout="wide",  
-    initial_sidebar_state="collapsed"  
-)  
-
 # 自定义CSS样式  
-st.markdown("""
-<style>
-/* 英文标题居中 */
-.subtitle {
-    text-align: center !important;
-    width: 100% !important;
-    font-size: 1.2rem !important;
-    font-weight: 600 !important;
-    margin: 1rem auto !important;
-    color: #1e40af !important;
+st.markdown("""  
+<style>  
+/* 1. 全局样式 */  
+* {  
+    margin: 0;  
+    padding: 0;  
+    box-sizing: border-box;  
+}  
+/* 默认所有markdown内容左对齐，但排除英文标题 */  
+[data-testid="stMarkdownContainer"] p:contains("Early Neurological Deterioration Risk Assessment System") {  
+    text-align: center !important;  
+    width: 100% !important;  
+}  
+
+
+
+/* 2. 页面容器样式 */  
+.block-container {  
+    padding: 1.5rem !important;  
+    max-width: 900px !important;  
+    background: #f8fafc;  
+}  
+
+/* 3. 标题样式 - 增加选择器优先级 */  
+.title,   
+[data-testid="stMarkdownContainer"] .title {  
+    width: 100% !important;  
+    text-align: center !important;  
+    margin: 1rem auto 0.5rem !important;  
+    padding: 0.6rem 1rem !important;  
+    font-size: 1.6rem !important;  
+    font-weight: 700 !important;  
+    background: linear-gradient(120deg, #1e40af, #3b82f6);  
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;  
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);  
+    position: relative;  
+    z-index: 1;  
+    display: block !important;  
+}  
+
+/* 英文标题特定样式 - 提高优先级 */  
+.title.english-title,  
+[data-testid="stMarkdownContainer"] .title.english-title {  
+    font-size: 1.2rem !important;  
+    margin-top: 0 !important;  
+    text-align: center !important;  
+}  
+
+/* 移除可能影响标题对齐的样式 */  
+[data-testid="stMarkdownContainer"] > div {  
+    text-align: left !important;  
 }
 
-/* 评估结果标题居中 */
-.result-title {
-    text-align: center !important;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #0f172a;
-    margin: 1.2rem auto;
-    padding-bottom: 0.6rem;
-    border-bottom: 2px solid #e2e8f0;
-    max-width: 600px;
+ 
+
+/* 专门为英文标题设置居中样式 */  
+[data-testid="stMarkdownContainer"] p:contains("Early Neurological Deterioration Risk Assessment System") {  
+    text-align: center !important;  
+    width: 100% !important;  
+    font-size: 1.2rem !important;  
+    font-weight: 600 !important;  
+    margin: 1rem auto !important;  
+    color: #1e40af !important;  
 }
 
-/* 发生概率和风险等级居中 */
-.result-section p {
-    text-align: center !important;
-    margin: 1rem auto !important;
-    font-size: 1.1rem !important;
-}
+/* 4. 输入区域样式 */  
+.input-group,  
+[data-testid="stMarkdownContainer"] .input-group {  
+    text-align: left !important;  
+    background: linear-gradient(145deg, #ffffff, #f1f5f9);  
+    border: 1px solid #e2e8f0;  
+    border-radius: 8px;  
+    padding: 1rem;  
+    margin: 0.6rem 0;  
+    text-align: left;  
+    box-shadow:   
+        0 2px 4px rgba(0, 0, 0, 0.05),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
+    transition: all 0.2s ease;  
+    position: relative;  
+    overflow: hidden;  
+}  
 
-/* 风险描述文本居中 */
-.risk-description {
-    text-align: center !important;
-    margin: 1rem auto !important;
-    font-size: 1.1rem !important;
-    line-height: 1.6 !important;
-}
+/* 5. 指标名称样式 */  
+.input-label {  
+    text-align: left;  
+    width: 100%;  
+    padding: 0.6rem 1rem;  
+    margin-bottom: 0.4rem;  
+    display: block;  
+    font-size: 1rem;  
+    font-weight: 600;  
+    color: #2563eb;  
+    border-radius: 6px;  
+    background: linear-gradient(145deg, #f0f7ff, #e6f0fd);  
+    box-shadow:   
+        2px 2px 4px rgba(0, 0, 0, 0.05),  
+        -1px -1px 3px rgba(255, 255, 255, 0.8),  
+        inset 1px 1px 2px rgba(255, 255, 255, 0.9),  
+        inset -1px -1px 2px rgba(0, 0, 0, 0.05);  
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);  
+    transition: all 0.2s ease;  
+    border: 1px solid rgba(59, 130, 246, 0.2);  
+}  
 
-/* 范围说明靠左 */
-.normal-range {
-    text-align: left !important;
-    font-size: 0.85rem !important;
-    color: #64748b !important;
-    margin: 0.2rem 0 0.5rem 0 !important;
-    padding-left: 0.5rem !important;
-}
+/* 范围说明样式 */  
+.range-info {  
+    text-align: left;  
+    font-size: 0.85rem;  
+    color: #64748b;  
+    margin: -0.2rem 0 0.3rem 1rem;  
+    padding: 0;  
+    font-weight: normal;  
+    line-height: 1.2;  
+} 
 
-/* 按钮样式 */
-.stButton > button {
-    background: linear-gradient(145deg, #3b82f6, #1e40af) !important;
-    color: white !important;
-    padding: 0.6rem 2.5rem !important;
-    border-radius: 6px !important;
-    border: none !important;
-    font-size: 1.1rem !important;
-    font-weight: 600 !important;
-    min-width: 250px !important;
-    height: 2.8rem !important;
-    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;
-    transition: all 0.2s ease !important;
-    display: block !important;
-    margin: 1.5rem auto !important;
-}
+/* 6. 指标颜色变体 */  
+.input-label[data-indicator="toast"] {  
+    background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
+    border-color: rgba(59, 130, 246, 0.2);  
+}  
 
-/* 高风险和低风险样式 */
-.high-risk,
-.low-risk {
-    text-align: center !important;
-    display: inline-block !important;
-    padding: 0.3rem 1rem !important;
-    border-radius: 4px !important;
-    font-weight: 600 !important;
-}
+.input-label[data-indicator="artery"] {  
+    background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
+    border-color: rgba(59, 130, 246, 0.2);  
+}  
 
-.high-risk {
-    color: #dc2626 !important;
-    background: #fee2e2 !important;
-}
+.input-label[data-indicator="nihss"] {  
+    background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
+    border-color: rgba(59, 130, 246, 0.2);  
+}  
 
-.low-risk {
-    color: #166534 !important;
-    background: #dcfce7 !important;
-}
+.input-label[data-indicator="neutrophil"] {  
+    background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
+    border-color: rgba(59, 130, 246, 0.2);  
+}  
 
-/* 响应式样式 */
-@media (max-width: 768px) {
-    .subtitle {
-        font-size: 1rem !important;
-    }
+.input-label[data-indicator="pressure"] {  
+    background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
+    border-color: rgba(59, 130, 246, 0.2);  
+}  
+
+.input-label[data-indicator="rbc"] {  
+    background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
+    border-color: rgba(59, 130, 246, 0.2);  
+}  
+
+/* 7. 输入控件样式 */  
+.stNumberInput > div > div > input {  
+    width: 100% !important;  
+    min-width: 220px !important;  
+    padding: 0.5rem 0.7rem !important;  
+    background: linear-gradient(to bottom, #ffffff, #f8fafc) !important;  
+    border: 1px solid #cbd5e1 !important;  
+    border-radius: 6px !important;  
+    font-size: 0.9rem !important;  
+    box-shadow:   
+        inset 0 2px 4px rgba(0, 0, 0, 0.05),  
+        0 1px 2px rgba(255, 255, 255, 0.9) !important;  
+    transition: all 0.2s ease !important;  
+}  
+
+/* 8. 计算按钮样式 */  
+.stButton {  
+    display: flex !important;  
+    justify-content: center !important;  
+    margin: 1.5rem auto !important;  
+}  
+
+.stButton > button {  
+    background: linear-gradient(145deg, #3b82f6, #1e40af) !important;  
+    color: white !important;  
+    padding: 0.6rem 2.5rem !important;  
+    border-radius: 6px !important;  
+    border: none !important;  
+    font-size: 1.1rem !important;  
+    font-weight: 600 !important;  
+    min-width: 250px !important;  
+    height: 2.8rem !important;  
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;  
+    transition: all 0.2s ease !important;  
+}  
+
+/* 9. 结果显示样式 */  
+.result-title {  
+    text-align: center;  
+    font-size: 1.3rem;  
+    font-weight: 600;  
+    color: #0f172a;  
+    margin: 1.2rem auto;  
+    padding-bottom: 0.6rem;  
+    border-bottom: 2px solid #e2e8f0;  
+    max-width: 600px;  
+}  
+
+.probability-container,  
+.risk-level-container {  
+    text-align: center;  
+    max-width: 600px;  
+    margin: 1rem auto;  
+    padding: 1rem;  
+    background: linear-gradient(145deg, #ffffff, #f8fafc);  
+    border-radius: 8px;  
+    box-shadow:   
+        0 2px 4px rgba(0, 0, 0, 0.05),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
+}  
+
+/* 10. 风险等级样式 */  
+.high-risk {  
+    text-align: center;  
+    max-width: 600px;  
+    margin: 1rem auto;  
+    padding: 0.8rem 1.2rem;  
+    color: #dc2626;  
+    background: linear-gradient(145deg, #fee2e2, #fef2f2);  
+    border: 1px solid #fecaca;  
+    border-radius: 8px;  
+    font-size: 1.1rem;  
+    font-weight: 600;  
+    box-shadow:   
+        0 2px 4px rgba(220, 38, 38, 0.1),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
+}  
+
+.low-risk {  
+    text-align: center;  
+    max-width: 600px;  
+    margin: 1rem auto;  
+    padding: 0.8rem 1.2rem;  
+    color: #166534;  
+    background: linear-gradient(145deg, #dcfce7, #f0fdf4);  
+    border: 1px solid #bbf7d0;  
+    border-radius: 8px;  
+    font-size: 1.1rem;  
+    font-weight: 600;  
+    box-shadow:   
+        0 2px 4px rgba(22, 163, 74, 0.1),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
+}  
+
+/* 11. 响应式样式 */  
+@media (max-width: 768px) {  
+    .block-container {  
+        padding: 1rem !important;  
+    }  
     
-    .result-title {
-        font-size: 1.2rem !important;
-    }
+    .input-group {  
+        margin: 0.3rem 0;  
+        padding: 0.6rem;  
+    }  
     
-    .normal-range {
-        font-size: 0.8rem !important;
-    }
+    .input-label {  
+        font-size: 0.9rem;  
+        padding: 0.4rem 0.8rem;  
+    }  
     
-    .stButton > button {
-        min-width: 220px !important;
-        padding: 0.6rem 1.2rem !important;
-        font-size: 1rem !important;
-    }
-}
+    .stButton > button {  
+        min-width: 220px !important;  
+        padding: 0.6rem 1.2rem !important;  
+        font-size: 1rem !important;  
+    }  
+    
+    .title {  
+        font-size: 1.4rem;  
+    }  
+    
+    .subtitle {  
+        font-size: 1rem;  
+    }  
+    
+    .high-risk,   
+    .low-risk {  
+        font-size: 1rem;  
+        padding: 0.6rem 1rem;  
+    }  
+}   
+
 </style>
 """, unsafe_allow_html=True)
 
