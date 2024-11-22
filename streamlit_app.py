@@ -250,6 +250,59 @@ st.markdown("""
         inset 0 2px 4px rgba(255, 255, 255, 0.8);  
 }  
 
+/* 英文标题居中 - 修改为更具体的选择器 */  
+[data-testid="stMarkdownContainer"] h1,  
+[data-testid="stMarkdownContainer"] h2,  
+[data-testid="stMarkdownContainer"] h3 {  
+    text-align: center !important;  
+    width: 100% !important;  
+}  
+
+/* 计算按钮样式 - 确保文字颜色为白色且清晰可见 */  
+.stButton > button {  
+    background: linear-gradient(145deg, #3b82f6, #1e40af) !important;  
+    color: #ffffff !important;  /* 确保文字为纯白色 */  
+    padding: 0.6rem 2.5rem !important;  
+    border-radius: 6px !important;  
+    border: none !important;  
+    font-size: 1.1rem !important;  
+    font-weight: 600 !important;  
+    min-width: 250px !important;  
+    height: 2.8rem !important;  
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;  
+    transition: all 0.2s ease !important;  
+}  
+
+/* 评估结果样式 - 增加间距 */  
+.probability-container,  
+.risk-level-container {  
+    text-align: center;  
+    max-width: 600px;  
+    margin: 1.5rem auto !important;  /* 增加外边距 */  
+    padding: 1.5rem !important;  /* 增加内边距 */  
+    background: linear-gradient(145deg, #ffffff, #f8fafc);  
+    border-radius: 8px;  
+    box-shadow:   
+        0 2px 4px rgba(0, 0, 0, 0.05),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
+}  
+
+/* 单选按钮样式 - 确保对齐 */  
+.stRadio > div {  
+    display: flex !important;  
+    align-items: center !important;  
+    gap: 0.5rem !important;  
+}  
+
+.stRadio label {  
+    display: flex !important;  
+    align-items: center !important;  
+    gap: 0.5rem !important;  
+    margin-bottom: 0.5rem !important;  
+}  
+
+
 /* 11. 响应式样式 */  
 @media (max-width: 768px) {  
     .block-container {  
