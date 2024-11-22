@@ -96,6 +96,17 @@ st.markdown("""
     border: 1px solid rgba(59, 130, 246, 0.2);  
 }  
 
+/* 范围说明样式 */  
+.range-info {  
+    text-align: left;  
+    font-size: 0.85rem;  
+    color: #64748b;  
+    margin: -0.2rem 0 0.3rem 1rem;  
+    padding: 0;  
+    font-weight: normal;  
+    line-height: 1.2;  
+} 
+
 /* 6. 指标颜色变体 */  
 .input-label[data-indicator="toast"] {  
     background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
