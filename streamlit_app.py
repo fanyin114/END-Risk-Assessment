@@ -53,8 +53,8 @@ st.markdown("""
 
  
 
-/* 默认所有markdown内容左对齐 */  
-[data-testid="stMarkdownContainer"] {  
+/* 默认所有markdown内容左对齐，但排除英文标题 */  
+[data-testid="stMarkdownContainer"] p:not(:contains("Early Neurological Deterioration Risk Assessment System")) {  
     text-align: left !important;  
     width: 100% !important;  
 }  
