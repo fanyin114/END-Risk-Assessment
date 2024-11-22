@@ -34,9 +34,10 @@ st.markdown("""
     background: #f8fafc;  
 }  
 
-/* 3. 标题样式 - 增加选择器优先级 */  
+/* 3. 标题样式 - 统一中英文标题样式 */  
 .title,   
-[data-testid="stMarkdownContainer"] .title {  
+[data-testid="stMarkdownContainer"] .title,  
+[data-testid="stMarkdownContainer"] p {  
     width: 100% !important;  
     text-align: center !important;  
     margin: 1rem auto 0.5rem !important;  
@@ -52,35 +53,29 @@ st.markdown("""
     display: block !important;  
 }  
 
-/* 英文标题特定样式 - 提高优先级 */  
-.title.english-title,  
-[data-testid="stMarkdownContainer"] .title.english-title {  
+/* 英文标题特定样式 */  
+.english-title,  
+[data-testid="stMarkdownContainer"] p.english-title {  
     font-size: 1.2rem !important;  
     margin-top: 0 !important;  
     text-align: center !important;  
 }  
 
-/* 移除可能影响标题对齐的样式 */  
-[data-testid="stMarkdownContainer"] > div {  
+/* 确保所有标题容器居中 */  
+[data-testid="stMarkdownContainer"] {  
+    display: block !important;  
     text-align: center !important;  
-}
-
-/* 默认所有markdown内容左对齐，但排除英文标题 */  
-[data-testid="stMarkdownContainer"] p:not(:contains("Early Neurological Deterioration Risk Assessment System")) {  
-    text-align: left !important;  
-    width: 100% !important;  
 }  
 
-/* 专门为英文标题设置居中样式 */  
-[data-testid="stMarkdownContainer"] p:contains("Early Neurological Deterioration Risk Assessment System") {  
-    text-align: center !important;  
-    width: 100% !important;  
-    font-size: 1.2rem !important;  
-    font-weight: 600 !important;  
-    margin: 1rem auto !important;  
-    color: #1e40af !important;  
-}
+/* 输入区域样式重置为左对齐 */  
+.input-group {  
+    text-align: left !important;  
+}  
 
+/* 移除之前可能冲突的样式 */  
+[data-testid="stMarkdownContainer"] p:not(.title):not(.english-title) {  
+    text-align: left !important;  
+}  
 
 /* 4. 输入区域样式 */  
 .input-group,  
