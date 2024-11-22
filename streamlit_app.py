@@ -37,7 +37,7 @@ st.markdown("""
 /* 3. 标题样式 */  
 .title {  
     width: 100%;  
-    text-align: center;  
+    text-align: center !important;  
     margin: 1rem auto 0.5rem;  
     padding: 0.6rem 1rem;  
     font-size: 1.6rem;  
@@ -51,15 +51,31 @@ st.markdown("""
     display: block;  
 }  
 
-/* 移除其他可能影响标题居中的样式 */  
-[data-testid="stMarkdownContainer"] {  
-    text-align: left !important;  
+/* 英文标题特定样式 */  
+.english-title {  
+    font-size: 1.2rem !important;  
+    margin-top: 0 !important;  
 }  
 
-/* 确保title class的样式优先级更高 */  
+/* 确保所有标题容器居中 */  
+[data-testid="stMarkdownContainer"] {  
+    display: block !important;  
+    width: 100% !important;  
+}  
+
+/* 强制所有title class元素居中 */  
 [data-testid="stMarkdownContainer"] .title {  
     text-align: center !important;  
-}
+    margin-left: auto !important;  
+    margin-right: auto !important;  
+}  
+
+/* 清除任何可能的浮动影响 */  
+[data-testid="stMarkdownContainer"]::after {  
+    content: "";  
+    display: table;  
+    clear: both;  
+} 
 
 /* 默认所有markdown内容左对齐，但排除英文标题 */  
 [data-testid="stMarkdownContainer"] p:not(:contains("Early Neurological Deterioration Risk Assessment System")) {  
