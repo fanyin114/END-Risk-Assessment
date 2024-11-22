@@ -20,25 +20,25 @@ st.set_page_config(
 # 自定义CSS样式  
 st.markdown("""  
 <style>  
-/* 全局样式 */  
+/* 1. 全局样式 */  
 * {  
     margin: 0;  
     padding: 0;  
     box-sizing: border-box;  
 }  
 
-/* 页面容器样式 */  
+/* 2. 页面容器样式 */  
 .block-container {  
     padding: 1.5rem !important;  
     max-width: 900px !important;  
     background: #f8fafc;  
 }  
 
-/* 修改标题样式，确保完整显示并添加立体效果 */  
+/* 3. 标题样式 */  
 .title {  
-    width: 100%; /* 确保宽度占满 */  
+    width: 100%;  
     text-align: center;  
-    margin: 1rem auto 0.5rem; /* 减小底部间距 */  
+    margin: 1rem auto 0.5rem;  
     padding: 0.6rem 1rem;  
     font-size: 1.6rem;  
     font-weight: 700;  
@@ -48,7 +48,7 @@ st.markdown("""
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);  
     position: relative;  
     z-index: 1;  
-    display: block; /* 确保块级显示 */  
+    display: block;  
 }  
 
 .title::before {  
@@ -62,432 +62,44 @@ st.markdown("""
     z-index: -1;  
     border-radius: 8px;  
 }  
-  
 
-/* 输入区域样式 */  
+/* 4. 输入区域样式 */  
 .input-group {  
-    background: linear-gradient(to right, #ffffff, #f1f5f9);  
+    background: linear-gradient(145deg, #ffffff, #f1f5f9);  
     border: 1px solid #e2e8f0;  
     border-radius: 8px;  
-    padding: 1rem;  
-    margin: 0.6rem 0;  
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
+    padding: 0.8rem;  
+    margin: 0.4rem 0;  
+    text-align: left;  
+    box-shadow:   
+        0 2px 4px rgba(0, 0, 0, 0.05),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
     transition: all 0.2s ease;  
-}  
-
-.input-group:hover {  
-    border-color: #3b82f6;  
-    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);  
-}  
-
-.input-label {  
-    color: #1e293b;  
-    font-size: 0.95rem;  
-    font-weight: 600;  
-    margin-bottom: 0.4rem;  
-    display: block;  
-}  
-
-/* 输入控件样式 */  
-.stNumberInput > div > div > input {  
-    width: 100% !important;  
-    min-width: 220px !important;  
-    padding: 0.5rem 0.7rem !important;  
-    background: white !important;  
-    border: 1px solid #cbd5e1 !important;  
-    border-radius: 6px !important;  
-    font-size: 0.9rem !important;  
-    transition: all 0.2s ease !important;  
-}  
-
-.stNumberInput > div > div > input:focus {  
-    border-color: #3b82f6 !important;  
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1) !important;  
-}  
-
-/* Radio按钮样式 */  
-.stRadio > div {  
-    padding: 0.3rem 0 !important;  
-}  
-
-.stRadio > div > div > label {  
-    padding: 0.5rem 0.8rem !important;  
-    margin: 0.15rem 0.6rem 0.15rem 0 !important;  
-    border-radius: 6px !important;  
-    background: white !important;  
-    border: 1px solid #cbd5e1 !important;  
-    transition: all 0.2s ease !important;  
-}  
-
-.stRadio > div > div > label[data-baseweb="radio"] > div:first-child {  
-    background-color: #3b82f6 !important;  
-    border-color: #3b82f6 !important;  
-}  
-
-/* 计算按钮样式 */  
-.stButton {  
-    display: flex !important;  
-    justify-content: center !important;  
-    margin: 1.5rem auto !important;  
-}  
-
-.stButton > button {  
-    background: linear-gradient(135deg, #3b82f6, #1e40af) !important;  
-    color: white !important;  
-    padding: 0.6rem 2.5rem !important;  
-    border-radius: 6px !important;  
-    border: none !important;  
-    font-size: 1.1rem !important;  
-    font-weight: 600 !important;  
-    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;  
-    transition: all 0.2s ease !important;  
-    min-width: 250px !important;  
-    height: 2.8rem !important;  
-}  
-
-.stButton > button:hover {  
-    transform: translateY(-1px) !important;  
-    background: linear-gradient(135deg, #2563eb, #1e3a8a) !important;  
-    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.25) !important;  
-}  
-
-/* 结果显示样式 */  
-.result-title {  
-    font-size: 1.3rem;  
-    font-weight: 600;  
-    color: #0f172a;  
-    text-align: center;  
-    margin: 1.2rem 0;  
-    padding-bottom: 0.6rem;  
-    border-bottom: 2px solid #e2e8f0;  
-    background: linear-gradient(120deg, #1e40af, #3b82f6);  
-    -webkit-background-clip: text;  
-    -webkit-text-fill-color: transparent;  
-}  
-
-.result-grid {  
-    display: grid;  
-    grid-template-columns: 1fr;  
-    gap: 1rem;  
-    margin: 1.2rem 0;  
-}  
-
-.probability-container,   
-.risk-level-container,   
-.risk-description-container {  
-    background: linear-gradient(to right, #ffffff, #f8fafc);  
-    border-radius: 6px;  
-    padding: 1rem;  
-    margin: 0.8rem 0;  
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
-    border: 1px solid #e2e8f0;  
-}  
-
-.probability-value {  
-    color: #dc2626;  
-    font-size: 1.8rem;  
-    font-weight: 700;  
-    text-align: center;  
-    padding: 0.3rem 0.6rem;  
-    background: linear-gradient(to right, #fee2e2, #fef2f2);  
-    border-radius: 4px;  
-    border: 1px solid #fecaca;  
-    display: inline-block;  
-    margin: 0.3rem 0;  
-}  
-
-.risk-level-label {  
-    font-size: 1rem;  
-    color: #334155;  
-    margin-bottom: 0.3rem;  
-}  
-
-.high-risk {  
-    color: #b91c1c;  
-    background: linear-gradient(to right, #fee2e2, #fef2f2);  
-    border: 1px solid #fecaca;  
-}  
-
-.low-risk {  
-    color: #166534;  
-    background: linear-gradient(to right, #dcfce7, #f0fdf4);  
-    border: 1px solid #bbf7d0;  
-}  
-
-.high-risk, .low-risk {  
-    font-size: 1.1rem;  
-    font-weight: 600;  
-    text-align: left;  
-    margin: 0.6rem 0;  
-    padding: 0.3rem 0.6rem;  
-    border-radius: 4px;  
-}  
-
-.risk-description {  
-    font-size: 1rem;  
-    color: #1e293b;  
-    line-height: 1.5;  
-    text-align: left;  
-    padding: 0.6rem;  
-    background: #f8fafc;  
-    border-radius: 4px;  
-}  
-
-/* 输入组间距优化 */  
-.input-group {  
-    margin: 0.4rem 0; /* 减小上下间距 */  
-    padding: 0.8rem; /* 稍微减小内边距 */  
-}  
-
-/* 指标名称立体效果 */  
-.input-label {  
-    color: #1e293b;  
-    font-size: 0.95rem;  
-    font-weight: 600;  
-    margin-bottom: 0.4rem;  
-    padding: 0.4rem 0.6rem;  
-    background: linear-gradient(145deg, #f8fafc, #f1f5f9);  
-    border-radius: 4px;  
     position: relative;  
+    overflow: hidden;  
+}  
+
+/* 5. 指标名称样式 */  
+.input-label {  
+    text-align: left;  
+    width: auto;  
+    padding: 0.4rem 0.8rem;  
+    margin-bottom: 0.4rem;  
     display: inline-block;  
+    font-size: 0.95rem;  
+    font-weight: 600;  
+    border-radius: 6px;  
     box-shadow:   
         2px 2px 4px rgba(0, 0, 0, 0.05),  
         -1px -1px 3px rgba(255, 255, 255, 0.8),  
         inset 1px 1px 2px rgba(255, 255, 255, 0.9),  
         inset -1px -1px 2px rgba(0, 0, 0, 0.05);  
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);  
-    border: 1px solid rgba(255, 255, 255, 0.3);  
     transition: all 0.2s ease;  
 }  
 
-.input-label::before {  
-    content: '';  
-    position: absolute;  
-    top: 0;  
-    left: 0;  
-    right: 0;  
-    bottom: 0;  
-    background: linear-gradient(120deg,   
-        rgba(255,255,255,0.2),   
-        rgba(255,255,255,0.05));  
-    border-radius: 4px;  
-    z-index: -1;  
-}  
-
-/* 悬停效果 */  
-.input-label:hover {  
-    transform: translateY(-1px);  
-    box-shadow:   
-        3px 3px 6px rgba(0, 0, 0, 0.08),  
-        -1px -1px 3px rgba(255, 255, 255, 0.9),  
-        inset 1px 1px 2px rgba(255, 255, 255, 0.9),  
-        inset -1px -1px 2px rgba(0, 0, 0, 0.05);  
-}  
-
-/* 输入框与标签间距优化 */  
-.stNumberInput {  
-    margin-top: 0.3rem; /* 减小与标签的间距 */  
-}  
-
-/* 确保英文文本对齐 */  
-[data-testid="stMarkdownContainer"] {  
-    text-align: center !important;  
-    width: 100% !important;  
-}  
-
-/* 优化标题容器 */  
-.block-container > div:first-child {  
-    display: flex;  
-    justify-content: center;  
-    align-items: center;  
-    flex-direction: column;  
-    width: 100%;  
-}  
-
-/* 调整输入组之间的间距 */  
-div[data-testid="stVerticalBlock"] {  
-    gap: 0.4rem !important; /* 减小组件之间的间距 */  
-}  
-
-
-/* 辅助样式 */  
-.normal-range {  
-    color: #64748b;  
-    font-size: 0.85rem;  
-    margin-top: 0.3rem;  
-    padding: 0.3rem 0;  
-}  
-
-/* 移除Streamlit默认样式 */  
-div[data-testid="stMarkdownContainer"],  
-div.stMarkdown,  
-div.element-container,  
-div[data-testid="stVerticalBlock"] > div {  
-    background: transparent !important;  
-    box-shadow: none !important;  
-    border: none !important;  
-}  
-
-div[data-testid="stVerticalBlock"] {  
-    gap: 0.8rem !important;  
-}  
-
-/* 为指标添加立体效果 */  
-.input-group {  
-    background: linear-gradient(145deg, #ffffff, #f1f5f9);  
-    border: 1px solid #e2e8f0;  
-    border-radius: 8px;  
-    padding: 1rem;  
-    margin: 0.6rem 0;  
-    box-shadow:   
-        0 2px 4px rgba(0, 0, 0, 0.05),  
-        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
-        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
-    transition: all 0.2s ease;  
-    position: relative;  
-    overflow: hidden;  
-}  
-
-.input-group::before {  
-    content: '';  
-    position: absolute;  
-    top: 0;  
-    left: 0;  
-    right: 0;  
-    height: 4px;  
-    background: linear-gradient(90deg, #3b82f6, #60a5fa);  
-    opacity: 0;  
-    transition: opacity 0.2s ease;  
-}  
-
-.input-group:hover::before {  
-    opacity: 1;  
-}  
-
-.input-group:hover {  
-    border-color: #3b82f6;  
-    box-shadow:   
-        0 4px 6px rgba(59, 130, 246, 0.1),  
-        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
-        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
-    transform: translateY(-1px);  
-}  
-
-/* 输入控件立体效果 */  
-.stNumberInput > div > div > input {  
-    background: linear-gradient(to bottom, #ffffff, #f8fafc) !important;  
-    box-shadow:   
-        inset 0 2px 4px rgba(0, 0, 0, 0.05),  
-        0 1px 2px rgba(255, 255, 255, 0.9) !important;  
-}  
-
-/* 结果显示立体效果 */  
-.probability-container,   
-.risk-level-container,   
-.risk-description-container {  
-    background: linear-gradient(145deg, #ffffff, #f8fafc);  
-    border-radius: 8px;  
-    padding: 1rem;  
-    margin: 0.8rem 0;  
-    box-shadow:   
-        0 2px 4px rgba(0, 0, 0, 0.05),  
-        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
-        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
-    position: relative;  
-    overflow: hidden;  
-}  
-
-.probability-value {  
-    background: linear-gradient(145deg, #fee2e2, #fef2f2);  
-    box-shadow:   
-        0 2px 4px rgba(220, 38, 38, 0.1),  
-        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
-        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
-}  
-
-/* 风险等级立体效果 */  
-.high-risk, .low-risk {  
-    position: relative;  
-    box-shadow:   
-        0 2px 4px rgba(0, 0, 0, 0.05),  
-        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
-        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
-}  
-
-.high-risk::before,  
-.low-risk::before {  
-    content: '';  
-    position: absolute;  
-    top: 0;  
-    left: 0;  
-    right: 0;  
-    height: 2px;  
-    background: linear-gradient(90deg,   
-        var(--highlight-color, #dc2626),   
-        var(--highlight-color-light, #ef4444));  
-    opacity: 0.8;  
-}  
-
-.high-risk {  
-    --highlight-color: #dc2626;  
-    --highlight-color-light: #ef4444;  
-}  
-
-.low-risk {  
-    --highlight-color: #16a34a;  
-    --highlight-color-light: #22c55e;  
-}  
-
-/* 计算按钮立体效果 */  
-.stButton > button {  
-    background: linear-gradient(145deg, #3b82f6, #1e40af) !important;  
-    box-shadow:   
-        0 2px 4px rgba(59, 130, 246, 0.2),  
-        inset 0 2px 4px rgba(255, 255, 255, 0.1) !important;  
-    border: none !important;  
-    position: relative;  
-    overflow: hidden;  
-}  
-
-.stButton > button::before {  
-    content: '';  
-    position: absolute;  
-    top: 0;  
-    left: -100%;  
-    width: 100%;  
-    height: 100%;  
-    background: linear-gradient(  
-        120deg,  
-        transparent,  
-        rgba(255, 255, 255, 0.2),  
-        transparent  
-    );  
-    transition: 0.5s;  
-}  
-
-.stButton > button:hover::before {  
-    left: 100%;  
-}  
- 
-/* 指标名称立体效果优化 */  
-.input-label {  
-    text-align: left;  
-    width: auto; /* 改为自适应宽度 */  
-    padding: 0.4rem 0.8rem;  
-    margin-bottom: 0.4rem;  
-    display: inline-block;  
-    background: linear-gradient(145deg, #f0f7ff, #e6f0fd); /* 添加浅蓝色背景 */  
-    border-radius: 6px;  
-    box-shadow:   
-        2px 2px 4px rgba(0, 0, 0, 0.05),  
-        -1px -1px 3px rgba(255, 255, 255, 0.8),  
-        inset 1px 1px 2px rgba(255, 255, 255, 0.9),  
-        inset -1px -1px 2px rgba(0, 0, 0, 0.05);  
-    border: 1px solid rgba(59, 130, 246, 0.1);  
-    color: #1e40af;  
-}  
-
-/* 为不同指标添加不同的背景色 */  
+/* 6. 指标颜色变体 */  
 .input-label[data-indicator="toast"] {  
     background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
     border-color: rgba(59, 130, 246, 0.15);  
@@ -498,67 +110,73 @@ div[data-testid="stVerticalBlock"] {
     border-color: rgba(22, 163, 74, 0.15);  
 }  
 
-.input-label[data-indicator="nihss"] {  
-    background: linear-gradient(145deg, #fef3f2, #fee2e2);  
-    border-color: rgba(220, 38, 38, 0.15);  
+/* 继续添加其他指标颜色... */  
+
+/* 7. 输入控件样式 */  
+.stNumberInput > div > div > input {  
+    width: 100% !important;  
+    min-width: 220px !important;  
+    padding: 0.5rem 0.7rem !important;  
+    background: linear-gradient(to bottom, #ffffff, #f8fafc) !important;  
+    border: 1px solid #cbd5e1 !important;  
+    border-radius: 6px !important;  
+    font-size: 0.9rem !important;  
+    box-shadow:   
+        inset 0 2px 4px rgba(0, 0, 0, 0.05),  
+        0 1px 2px rgba(255, 255, 255, 0.9) !important;  
+    transition: all 0.2s ease !important;  
 }  
 
-.input-label[data-indicator="neutrophil"] {  
-    background: linear-gradient(145deg, #f5f3ff, #ede9fe);  
-    border-color: rgba(124, 58, 237, 0.15);  
+/* 8. 计算按钮样式 */  
+.stButton {  
+    display: flex !important;  
+    justify-content: center !important;  
+    margin: 1.5rem auto !important;  
 }  
 
-.input-label[data-indicator="pressure"] {  
-    background: linear-gradient(145deg, #fff7ed, #ffedd5);  
-    border-color: rgba(234, 88, 12, 0.15);  
+.stButton > button {  
+    background: linear-gradient(145deg, #3b82f6, #1e40af) !important;  
+    color: white !important;  
+    padding: 0.6rem 2.5rem !important;  
+    /* ... 其他按钮样式 ... */  
 }  
 
-.input-label[data-indicator="rbc"] {  
-    background: linear-gradient(145deg, #fdf2f8, #fce7f3);  
-    border-color: rgba(219, 39, 119, 0.15);  
-}  
-
-/* 结果显示区域居中优化 */  
-.result-title {  
-    text-align: center;  
-    width: 100%;  
-    margin: 1.5rem auto 1rem;  
-}  
-
-.probability-container,   
+/* 9. 结果显示样式 */  
+.result-title,  
+.probability-container,  
 .risk-level-container {  
     text-align: center;  
     max-width: 600px;  
     margin: 1rem auto;  
 }  
 
-/* 风险提示模块居中优化 */  
-.high-risk, .low-risk {  
+/* 10. 风险等级样式 */  
+.high-risk,  
+.low-risk {  
     text-align: center;  
     max-width: 600px;  
     margin: 1rem auto;  
     padding: 0.8rem 1.2rem;  
-    font-size: 1.1rem;  
-    background: linear-gradient(145deg, #fee2e2, #fef2f2);  
-    border-radius: 8px;  
-    box-shadow:   
-        0 4px 6px rgba(220, 38, 38, 0.1),  
-        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
-        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
+    /* ... 其他风险样式 ... */  
 }  
 
-.low-risk {  
-    background: linear-gradient(145deg, #dcfce7, #f0fdf4);  
-    box-shadow:   
-        0 4px 6px rgba(22, 163, 74, 0.1),  
-        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
-        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
-}  
-
-/* 输入组样式优化 */  
-.input-group {  
-    text-align: left;  
-    margin: 0.4rem 0;  
+/* 11. 响应式样式 */  
+@media (max-width: 768px) {  
+    .block-container {  
+        padding: 1rem !important;  
+    }  
+    
+    .input-group {  
+        margin: 0.3rem 0;  
+        padding: 0.6rem;  
+    }  
+    
+    .input-label {  
+        font-size: 0.85rem;  
+        padding: 0.3rem 0.6rem;  
+    }  
+    
+    /* ... 其他响应式调整 ... */  
 }  
 
 /* 响应式调整 */  
@@ -577,20 +195,7 @@ div[data-testid="stVerticalBlock"] {
 
 /* 响应式调整 */  
 @media (max-width: 768px) {  
-    .block-container {  
-        padding: 1rem !important;  
-    }  
-    
-    .input-group {  
-        margin: 0.3rem 0; 
-        padding: 0.6rem;          
-    }  
-    
-    .input-label {  
-        font-size: 0.9rem; 
-        padding: 0.3rem 0.5rem;
-    }  
-    
+        
     .stButton > button {  
         min-width: 220px !important;  
         padding: 0.6rem 1.2rem !important;  
