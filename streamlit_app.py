@@ -101,8 +101,8 @@ st.markdown("""
     text-align: left;  
     font-size: 0.85rem;  
     color: #64748b;  
-    margin: 0rem 0 0.1rem 1rem;  
-    padding: -3.0;  
+    margin: -0.6rem 0 0rem 0rem;  
+    padding: 0.0;  
     font-weight: normal;  
     line-height: 1.1;  
 } 
