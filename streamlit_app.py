@@ -62,7 +62,7 @@ st.markdown("""
 
 /* 移除可能影响标题对齐的样式 */  
 [data-testid="stMarkdownContainer"] > div {  
-    text-align: center !important;  
+    text-align: left !important;  
 }
 
 /* 默认所有markdown内容左对齐，但排除英文标题 */  
