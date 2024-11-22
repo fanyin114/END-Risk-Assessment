@@ -96,16 +96,31 @@ st.markdown("""
     border: 1px solid rgba(59, 130, 246, 0.2);  
 }  
 
-/* 范围说明样式 */  
-.range-info {  
-    text-align: left;  
-    font-size: 0.85rem;  
-    color: #64748b;  
-    margin: -0.2rem 0 0.3rem 1rem;  
-    padding: 0;  
-    font-weight: normal;  
-    line-height: 1.2;  
-} 
+/* 修改范围说明样式部分 */  
+.range-info,  
+[data-testid="stMarkdownContainer"] p {  /* 添加这个选择器来覆盖Streamlit的默认样式 */  
+    text-align: left !important;  /* 使用!important确保覆盖其他样式 */  
+    font-size: 0.85rem !important;  
+    color: #64748b !important;  
+    margin: -0.2rem 0 0.3rem 1rem !important;  
+    padding: 0 !important;  
+    font-weight: normal !important;  
+    line-height: 1.2 !important;  
+    width: 100% !important;  
+    display: block !important;  
+}   
+
+/* 确保只有标题居中，而不是所有markdown内容 */  
+[data-testid="stMarkdownContainer"] {  
+    text-align: center !important;  
+    width: 100% !important;  
+}  
+
+/* 专门为范围说明添加的覆盖样式 */  
+[data-testid="stMarkdownContainer"] .range-text {  
+    text-align: left !important;  
+    margin-left: 1rem !important;  
+}
 
 /* 6. 指标颜色变体 */  
 .input-label[data-indicator="toast"] {  
