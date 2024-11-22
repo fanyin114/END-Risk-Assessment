@@ -34,48 +34,36 @@ st.markdown("""
     background: #f8fafc;  
 }  
 
-/* 3. 标题样式 */  
-.title {  
-    width: 100%;  
+/* 3. 标题样式 - 增加选择器优先级 */  
+.title,   
+[data-testid="stMarkdownContainer"] .title {  
+    width: 100% !important;  
     text-align: center !important;  
-    margin: 1rem auto 0.5rem;  
-    padding: 0.6rem 1rem;  
-    font-size: 1.6rem;  
-    font-weight: 700;  
+    margin: 1rem auto 0.5rem !important;  
+    padding: 0.6rem 1rem !important;  
+    font-size: 1.6rem !important;  
+    font-weight: 700 !important;  
     background: linear-gradient(120deg, #1e40af, #3b82f6);  
     -webkit-background-clip: text;  
     -webkit-text-fill-color: transparent;  
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);  
     position: relative;  
     z-index: 1;  
-    display: block;  
+    display: block !important;  
 }  
 
-/* 英文标题特定样式 */  
-.english-title {  
+/* 英文标题特定样式 - 提高优先级 */  
+.title.english-title,  
+[data-testid="stMarkdownContainer"] .title.english-title {  
     font-size: 1.2rem !important;  
     margin-top: 0 !important;  
-}  
-
-/* 确保所有标题容器居中 */  
-[data-testid="stMarkdownContainer"] {  
-    display: block !important;  
-    width: 100% !important;  
-}  
-
-/* 强制所有title class元素居中 */  
-[data-testid="stMarkdownContainer"] .title {  
     text-align: center !important;  
-    margin-left: auto !important;  
-    margin-right: auto !important;  
 }  
 
-/* 清除任何可能的浮动影响 */  
-[data-testid="stMarkdownContainer"]::after {  
-    content: "";  
-    display: table;  
-    clear: both;  
-} 
+/* 移除可能影响标题对齐的样式 */  
+[data-testid="stMarkdownContainer"] > div {  
+    text-align: center !important;  
+}
 
 /* 默认所有markdown内容左对齐，但排除英文标题 */  
 [data-testid="stMarkdownContainer"] p:not(:contains("Early Neurological Deterioration Risk Assessment System")) {  
@@ -95,7 +83,9 @@ st.markdown("""
 
 
 /* 4. 输入区域样式 */  
-.input-group {  
+.input-group,  
+[data-testid="stMarkdownContainer"] .input-group {  
+    text-align: left !important;  
     background: linear-gradient(145deg, #ffffff, #f1f5f9);  
     border: 1px solid #e2e8f0;  
     border-radius: 8px;  
