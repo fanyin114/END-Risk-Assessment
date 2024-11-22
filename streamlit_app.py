@@ -29,201 +29,209 @@ st.markdown("""
 
 /* 页面容器样式 */  
 .block-container {  
-    padding: 2rem !important;  
-    max-width: 1000px !important;  
+    padding: 1.5rem !important;  
+    max-width: 900px !important;  
+    background: #f8fafc;  
 }  
 
 /* 标题样式 */  
 .title {  
-    color: #1a365d;  
-    font-size: 1.8rem;  
+    color: #0f172a;  
+    font-size: 1.6rem;  
     font-weight: 700;  
     text-align: center;  
-    margin: 1.5rem 0 0.8rem 0;  
-    line-height: 1.4;  
-    padding: 0 0.8rem;  
+    margin: 1rem 0 0.5rem 0;  
+    line-height: 1.3;  
+    padding: 0 0.5rem;  
+    background: linear-gradient(120deg, #1e40af, #3b82f6);  
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;  
 }  
 
 .subtitle {  
-    color: #4a5568;  
-    font-size: 1.2rem;  
+    color: #475569;  
+    font-size: 1.1rem;  
     text-align: center;  
-    margin-bottom: 2rem;  
-    line-height: 1.4;  
-    padding: 0 0.8rem;  
+    margin-bottom: 1.5rem;  
+    line-height: 1.3;  
+    padding: 0 0.5rem;  
 }  
 
 /* 输入区域样式 */  
 .input-group {  
-    background: #f8fafc;  
-    border: 1px solid #cbd5e0;  
-    border-radius: 12px;  
-    padding: 1.2rem;  
-    margin: 0.8rem 0;  
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);  
-    transition: border-color 0.2s ease;  
+    background: linear-gradient(to right, #ffffff, #f1f5f9);  
+    border: 1px solid #e2e8f0;  
+    border-radius: 8px;  
+    padding: 1rem;  
+    margin: 0.6rem 0;  
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
+    transition: all 0.2s ease;  
 }  
 
 .input-group:hover {  
-    border-color: #4299e1;  
+    border-color: #3b82f6;  
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);  
 }  
 
 .input-label {  
-    color: #2d3748;  
-    font-size: 1rem;  
+    color: #1e293b;  
+    font-size: 0.95rem;  
     font-weight: 600;  
-    margin-bottom: 0.6rem;  
+    margin-bottom: 0.4rem;  
     display: block;  
 }  
 
 /* 输入控件样式 */  
 .stNumberInput > div > div > input {  
     width: 100% !important;  
-    min-width: 250px !important;  
-    padding: 0.6rem 0.8rem !important;  
+    min-width: 220px !important;  
+    padding: 0.5rem 0.7rem !important;  
     background: white !important;  
-    border: 1px solid #e2e8f0 !important;  
-    border-radius: 8px !important;  
-    font-size: 0.95rem !important;  
+    border: 1px solid #cbd5e1 !important;  
+    border-radius: 6px !important;  
+    font-size: 0.9rem !important;  
     transition: all 0.2s ease !important;  
 }  
 
 .stNumberInput > div > div > input:focus {  
-    border-color: #4299e1 !important;  
-    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15) !important;  
+    border-color: #3b82f6 !important;  
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1) !important;  
 }  
 
 /* Radio按钮样式 */  
 .stRadio > div {  
-    padding: 0.4rem 0 !important;  
+    padding: 0.3rem 0 !important;  
 }  
 
 .stRadio > div > div > label {  
-    padding: 0.6rem 1rem !important;  
-    margin: 0.2rem 0.8rem 0.2rem 0 !important;  
-    border-radius: 8px !important;  
+    padding: 0.5rem 0.8rem !important;  
+    margin: 0.15rem 0.6rem 0.15rem 0 !important;  
+    border-radius: 6px !important;  
     background: white !important;  
-    border: 1px solid #e2e8f0 !important;  
+    border: 1px solid #cbd5e1 !important;  
     transition: all 0.2s ease !important;  
 }  
 
 .stRadio > div > div > label[data-baseweb="radio"] > div:first-child {  
-    background-color: #4299e1 !important;  
-    border-color: #4299e1 !important;  
+    background-color: #3b82f6 !important;  
+    border-color: #3b82f6 !important;  
 }  
 
 /* 计算按钮样式 */  
 .stButton {  
     display: flex !important;  
     justify-content: center !important;  
-    margin: 2rem auto !important;  
+    margin: 1.5rem auto !important;  
 }  
 
 .stButton > button {  
-    background: linear-gradient(145deg, #4299e1, #3182ce) !important;  
+    background: linear-gradient(135deg, #3b82f6, #1e40af) !important;  
     color: white !important;  
-    padding: 0.8rem 3rem !important;  
-    border-radius: 8px !important;  
+    padding: 0.6rem 2.5rem !important;  
+    border-radius: 6px !important;  
     border: none !important;  
-    font-size: 1.2rem !important;  
+    font-size: 1.1rem !important;  
     font-weight: 600 !important;  
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;  
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;  
     transition: all 0.2s ease !important;  
-    min-width: 300px !important;  
-    height: 3rem !important;  
+    min-width: 250px !important;  
+    height: 2.8rem !important;  
 }  
 
 .stButton > button:hover {  
     transform: translateY(-1px) !important;  
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;  
-    background: linear-gradient(145deg, #3182ce, #2b6cb0) !important;  
+    background: linear-gradient(135deg, #2563eb, #1e3a8a) !important;  
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.25) !important;  
 }  
 
 /* 结果显示样式 */  
 .result-title {  
-    font-size: 1.4rem;  
+    font-size: 1.3rem;  
     font-weight: 600;  
-    color: #1a365d;  
+    color: #0f172a;  
     text-align: center;  
-    margin: 1.5rem 0;  
-    padding-bottom: 0.8rem;  
-    border-bottom: 1px solid #e2e8f0;  
+    margin: 1.2rem 0;  
+    padding-bottom: 0.6rem;  
+    border-bottom: 2px solid #e2e8f0;  
+    background: linear-gradient(120deg, #1e40af, #3b82f6);  
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;  
 }  
 
 .result-grid {  
     display: grid;  
     grid-template-columns: 1fr;  
-    gap: 1.2rem;  
-    margin: 1.5rem 0;  
+    gap: 1rem;  
+    margin: 1.2rem 0;  
 }  
 
 .probability-container,   
 .risk-level-container,   
 .risk-description-container {  
-    background: white;  
-    border-radius: 8px;  
-    padding: 1.2rem;  
-    margin: 1rem 0;  
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);  
+    background: linear-gradient(to right, #ffffff, #f8fafc);  
+    border-radius: 6px;  
+    padding: 1rem;  
+    margin: 0.8rem 0;  
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
     border: 1px solid #e2e8f0;  
 }  
 
 .probability-value {  
-    color: #e53e3e;  
-    font-size: 2rem;  
+    color: #dc2626;  
+    font-size: 1.8rem;  
     font-weight: 700;  
     text-align: center;  
-    padding: 0.4rem 0.8rem;  
-    background: #fff5f5;  
-    border-radius: 6px;  
-    border: 1px solid #fc8181;  
+    padding: 0.3rem 0.6rem;  
+    background: linear-gradient(to right, #fee2e2, #fef2f2);  
+    border-radius: 4px;  
+    border: 1px solid #fecaca;  
     display: inline-block;  
-    margin: 0.4rem 0;  
+    margin: 0.3rem 0;  
 }  
 
 .risk-level-label {  
-    font-size: 1.1rem;  
-    color: #4a5568;  
-    margin-bottom: 0.4rem;  
+    font-size: 1rem;  
+    color: #334155;  
+    margin-bottom: 0.3rem;  
 }  
 
 .high-risk {  
-    color: #c53030;  
-    background: #fff5f5;  
-    border: 1px solid #fc8181;  
+    color: #b91c1c;  
+    background: linear-gradient(to right, #fee2e2, #fef2f2);  
+    border: 1px solid #fecaca;  
 }  
 
 .low-risk {  
-    color: #2f855a;  
-    background: #f0fff4;  
-    border: 1px solid #9ae6b4;  
+    color: #166534;  
+    background: linear-gradient(to right, #dcfce7, #f0fdf4);  
+    border: 1px solid #bbf7d0;  
 }  
 
 .high-risk, .low-risk {  
-    font-size: 1.2rem;  
+    font-size: 1.1rem;  
     font-weight: 600;  
     text-align: left;  
-    margin: 0.8rem 0;  
-    padding: 0.4rem 0.8rem;  
-    border-radius: 6px;  
+    margin: 0.6rem 0;  
+    padding: 0.3rem 0.6rem;  
+    border-radius: 4px;  
 }  
 
 .risk-description {  
-    font-size: 1.1rem;  
-    color: #2d3748;  
-    line-height: 1.6;  
+    font-size: 1rem;  
+    color: #1e293b;  
+    line-height: 1.5;  
     text-align: left;  
-    padding: 0.8rem;  
-    background: #f7fafc;  
-    border-radius: 6px;  
+    padding: 0.6rem;  
+    background: #f8fafc;  
+    border-radius: 4px;  
 }  
 
 /* 辅助样式 */  
 .normal-range {  
-    color: #718096;  
-    font-size: 0.9rem;  
-    margin-top: 0.4rem;  
-    padding: 0.4rem 0;  
+    color: #64748b;  
+    font-size: 0.85rem;  
+    margin-top: 0.3rem;  
+    padding: 0.3rem 0;  
 }  
 
 /* 移除Streamlit默认样式 */  
@@ -237,38 +245,38 @@ div[data-testid="stVerticalBlock"] > div {
 }  
 
 div[data-testid="stVerticalBlock"] {  
-    gap: 1rem !important;  
+    gap: 0.8rem !important;  
 }  
 
 /* 响应式调整 */  
 @media (max-width: 768px) {  
     .block-container {  
-        padding: 1.5rem !important;  
+        padding: 1rem !important;  
     }  
     
     .input-group {  
-        padding: 1rem;  
+        padding: 0.8rem;  
     }  
     
     .input-label {  
-        font-size: 1rem;  
+        font-size: 0.9rem;  
     }  
     
     .stButton > button {  
-        min-width: 250px !important;  
-        padding: 0.8rem 1.5rem !important;  
-        font-size: 1.1rem !important;  
+        min-width: 220px !important;  
+        padding: 0.6rem 1.2rem !important;  
+        font-size: 1rem !important;  
     }  
     
     .title {  
-        font-size: 1.6rem;  
+        font-size: 1.4rem;  
     }  
     
     .subtitle {  
-        font-size: 1.1rem;  
+        font-size: 1rem;  
     }  
 }  
-</style> 
+</style>
 """, unsafe_allow_html=True)  
 
 # 设置日志  
