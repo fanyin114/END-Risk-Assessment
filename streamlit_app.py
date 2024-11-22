@@ -96,31 +96,16 @@ st.markdown("""
     border: 1px solid rgba(59, 130, 246, 0.2);  
 }  
 
-/* 修改范围说明样式部分 */  
-.range-info,  
-[data-testid="stMarkdownContainer"] p {  /* 添加这个选择器来覆盖Streamlit的默认样式 */  
-    text-align: left !important;  /* 使用!important确保覆盖其他样式 */  
-    font-size: 0.85rem !important;  
-    color: #64748b !important;  
-    margin: -0.2rem 0 0.3rem 1rem !important;  
-    padding: 0 !important;  
-    font-weight: normal !important;  
-    line-height: 1.2 !important;  
-    width: 100% !important;  
-    display: block !important;  
-}   
-
-/* 确保只有标题居中，而不是所有markdown内容 */  
-[data-testid="stMarkdownContainer"] {  
-    text-align: center !important;  
-    width: 100% !important;  
-}  
-
-/* 专门为范围说明添加的覆盖样式 */  
-[data-testid="stMarkdownContainer"] .range-text {  
-    text-align: left !important;  
-    margin-left: 1rem !important;  
-}
+/* 范围说明样式 */  
+.range-info {  
+    text-align: left;  
+    font-size: 0.85rem;  
+    color: #64748b;  
+    margin: -0.2rem 0 0.3rem 1rem;  
+    padding: 0;  
+    font-weight: normal;  
+    line-height: 1.2;  
+} 
 
 /* 6. 指标颜色变体 */  
 .input-label[data-indicator="toast"] {  
@@ -250,59 +235,6 @@ st.markdown("""
         inset 0 2px 4px rgba(255, 255, 255, 0.8);  
 }  
 
-/* 英文标题居中 - 修改为更具体的选择器 */  
-[data-testid="stMarkdownContainer"] h1,  
-[data-testid="stMarkdownContainer"] h2,  
-[data-testid="stMarkdownContainer"] h3 {  
-    text-align: center !important;  
-    width: 100% !important;  
-}  
-
-/* 计算按钮样式 - 确保文字颜色为白色且清晰可见 */  
-.stButton > button {  
-    background: linear-gradient(145deg, #3b82f6, #1e40af) !important;  
-    color: #ffffff !important;  /* 确保文字为纯白色 */  
-    padding: 0.6rem 2.5rem !important;  
-    border-radius: 6px !important;  
-    border: none !important;  
-    font-size: 1.1rem !important;  
-    font-weight: 600 !important;  
-    min-width: 250px !important;  
-    height: 2.8rem !important;  
-    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;  
-    transition: all 0.2s ease !important;  
-}  
-
-/* 评估结果样式 - 增加间距 */  
-.probability-container,  
-.risk-level-container {  
-    text-align: center;  
-    max-width: 600px;  
-    margin: 1.5rem auto !important;  /* 增加外边距 */  
-    padding: 1.5rem !important;  /* 增加内边距 */  
-    background: linear-gradient(145deg, #ffffff, #f8fafc);  
-    border-radius: 8px;  
-    box-shadow:   
-        0 2px 4px rgba(0, 0, 0, 0.05),  
-        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
-        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
-}  
-
-/* 单选按钮样式 - 确保对齐 */  
-.stRadio > div {  
-    display: flex !important;  
-    align-items: center !important;  
-    gap: 0.5rem !important;  
-}  
-
-.stRadio label {  
-    display: flex !important;  
-    align-items: center !important;  
-    gap: 0.5rem !important;  
-    margin-bottom: 0.5rem !important;  
-}  
-
-
 /* 11. 响应式样式 */  
 @media (max-width: 768px) {  
     .block-container {  
@@ -341,7 +273,7 @@ st.markdown("""
 }
 
 </style>
-""", unsafe_allow_html=True)  
+""", unsafe_allow_html=True) 
 
 # 设置日志  
 logging.basicConfig(level=logging.DEBUG)  
