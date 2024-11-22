@@ -53,7 +53,7 @@ st.markdown("""
 
 /* 英文标题居中 */  
 [data-testid="stMarkdownContainer"] {  
-    text-align: center !important;  
+    text-align: left !important;  
     width: 100% !important;  
 }  
 
