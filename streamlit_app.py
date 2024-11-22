@@ -20,7 +20,7 @@ st.set_page_config(
 # 自定义CSS样式  
 st.markdown("""  
 <style>  
-    /* 全局样式 */  
+/* 全局样式 */  
 * {  
     margin: 0;  
     padding: 0;  
@@ -29,204 +29,201 @@ st.markdown("""
 
 /* 页面容器样式 */  
 .block-container {  
-    padding: 3rem !important;  
-    max-width: 1200px !important;  
+    padding: 2rem !important;  
+    max-width: 1000px !important;  
 }  
 
 /* 标题样式 */  
 .title {  
-    color: #2c3e50;  
-    font-size: 2rem;  
+    color: #1a365d;  
+    font-size: 1.8rem;  
     font-weight: 700;  
     text-align: center;  
-    margin: 2rem 0 1rem 0;  
-    line-height: 1.6;  
-    padding: 0 1rem;  
-    word-wrap: break-word;  
+    margin: 1.5rem 0 0.8rem 0;  
+    line-height: 1.4;  
+    padding: 0 0.8rem;  
 }  
 
 .subtitle {  
-    color: #5a6c7d;  
-    font-size: 1.4rem;  
+    color: #4a5568;  
+    font-size: 1.2rem;  
     text-align: center;  
-    margin-bottom: 3rem;  
-    line-height: 1.6;  
-    padding: 0 1rem;  
+    margin-bottom: 2rem;  
+    line-height: 1.4;  
+    padding: 0 0.8rem;  
 }  
 
 /* 输入区域样式 */  
 .input-group {  
     background: #f8fafc;  
-    border: 2px solid #4a90e2;  
-    border-radius: 20px;  
-    padding: 2rem;  
-    margin: 1.6 rem 0;  
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
-    width: 100%;  
-    display: block;  
+    border: 1px solid #cbd5e0;  
+    border-radius: 12px;  
+    padding: 1.2rem;  
+    margin: 0.8rem 0;  
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);  
+    transition: border-color 0.2s ease;  
+}  
+
+.input-group:hover {  
+    border-color: #4299e1;  
 }  
 
 .input-label {  
-    color: #2c3e50;  
-    font-size: 1.2rem;  
+    color: #2d3748;  
+    font-size: 1rem;  
     font-weight: 600;  
-    margin-bottom: 1rem;  
+    margin-bottom: 0.6rem;  
     display: block;  
 }  
 
 /* 输入控件样式 */  
 .stNumberInput > div > div > input {  
     width: 100% !important;  
-    min-width: 300px !important;  
-    padding: 0.8rem 1rem !important;  
+    min-width: 250px !important;  
+    padding: 0.6rem 0.8rem !important;  
     background: white !important;  
     border: 1px solid #e2e8f0 !important;  
-    border-radius: 15px !important;  
-    font-size: 1rem !important;  
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;  
+    border-radius: 8px !important;  
+    font-size: 0.95rem !important;  
+    transition: all 0.2s ease !important;  
+}  
+
+.stNumberInput > div > div > input:focus {  
+    border-color: #4299e1 !important;  
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15) !important;  
 }  
 
 /* Radio按钮样式 */  
 .stRadio > div {  
-    padding: 0.5rem 0 !important;  
+    padding: 0.4rem 0 !important;  
 }  
 
 .stRadio > div > div > label {  
-    padding: 0.8rem 1.2rem !important;  
-    margin: 0.3rem 1rem 0.3rem 0 !important;  
-    border-radius: 15px !important;  
+    padding: 0.6rem 1rem !important;  
+    margin: 0.2rem 0.8rem 0.2rem 0 !important;  
+    border-radius: 8px !important;  
     background: white !important;  
     border: 1px solid #e2e8f0 !important;  
     transition: all 0.2s ease !important;  
 }  
 
 .stRadio > div > div > label[data-baseweb="radio"] > div:first-child {  
-    background-color: #4a90e2 !important;  
-    border-color: #4a90e2 !important;  
+    background-color: #4299e1 !important;  
+    border-color: #4299e1 !important;  
 }  
 
 /* 计算按钮样式 */  
 .stButton {  
     display: flex !important;  
     justify-content: center !important;  
-    margin: 2.5rem auto !important;  
-    width: 0% !important;  
+    margin: 2rem auto !important;  
 }  
 
 .stButton > button {  
-    background: linear-gradient(145deg, #1a73e8, #1557b0) !important;  
+    background: linear-gradient(145deg, #4299e1, #3182ce) !important;  
     color: white !important;  
-    padding: 1rem 4rem !important;  
-    border-radius: 30px !important;  
+    padding: 0.8rem 3rem !important;  
+    border-radius: 8px !important;  
     border: none !important;  
-    font-size: 2rem !important;  
-    font-weight: 800 !important;  
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;  
-    transition: all 0.3s ease !important;  
-    min-width: 400px !important;  
-    max-width: 600px !important;  
-    margin: 0 auto !important;  
-    white-space: nowrap !important;  
-    height: 4rem !important;  
-    line-height: 1.5 !important;  
-    display: flex !important;  
-    align-items: center !important;  
-    justify-content: center !important;  
+    font-size: 1.2rem !important;  
+    font-weight: 600 !important;  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;  
+    transition: all 0.2s ease !important;  
+    min-width: 300px !important;  
+    height: 3rem !important;  
 }  
 
 .stButton > button:hover {  
-    transform: translateY(-2px) !important;  
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;  
-    background: linear-gradient(145deg, #1557b0, #1a73e8) !important;  
-}  
-
-.stButton > button:active {  
-    transform: translateY(0) !important;  
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;  
+    transform: translateY(-1px) !important;  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;  
+    background: linear-gradient(145deg, #3182ce, #2b6cb0) !important;  
 }  
 
 /* 结果显示样式 */  
 .result-title {  
-    font-size: 1.8rem;  
-    font-weight: 700;  
+    font-size: 1.4rem;  
+    font-weight: 600;  
     color: #1a365d;  
     text-align: center;  
-    margin: 2rem 0;  
-    padding-bottom: 1rem;  
-    border-bottom: 2px solid #e2e8f0;  
+    margin: 1.5rem 0;  
+    padding-bottom: 0.8rem;  
+    border-bottom: 1px solid #e2e8f0;  
 }  
 
 .result-grid {  
     display: grid;  
     grid-template-columns: 1fr;  
-    gap: 2rem;  
-    margin: 2rem 0;  
+    gap: 1.2rem;  
+    margin: 1.5rem 0;  
 }  
 
-.probability-container, .risk-level-container, .risk-description-container {  
+.probability-container,   
+.risk-level-container,   
+.risk-description-container {  
     background: white;  
-    border-radius: 12px;  
-    padding: 2rem;  
-    margin: 2rem 0;  
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
+    border-radius: 8px;  
+    padding: 1.2rem;  
+    margin: 1rem 0;  
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);  
+    border: 1px solid #e2e8f0;  
 }  
 
 .probability-value {  
     color: #e53e3e;  
-    font-size: 2.5rem;  
+    font-size: 2rem;  
     font-weight: 700;  
     text-align: center;  
-    padding: 0.5rem 1rem;  
+    padding: 0.4rem 0.8rem;  
     background: #fff5f5;  
-    border-radius: 8px;  
-    border: 2px solid #fc8181;  
+    border-radius: 6px;  
+    border: 1px solid #fc8181;  
     display: inline-block;  
-    margin: 0.5rem 0;  
+    margin: 0.4rem 0;  
 }  
 
 .risk-level-label {  
-    font-size: 1.4rem;  
+    font-size: 1.1rem;  
     color: #4a5568;  
-    margin-bottom: 0.5rem;  
+    margin-bottom: 0.4rem;  
 }  
 
 .high-risk {  
-    color: #e53e3e;  
+    color: #c53030;  
     background: #fff5f5;  
-    border: 2px solid #fc8181;  
+    border: 1px solid #fc8181;  
 }  
 
 .low-risk {  
-    color: #38a169;  
+    color: #2f855a;  
     background: #f0fff4;  
-    border: 2px solid #9ae6b4;  
+    border: 1px solid #9ae6b4;  
 }  
 
 .high-risk, .low-risk {  
-    font-size: 1.6rem;  
-    font-weight: 700;  
+    font-size: 1.2rem;  
+    font-weight: 600;  
     text-align: left;  
-    margin: 1rem 0;  
-    padding: 0.5rem 1rem;  
-    border-radius: 8px;  
+    margin: 0.8rem 0;  
+    padding: 0.4rem 0.8rem;  
+    border-radius: 6px;  
 }  
 
 .risk-description {  
-    font-size: 1.6rem;  
+    font-size: 1.1rem;  
     color: #2d3748;  
-    line-height: 1.8;  
+    line-height: 1.6;  
     text-align: left;  
-    padding: 1rem;  
+    padding: 0.8rem;  
     background: #f7fafc;  
-    border-radius: 8px;  
+    border-radius: 6px;  
 }  
 
 /* 辅助样式 */  
 .normal-range {  
-    color: #64748b;  
-    font-size: 1.2rem;  
-    margin-top: 0.5rem;  
-    padding: 0.5rem 0;  
+    color: #718096;  
+    font-size: 0.9rem;  
+    margin-top: 0.4rem;  
+    padding: 0.4rem 0;  
 }  
 
 /* 移除Streamlit默认样式 */  
@@ -240,68 +237,38 @@ div[data-testid="stVerticalBlock"] > div {
 }  
 
 div[data-testid="stVerticalBlock"] {  
-    gap: 2rem !important;  
-}  
-
-/* 输入区域样式 */  
-.input-group {  
-    background: #f8fafc;  
-    border: 2px solid #4a90e2;  
-    border-radius: 20px;  
-    padding: 1.5rem;  /* 从2rem减小到1.5rem */  
-    margin: 1rem 0;   /* 从1.6rem减小到1rem */  
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
-    width: 100%;  
-    display: block;  
-}  
-
-/* 输入标签间距调整 */  
-.input-label {  
-    color: #2c3e50;  
-    font-size: 1.2rem;  
-    font-weight: 600;  
-    margin-bottom: 0.8rem;  /* 从1rem减小到0.8rem */  
-    display: block;  
-}  
-
-/* 垂直间距调整 */  
-div[data-testid="stVerticalBlock"] {  
-    gap: 1rem !important;  /* 从2rem减小到1rem */  
-}  
-
-/* 结果显示区域间距调整 */  
-.result-grid {  
-    display: grid;  
-    grid-template-columns: 1fr;  
-    gap: 1.5rem;  /* 从2rem减小到1.5rem */  
-    margin: 1.5rem 0;  /* 从2rem减小到1.5rem */  
-}  
-
-.probability-container, .risk-level-container, .risk-description-container {  
-    background: white;  
-    border-radius: 12px;  
-    padding: 1.5rem;  /* 从2rem减小到1.5rem */  
-    margin: 1.5rem 0;  /* 从2rem减小到1.5rem */  
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
+    gap: 1rem !important;  
 }  
 
 /* 响应式调整 */  
 @media (max-width: 768px) {  
+    .block-container {  
+        padding: 1.5rem !important;  
+    }  
+    
     .input-group {  
-        padding: 1.4rem;  
+        padding: 1rem;  
     }  
     
     .input-label {  
-        font-size: 1.4rem;  
+        font-size: 1rem;  
     }  
     
     .stButton > button {  
-        min-width: 300px !important;  
-        padding: 1rem 2rem !important;  
-        font-size: 1.8rem !important;  
+        min-width: 250px !important;  
+        padding: 0.8rem 1.5rem !important;  
+        font-size: 1.1rem !important;  
     }  
-}
-</style>  
+    
+    .title {  
+        font-size: 1.6rem;  
+    }  
+    
+    .subtitle {  
+        font-size: 1.1rem;  
+    }  
+}  
+</style> 
 """, unsafe_allow_html=True)  
 
 # 设置日志  
