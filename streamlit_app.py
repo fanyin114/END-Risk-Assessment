@@ -60,7 +60,7 @@ st.markdown("""
 }  
 
 /* 专门为英文标题设置居中样式 */  
-.english-title {  
+[data-testid="stMarkdownContainer"] p:contains("Early Neurological Deterioration Risk Assessment System") {  
     text-align: center !important;  
     width: 100% !important;  
     font-size: 1.2rem !important;  
@@ -68,6 +68,7 @@ st.markdown("""
     margin: 1rem auto !important;  
     color: #1e40af !important;  
 } 
+
 
 /* 4. 输入区域样式 */  
 .input-group {  
