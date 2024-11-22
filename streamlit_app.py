@@ -51,16 +51,10 @@ st.markdown("""
     display: block;  
 }  
 
-.title::before {  
-    content: '';  
-    position: absolute;  
-    top: 0;  
-    left: 0;  
-    right: 0;  
-    bottom: 0;  
-    background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.05));  
-    z-index: -1;  
-    border-radius: 8px;  
+/* 英文标题居中 */  
+[data-testid="stMarkdownContainer"] {  
+    text-align: center !important;  
+    width: 100% !important;  
 }  
 
 /* 4. 输入区域样式 */  
@@ -68,8 +62,8 @@ st.markdown("""
     background: linear-gradient(145deg, #ffffff, #f1f5f9);  
     border: 1px solid #e2e8f0;  
     border-radius: 8px;  
-    padding: 0.8rem;  
-    margin: 0.4rem 0;  
+    padding: 1rem;  
+    margin: 0.6rem 0;  
     text-align: left;  
     box-shadow:   
         0 2px 4px rgba(0, 0, 0, 0.05),  
@@ -83,13 +77,15 @@ st.markdown("""
 /* 5. 指标名称样式 */  
 .input-label {  
     text-align: left;  
-    width: auto;  
-    padding: 0.4rem 0.8rem;  
+    width: 100%;  
+    padding: 0.6rem 1rem;  
     margin-bottom: 0.4rem;  
-    display: inline-block;  
-    font-size: 0.95rem;  
+    display: block;  
+    font-size: 1rem;  
     font-weight: 600;  
+    color: #2563eb;  
     border-radius: 6px;  
+    background: linear-gradient(145deg, #f0f7ff, #e6f0fd);  
     box-shadow:   
         2px 2px 4px rgba(0, 0, 0, 0.05),  
         -1px -1px 3px rgba(255, 255, 255, 0.8),  
@@ -97,20 +93,39 @@ st.markdown("""
         inset -1px -1px 2px rgba(0, 0, 0, 0.05);  
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);  
     transition: all 0.2s ease;  
+    border: 1px solid rgba(59, 130, 246, 0.2);  
 }  
 
 /* 6. 指标颜色变体 */  
 .input-label[data-indicator="toast"] {  
     background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
-    border-color: rgba(59, 130, 246, 0.15);  
+    border-color: rgba(59, 130, 246, 0.2);  
 }  
 
 .input-label[data-indicator="artery"] {  
-    background: linear-gradient(145deg, #f0fdf4, #dcfce7);  
-    border-color: rgba(22, 163, 74, 0.15);  
+    background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
+    border-color: rgba(59, 130, 246, 0.2);  
 }  
 
-/* 继续添加其他指标颜色... */  
+.input-label[data-indicator="nihss"] {  
+    background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
+    border-color: rgba(59, 130, 246, 0.2);  
+}  
+
+.input-label[data-indicator="neutrophil"] {  
+    background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
+    border-color: rgba(59, 130, 246, 0.2);  
+}  
+
+.input-label[data-indicator="pressure"] {  
+    background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
+    border-color: rgba(59, 130, 246, 0.2);  
+}  
+
+.input-label[data-indicator="rbc"] {  
+    background: linear-gradient(145deg, #e0f2fe, #dbeafe);  
+    border-color: rgba(59, 130, 246, 0.2);  
+}  
 
 /* 7. 输入控件样式 */  
 .stNumberInput > div > div > input {  
@@ -138,26 +153,75 @@ st.markdown("""
     background: linear-gradient(145deg, #3b82f6, #1e40af) !important;  
     color: white !important;  
     padding: 0.6rem 2.5rem !important;  
-    /* ... 其他按钮样式 ... */  
+    border-radius: 6px !important;  
+    border: none !important;  
+    font-size: 1.1rem !important;  
+    font-weight: 600 !important;  
+    min-width: 250px !important;  
+    height: 2.8rem !important;  
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;  
+    transition: all 0.2s ease !important;  
 }  
 
 /* 9. 结果显示样式 */  
-.result-title,  
+.result-title {  
+    text-align: center;  
+    font-size: 1.3rem;  
+    font-weight: 600;  
+    color: #0f172a;  
+    margin: 1.2rem auto;  
+    padding-bottom: 0.6rem;  
+    border-bottom: 2px solid #e2e8f0;  
+    max-width: 600px;  
+}  
+
 .probability-container,  
 .risk-level-container {  
     text-align: center;  
     max-width: 600px;  
     margin: 1rem auto;  
+    padding: 1rem;  
+    background: linear-gradient(145deg, #ffffff, #f8fafc);  
+    border-radius: 8px;  
+    box-shadow:   
+        0 2px 4px rgba(0, 0, 0, 0.05),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
 }  
 
 /* 10. 风险等级样式 */  
-.high-risk,  
+.high-risk {  
+    text-align: center;  
+    max-width: 600px;  
+    margin: 1rem auto;  
+    padding: 0.8rem 1.2rem;  
+    color: #dc2626;  
+    background: linear-gradient(145deg, #fee2e2, #fef2f2);  
+    border: 1px solid #fecaca;  
+    border-radius: 8px;  
+    font-size: 1.1rem;  
+    font-weight: 600;  
+    box-shadow:   
+        0 2px 4px rgba(220, 38, 38, 0.1),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
+}  
+
 .low-risk {  
     text-align: center;  
     max-width: 600px;  
     margin: 1rem auto;  
     padding: 0.8rem 1.2rem;  
-    /* ... 其他风险样式 ... */  
+    color: #166534;  
+    background: linear-gradient(145deg, #dcfce7, #f0fdf4);  
+    border: 1px solid #bbf7d0;  
+    border-radius: 8px;  
+    font-size: 1.1rem;  
+    font-weight: 600;  
+    box-shadow:   
+        0 2px 4px rgba(22, 163, 74, 0.1),  
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02),  
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);  
 }  
 
 /* 11. 响应式样式 */  
@@ -172,30 +236,10 @@ st.markdown("""
     }  
     
     .input-label {  
-        font-size: 0.85rem;  
-        padding: 0.3rem 0.6rem;  
+        font-size: 0.9rem;  
+        padding: 0.4rem 0.8rem;  
     }  
     
-    /* ... 其他响应式调整 ... */  
-}  
-
-/* 响应式调整 */  
-@media (max-width: 768px) {  
-    .input-label {  
-        font-size: 0.85rem;  
-        padding: 0.3rem 0.6rem;  
-    }  
-    
-    .high-risk, .low-risk {  
-        font-size: 1rem;  
-        padding: 0.6rem 1rem;  
-    }  
-}  
-
-
-/* 响应式调整 */  
-@media (max-width: 768px) {  
-        
     .stButton > button {  
         min-width: 220px !important;  
         padding: 0.6rem 1.2rem !important;  
@@ -209,7 +253,14 @@ st.markdown("""
     .subtitle {  
         font-size: 1rem;  
     }  
-}  
+    
+    .high-risk,   
+    .low-risk {  
+        font-size: 1rem;  
+        padding: 0.6rem 1rem;  
+    }  
+}
+
 </style>
 """, unsafe_allow_html=True)  
 
