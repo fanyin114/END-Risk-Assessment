@@ -3,7 +3,7 @@
 Early Neurological Deterioration Risk Assessment System for Acute Ischemic Stroke
 
 ## Overview
-This system is designed to assess the risk of early neurological deterioration (END) in patients with acute ischemic stroke. It utilizes machine learning algorithms to provide real-time risk evaluation based on key clinical indicators.
+The system is designed to assess the risk of early neurological deterioration (END) in patients with acute ischemic stroke following intravenous thrombolysis. It utilizes machine learning algorithms to provide real-time risk assessments based on key clinical indicators.
 
 ## Features
 - Real-time risk assessment
@@ -51,7 +51,7 @@ streamlit run streamlit_app.py
 ```
 
 ## Online Access
-[Access the live system](#) (Link to be added after deployment)
+http://end-risk-assessment-7nvykbq5wyi6cy6wtq4den.streamlit.app/
 
 ## Model Information
 - Algorithm: XGBoost
@@ -81,19 +81,19 @@ Contributions to improve the system are welcome. Please follow these steps:
 5. Create a Pull Request
 
 ## Authors
-[Your Name/Institution Name]
+Juan Li,  The Neurology Department, Lianyungang Clinical College of Nanjing Medical University, Lianyungang, China  
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
-- [Your Institution/Hospital Name]
+- Lianyungang Clinical College of Nanjing Medical University
 - Contributors and medical professionals who provided expertise
 - Research team members
 
 ## Contact
 For questions or support, please contact:
-[Your Contact Information]
+381758073@qq.com
 
 ---
 © 2024 END Risk Assessment System. All Rights Reserved.
